@@ -4,11 +4,18 @@ layout: page
 ---
 ![Profile Image]({{ site.url }}/{{ site.picture }})
 
-<p>Siempre estuve convencido de trabajar con personas y su relación con la tecnología. Me parece fascinante el potencial de cambio que hay en esta. Por ello, estudié Gestión y Alta Dirección en la PUCP. </p>
+<p>Siempre estuve convencido de trabajar con personas y su relación con la tecnología: me parece
+fascinante el potencial de cambio que hay en esta. </p>
 
-<p>En mi camino formé “Impro Sin Razón”, compañía de improvisación teatral con un perfil especialmente dedicado al desarrollo de Soft Skills. De esta manera, todo lo que he ido aprendiendo lo he aplicado en mi trayectoria de descubrimiento en temas tecnológicos y digitales. </p>
+<p>En mi camino he trabajado en el desarrollo de productos digitales y su enfoque de servicio al usuario.
+Para ello aplico metodologías prácticas en base a Design Thinking y en la ejecución, utilizo herramientas de Scrum,
+Management 3.0, Kanban, entre otras.
+ </p>
 
-<p>Hoy en día soy Product Owner en Innova Schools (Colegios Peruanos). En la gestión de proyectos aplico metodologías como Design Thinking y Scrum. </p>
+<p>Tengo experiencia como Product Owner en PrimaAPF, Interseguro, Innova Schools y Board. Además he trabajado en
+agencias digitales como SrBurns, LIQUID, entre otras.
+
+Asimismo, soy profesor de desarrollo de productos digitales, MKT y de talleres de Improvisación teatral y herramientas de desarrollo de habilidades blandas el año 2013. </p>
 
 
 <h2>Skills</h2>
