@@ -37,7 +37,8 @@ Asimismo, soy profesor de desarrollo de productos digitales, MKT y de talleres d
 <h2>Education</h2>
 
 <ul>
+	<li><a href="https://www.colectivo23.com/rutas/product-management">Colectivo 23</a></li>
 	<li><a href="https://www.pucp.edu.pe/">PUCP: Pontificia Universidad Católica del Perú</a></li>
 	<li><a href="https://pbs.edu.pe/default.aspx">Pacífico Business School</a></li>
-	<li><a href="https://area51.pe/">Area51 | Centro de Certificación Internacional</a></li>
+	<li><a href="https://area51.pe/">Area51 | Centro de Certificación </a></li>
 </ul>
