@@ -15,7 +15,7 @@ Management 3.0, Kanban, entre otras.
 <p>Tengo experiencia como Product Owner en PrimaAPF, Interseguro, Innova Schools y Board. Además he trabajado en
 agencias digitales como SrBurns, LIQUID, entre otras.
 
-Asimismo, soy profesor de desarrollo de productos digitales, MKT y de talleres de Improvisación teatral y herramientas de desarrollo de habilidades blandas el año 2013. </p>
+Asimismo, soy profesor de desarrollo de productos digitales, MKT y de talleres de Improvisación teatral y herramientas de desarrollo de habilidades blandas el año 2013</p>
 
 <h2>Certificaciones</h2>
 
