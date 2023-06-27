@@ -17,11 +17,10 @@ agencias digitales como SrBurns, LIQUID, entre otras.
 
 Asimismo, soy profesor de desarrollo de productos digitales, MKT y de talleres de Improvisación teatral y herramientas de desarrollo de habilidades blandas el año 2013. </p>
 
-
-<h2>Skills</h2>
+<h2>Certificaciones</h2>
 
 <ul class="skill-list">
-	<li> Programa Product Manager - Colectivo 23 </li>
+	<li>Programa Product Manager - Colectivo 23</li>
 	<li>CX Design and Management - Pacífico Business School</li>
 	<li>Curso en Behavioural Design - UTEC</li>
 	<li>OKR Practitioner (OKR) - UMAAN</li>
@@ -34,7 +33,7 @@ Asimismo, soy profesor de desarrollo de productos digitales, MKT y de talleres d
 	<li>Google Analytics Certification</li>
 </ul>
 
-<h2>Education</h2>
+<h2>Educación</h2>
 
 <ul>
 	<li><a href="https://www.colectivo23.com/rutas/product-management">Colectivo 23</a></li>
