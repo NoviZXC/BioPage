@@ -21,7 +21,7 @@ Asimismo, soy profesor de desarrollo de productos digitales, MKT y de talleres d
 <h2>Skills</h2>
 
 <ul class="skill-list">
-	<li> Programa Product Manager - Colectivo 23</li>
+	<li> Programa Product Manager - Colectivo 23 </li>
 	<li>CX Design and Management - Pacífico Business School</li>
 	<li>Curso en Behavioural Design - UTEC</li>
 	<li>OKR Practitioner (OKR) - UMAAN</li>
