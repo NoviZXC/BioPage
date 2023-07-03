@@ -2,44 +2,38 @@
 title: About
 layout: page
 ---
-![Profile Image]({% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %})
-
-<p>Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+![Profile Image]({{ site.url }}/{{ site.picture }})
+<p>Siempre estuve convencido de trabajar con personas y su relación con la tecnología: me parece
+fascinante el potencial de cambio que hay en esta. </p>
+<p>En mi camino he trabajado en el desarrollo de productos digitales y su enfoque de servicio al usuario.
+Para ello aplico metodologías prácticas en base a Design Thinking y en la ejecución, utilizo herramientas de Scrum,
+Management 3.0, Kanban, entre otras.
+ </p>
+<p>Tengo experiencia como Product Owner en PrimaAPF, Interseguro, Innova Schools y Board. Además he trabajado en
+agencias digitales como SrBurns, LIQUID, entre otras.
+Asimismo, soy profesor de desarrollo de productos digitales, MKT y de talleres de Improvisación teatral y herramientas de desarrollo de habilidades blandas el año 2013. </p>
 
 <h2>Skills</h2>
 
 <ul class="skill-list">
-	<li>HTML - Jade - Haml - Erb</li>
-	<li>Responsive (Mobile First)</li>
-	<li>CSS (Stylus, Sass, Less)</li>
-	<li>Css Frameworks (Bootstrap, Foundation)</li>
-	<li>Javascript (Design Patterns, Testes)</li>
-	<li>AngularJS - ReactJS</li>
-	<li>Grunt - Gulp - Yeoman</li>
-	<li>Git</li>
-	<li>PHP</li>
-	<li>Python</li>
-	<li>MySQL - MongoDB</li>
-	<li>Scrum and Kanban</li>
-	<li>TDD e Continuous Integration</li>
+	<li> Programa Product Manager - Colectivo 23 </li>
+	<li>CX Design and Management - Pacífico Business School</li>
+	<li>Curso en Behavioural Design - UTEC</li>
+	<li>OKR Practitioner (OKR) - UMAAN</li>
+	<li>Fundation workshop - Managment 3.0</li>
+	<li>SCRUMstudy Certified Trainer (SCT)</li>
+	<li>Scrum Product Owner Certified (SPOC)</li>
+	<li>Amazon Web Services Essentials</li>
+	<li>Scrum Master (SMC)</li>
+	<li>Google Ads Fundamentals</li>
+	<li>Google Analytics Certification</li>
 </ul>
 
-<h2>Projects</h2>
+<h2>Educatión</h2>
 
 <ul>
-	<li><a href="https://github.com/">Lorem Lorem</a></li>
-	<li><a href="https://github.com/">Ipsum Dolor</a></li>
-	<li><a href="https://github.com/">Dolor Lorem</a></li>
+	<li><a href="https://www.colectivo23.com/rutas/product-management">Colectivo 23</a></li>
+	<li><a href="https://www.pucp.edu.pe/">PUCP: Pontificia Universidad Católica del Perú</a></li>
+	<li><a href="https://pbs.edu.pe/default.aspx">Pacífico Business School</a></li>
+	<li><a href="https://area51.pe/">Area51 | Centro de Certificación </a></li>
 </ul>
