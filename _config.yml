@@ -3,7 +3,7 @@ name: Hans Quiroz
 bio: Lider de proyectos digitales y curioso de la vida. Resuelvo problemas y corro montañas.
 
 # twitter summary info
-description: A page about me
+description: Senior Product Owner especializado en productos digitales, UX y estrategia digital. Lima, Perú.
 
 # if it's an external image, update below for true
 # better with square images
@@ -27,16 +27,16 @@ analytics-google: 'G-GK2PSYLX9Y'
 # analytics-piwik-url: 'piwik.my-host.com'
 # analytics-piwik-id: 1
 
-# if you don't want comments in your posts, leave categories empty
-disqus:
-  shortname: mydisqus # enter this from your disqus account
-  categories: [blog, project] # only show disqus for posts that have these categories
+# disqus desactivado (blog deshabilitado)
+# disqus:
+#   shortname: mydisqus
 
 # if you don't have any of social below, comment the line
 #facebook: myfacebook
 #twitter: mytwitter
 # google: mygoogle
 instagram: hans.quirozc
+instagram-athlete: hans.trails
 # pinterest: mypinterest
 linkedin: hans-quiroz/
 # youtube: myyoutube
@@ -50,21 +50,7 @@ github: NoviZXC
 # medium: nquiroz
 # vimeo: myvimeo
 # lanyrd: mylanyrd
-email: hans.quiroz@inversiones.io
-
-#authors:
-    #johndoe:
-        #name: John Doe
-        #bio: A Man who travels the world eating noodles
-        #external-image: false
-        #picture: assets/images/profile.jpg
-        #twitter: johndoe
-    #jamesfoster:
-        #name: James Foster
-        #bio: A Man who develops software with coffee
-        #external-image: false
-        #picture: assets/images/james.jpg
-        #twitter: jamesfoster
+email: nquiroz@gmail.com
 
 # do you want a larger site? change the option below
 # options: [normal, large] | default: normal
@@ -90,9 +76,6 @@ show-tags: true
 
 # related posts inside a post?
 related: true
-
-# Display links for next and previous posts for the specified categories
-post-advance-links: [blog]
 
 # show author block at the end of a post ?
 show-author: true

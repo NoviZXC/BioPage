@@ -6,6 +6,21 @@
     color: $gama
     font-weight: 400
     text-align: center
+    position: relative
+
+    &:before
+        display: block
+        content: " "
+        width: 7px
+        height: 7px
+        border: $epsilon 1px solid
+        position: absolute
+        top: -5px
+        left: 50%
+        margin-left: -5px
+        background: #fafaf9
+        box-shadow: #fafaf9 0 0 0 5px
+        border-radius: 2px
 
     > .link
         display: inline

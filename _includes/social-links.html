@@ -18,7 +18,13 @@
     {% endif %}
 
     {% if site.instagram %}
-        <a class="link" data-title="instagram.com/{{ site.instagram }}" href="http://instagram.com/{{ site.instagram }}" target="_blank">
+        <a class="link" data-title="@{{ site.instagram }}" href="http://instagram.com/{{ site.instagram }}" target="_blank">
+            <svg class="icon icon-instagram"><use xlink:href="#icon-instagram"></use></svg>
+        </a>
+    {% endif %}
+
+    {% if site.instagram-athlete %}
+        <a class="link link--athlete" data-title="@{{ site.instagram-athlete }}" href="http://instagram.com/{{ site.instagram-athlete }}" target="_blank">
             <svg class="icon icon-instagram"><use xlink:href="#icon-instagram"></use></svg>
         </a>
     {% endif %}
