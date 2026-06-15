@@ -16,8 +16,7 @@ resume: true
 resume-external: true
 resume-url: https://www.linkedin.com/in/hans-quiroz/
 
-url: https://novizxc.github.io/BioPage/
-# your url: http://USERNAME.github.io
+url: https://hansquiroz.com
 
 permalink: /:title/
 
@@ -51,7 +50,7 @@ github: NoviZXC
 # medium: nquiroz
 # vimeo: myvimeo
 # lanyrd: mylanyrd
-email: nquiroz@gmail.com
+email: hans.quiroz@inversiones.io
 
 #authors:
     #johndoe:

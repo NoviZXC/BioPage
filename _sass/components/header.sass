@@ -4,31 +4,38 @@
     text-align: center
     position: relative
     z-index: 99
+    padding-top: 20px
 
     > .link > .selfie
-        width: 125px
-        margin-bottom: 25px
+        width: 110px
+        height: 110px
+        object-fit: cover
+        margin-bottom: 28px
         border-radius: 100%
-        transition: all .2s
-        box-shadow: 0
+        transition: all .25s ease
+        box-shadow: 0 0 0 3px #fafaf9, 0 0 0 5px $epsilon
         opacity: 1
 
         &:hover
-            box-shadow: 0 0px 4px 0 rgba(0,0,0,0.18), 0 0px 12px 0 rgba(0,0,0,0.15)
-            opacity: .8
+            box-shadow: 0 0 0 3px #fafaf9, 0 0 0 5px $delta
+            opacity: 0.92
 
     > .title
-        font-size: 4rem
-        margin: 0 0 13px
+        font-size: 3.6rem
+        font-weight: 600
+        letter-spacing: -0.5px
+        margin: 0 0 12px
+        color: $beta
 
     > .description
-        font-size: 1.85rem
-        font-weight: 300
+        font-size: 1.7rem
+        font-weight: 400
         font-style: normal
-        color: $gama
-        width: 70%
-        margin: 0 auto 30px
+        color: $alpha
+        width: 80%
+        margin: 0 auto 28px
+        line-height: 1.6
 
-        // if you put some links in your bio. ;)
         a
-            font-weight: 200
+            color: $delta
+            text-decoration: none
