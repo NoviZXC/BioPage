@@ -2,7 +2,7 @@
     <ul class="list">
         {% if page.title != "Home" %}
             <li class="item">
-                <a class="link" href="{{ site.url }}/">Home</a>
+                <a class="link" href="{{ site.url }}/" data-i18n="nav.home">Inicio</a>
             </li>
         {% endif %}
 
@@ -25,7 +25,7 @@
         {% if site.apps == true %}
             {% if page.title != "Apps" %}
                 <li class="item">
-                    <a class="link" href="{{ site.url }}/apps">Apps</a>
+                    <a class="link" href="{{ site.url }}/apps" data-i18n="nav.apps">Apps</a>
                 </li>
             {% endif %}
         {% endif %}
@@ -33,15 +33,35 @@
         {% if site.about == true %}
             {% if page.title != "About" %}
                 <li class="item">
-                    <a class="link" href="{{ site.url }}/about">About</a>
+                    <a class="link" href="{{ site.url }}/about" data-i18n="nav.about">Sobre mí</a>
                 </li>
             {% endif %}
         {% endif %}
 
         {% if site.resume == true %}
             <li class="item">
-                <a class="link" href="{% if site.resume-external %}{{ site.resume-url }}{% else %}{{ site.url }}/{{ site.resume-url }}{% endif %}">Résumé</a>
+                <a class="link" href="{% if site.resume-external %}{{ site.resume-url }}{% else %}{{ site.url }}/{{ site.resume-url }}{% endif %}" data-i18n="nav.resume">CV</a>
             </li>
         {% endif %}
     </ul>
+
+    <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="es">ES</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="fr">FR</button>
+        <button type="button" data-lang="ar">AR</button>
+    </div>
 </nav>
+
+<style>
+  .lang-switch { display: flex; gap: 4px; justify-content: center; margin-top: 14px; }
+  .lang-switch button {
+    font: 600 11px/1 'Inter', -apple-system, sans-serif;
+    letter-spacing: .04em;
+    color: #8a8a90; background: transparent;
+    border: 1px solid #e2e2e6; border-radius: 999px;
+    padding: 5px 10px; cursor: pointer; transition: all .15s ease;
+  }
+  .lang-switch button:hover { color: #1d1d1f; border-color: #c9c9cf; }
+  .lang-switch button.on { color: #fff; background: #1d1d1f; border-color: #1d1d1f; }
+</style>
