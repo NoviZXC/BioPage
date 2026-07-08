@@ -308,6 +308,191 @@ window.I18N_STRINGS = {
     "en": "<li><a href=\"https://www.usil.edu.pe/\">San Ignacio de Loyola University</a> — Business Administration & Management</li><li><a href=\"https://www.pucp.edu.pe/\">PUCP</a> — Management & Executive Education</li><li><a href=\"https://pbs.edu.pe/default.aspx\">Pacífico Business School</a> — CX Design and Management</li><li><a href=\"https://www.colectivo23.com/rutas/product-management\">Colectivo23</a> — Product Manager Program</li>",
     "fr": "<li><a href=\"https://www.usil.edu.pe/\">Université San Ignacio de Loyola</a> — Administration et gestion d’entreprise</li><li><a href=\"https://www.pucp.edu.pe/\">PUCP</a> — Gestion et haute direction</li><li><a href=\"https://pbs.edu.pe/default.aspx\">Pacífico Business School</a> — CX Design and Management</li><li><a href=\"https://www.colectivo23.com/rutas/product-management\">Colectivo23</a> — Programme Product Manager</li>",
     "ar": "<li><a href=\"https://www.usil.edu.pe/\">جامعة San Ignacio de Loyola</a> — إدارة الأعمال</li><li><a href=\"https://www.pucp.edu.pe/\">PUCP</a> — الإدارة والقيادة العليا</li><li><a href=\"https://pbs.edu.pe/default.aspx\">Pacífico Business School</a> — تصميم وإدارة تجربة العملاء</li><li><a href=\"https://www.colectivo23.com/rutas/product-management\">Colectivo23</a> — برنامج Product Manager</li>"
+  },
+  "apps.ft.tagline": {
+    "en": "Intermittent fasting widget for Garmin Fenix 8, with Glance view and manual editing.",
+    "fr": "Widget de jeûne intermittent pour Garmin Fenix 8, avec vue Glance et modification manuelle.",
+    "ar": "أداة صيام متقطع لساعة Garmin Fenix 8، مع عرض Glance وتعديل يدوي."
+  },
+  "ft.soon": {
+    "en": "Coming soon to the Connect IQ Store",
+    "fr": "Bientôt sur le Connect IQ Store",
+    "ar": "قريبًا على متجر Connect IQ"
+  },
+  "ft.hero.tagline": {
+    "en": "Track your intermittent fasting right from your wrist, with a simple widget for your Garmin Fenix 8.",
+    "fr": "Suis ton jeûne intermittent directement depuis ton poignet, avec un widget simple pour ta Garmin Fenix 8.",
+    "ar": "تابع صيامك المتقطع مباشرة من معصمك، بأداة بسيطة لساعة Garmin Fenix 8."
+  },
+  "ft.feat.start.t": {
+    "en": "Start with one tap",
+    "fr": "Démarre en un geste",
+    "ar": "ابدأ بلمسة واحدة"
+  },
+  "ft.feat.start.d": {
+    "en": "Start and stop your fast directly from the widget, without touching your phone.",
+    "fr": "Démarre et arrête ton jeûne directement depuis le widget, sans toucher ton téléphone.",
+    "ar": "ابدأ وأنهِ صيامك مباشرة من الودجت، دون الحاجة لهاتفك."
+  },
+  "ft.feat.edit.t": {
+    "en": "Manual editing",
+    "fr": "Modification manuelle",
+    "ar": "تعديل يدوي"
+  },
+  "ft.feat.edit.d": {
+    "en": "Forgot to log it? Adjust the start or end time manually whenever you want.",
+    "fr": "Tu as oublié de l’enregistrer ? Ajuste l’heure de début ou de fin manuellement quand tu veux.",
+    "ar": "نسيت أن تسجّله؟ عدّل وقت البداية أو النهاية يدويًا في أي وقت."
+  },
+  "ft.feat.toggle.t": {
+    "en": "Countdown or target time",
+    "fr": "Compte à rebours ou heure cible",
+    "ar": "عد تنازلي أو وقت الهدف"
+  },
+  "ft.feat.toggle.d": {
+    "en": "Switch between time remaining and the exact time your fast ends.",
+    "fr": "Alterne entre le temps restant et l’heure exacte à laquelle ton jeûne se termine.",
+    "ar": "بدّل بين الوقت المتبقي والوقت الدقيق الذي ينتهي فيه صيامك."
+  },
+  "ft.feat.glance.t": {
+    "en": "Glance view",
+    "fr": "Vue Glance",
+    "ar": "عرض Glance"
+  },
+  "ft.feat.glance.d": {
+    "en": "Live progress from the widget list, including overtime once you reach your goal.",
+    "fr": "Progression en direct depuis la liste des widgets, y compris le temps supplémentaire une fois ton objectif atteint.",
+    "ar": "تقدّم مباشر من قائمة الودجت، بما في ذلك الوقت الإضافي بعد بلوغ هدفك."
+  },
+  "ft.feat.plans.t": {
+    "en": "Fasting plans",
+    "fr": "Plans de jeûne",
+    "ar": "خطط الصيام"
+  },
+  "ft.feat.plans.d": {
+    "en": "16:8, 18:6, 20:4 or whichever plan you prefer, with your eating window always in view.",
+    "fr": "16:8, 18:6, 20:4 ou le plan de ton choix, avec ta fenêtre alimentaire toujours visible.",
+    "ar": "16:8 أو 18:6 أو 20:4 أو أي خطة تفضّلها، مع نافذة الأكل دائمًا أمام عينيك."
+  },
+  "ft.feat.alarm.t": {
+    "en": "Background alarm",
+    "fr": "Alarme en arrière-plan",
+    "ar": "تنبيه في الخلفية"
+  },
+  "ft.feat.alarm.d": {
+    "en": "An alert notifies you on your wrist when you reach your goal, without keeping the screen open.",
+    "fr": "Une alerte te prévient au poignet quand tu atteins ton objectif, sans garder l’écran ouvert.",
+    "ar": "ينبهك تنبيه على معصمك عند بلوغ هدفك، دون الحاجة لإبقاء الشاشة مفتوحة."
+  },
+  "ft.privacy": {
+    "en": "<strong>Your privacy, first.</strong> Everything stays on your watch. No account, no servers, no internet connection and no ads.",
+    "fr": "<strong>Ta vie privée d’abord.</strong> Tout reste sur ta montre. Pas de compte, pas de serveurs, pas de connexion internet et pas de publicités.",
+    "ar": "<strong>خصوصيتك أولًا.</strong> يبقى كل شيء على ساعتك. بدون حساب، بدون خوادم، بدون اتصال بالإنترنت وبدون إعلانات."
+  },
+  "ft.privacyBtn": {
+    "en": "Privacy policy",
+    "fr": "Politique de confidentialité",
+    "ar": "سياسة الخصوصية"
+  },
+  "ft.devices": {
+    "en": "Compatible with fēnix 8 (43mm, 47mm), fēnix 8 Solar (47mm, 51mm) and fēnix 8 Pro (47mm)",
+    "fr": "Compatible avec fēnix 8 (43mm, 47mm), fēnix 8 Solar (47mm, 51mm) et fēnix 8 Pro (47mm)",
+    "ar": "متوافقة مع fēnix 8 (43mm، 47mm)، وfēnix 8 Solar (47mm، 51mm)، وfēnix 8 Pro (47mm)"
+  },
+  "ft.tech": {
+    "en": "Designed and built by Hans Quiroz · Monkey C · Garmin Connect IQ",
+    "fr": "Conçu et développé par Hans Quiroz · Monkey C · Garmin Connect IQ",
+    "ar": "من تصميم وتطوير Hans Quiroz · Monkey C · Garmin Connect IQ"
+  },
+  "back.ft": {
+    "en": "‹ Fasting Timer",
+    "fr": "‹ Fasting Timer",
+    "ar": "‹ Fasting Timer"
+  },
+  "pp.ft.title": {
+    "en": "Privacy Policy",
+    "fr": "Politique de confidentialité",
+    "ar": "سياسة الخصوصية"
+  },
+  "pp.ft.updated": {
+    "en": "Fasting Timer · Last updated: July 8, 2026",
+    "fr": "Fasting Timer · Dernière mise à jour : 8 juillet 2026",
+    "ar": "Fasting Timer · آخر تحديث: 8 يوليو 2026"
+  },
+  "pp.ft.tldr": {
+    "en": "<p><strong>In short:</strong> Fasting Timer does not collect your data, has no servers, does not track you and shows no ads. Everything you log stays on your watch.</p>",
+    "fr": "<p><strong>En bref :</strong> Fasting Timer ne collecte pas tes données, n’a pas de serveurs, ne te suit pas et n’affiche aucune publicité. Tout ce que tu enregistres reste sur ta montre.</p>",
+    "ar": "<p><strong>باختصار:</strong> لا يجمع Fasting Timer بياناتك، وليس له خوادم، ولا يتتبعك، ولا يعرض إعلانات. كل ما تسجّله يبقى على ساعتك.</p>"
+  },
+  "pp.ft.h1": {
+    "en": "1. Who is responsible",
+    "fr": "1. Qui est responsable",
+    "ar": "1. المسؤول"
+  },
+  "pp.ft.b1": {
+    "en": "<p>Fasting Timer is a Garmin Connect IQ widget developed independently by Hans Quiroz. For any privacy question, write to <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>",
+    "fr": "<p>Fasting Timer est un widget Garmin Connect IQ développé de façon indépendante par Hans Quiroz. Pour toute question sur la confidentialité, écris à <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>",
+    "ar": "<p>Fasting Timer أداة Garmin Connect IQ طوّرها Hans Quiroz بشكل مستقل. لأي استفسار حول الخصوصية، راسل <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>"
+  },
+  "pp.ft.h2": {
+    "en": "2. What information the app handles",
+    "fr": "2. Quelles informations l’app traite",
+    "ar": "2. ما المعلومات التي يتعامل معها التطبيق"
+  },
+  "pp.ft.b2": {
+    "en": "<p>Fasting Timer works <strong>entirely on your watch</strong>. The information you create —your fasting schedule, chosen plan and history— is stored locally on the Garmin device using its internal storage. This information <strong>is never sent to any server</strong> nor received by the developer.</p>",
+    "fr": "<p>Fasting Timer fonctionne <strong>entièrement sur ta montre</strong>. Les informations que tu crées —ton programme de jeûne, le plan choisi et ton historique— sont stockées localement sur l’appareil Garmin via son stockage interne. Ces informations <strong>ne sont jamais envoyées à un serveur</strong> ni reçues par le développeur.</p>",
+    "ar": "<p>يعمل Fasting Timer <strong>بالكامل على ساعتك</strong>. المعلومات التي تنشئها —جدول صيامك، الخطة المختارة، وسجلك— تُخزَّن محليًا على جهاز Garmin عبر تخزينه الداخلي. هذه المعلومات <strong>لا تُرسَل إلى أي خادم</strong> ولا يستلمها المطوّر.</p>"
+  },
+  "pp.ft.h3": {
+    "en": "3. Notifications",
+    "fr": "3. Notifications",
+    "ar": "3. الإشعارات"
+  },
+  "pp.ft.b3": {
+    "en": "<p>The widget can vibrate and show a background alert when you reach your fasting goal. That alarm is scheduled <strong>locally</strong> on the watch; no push notification services or external servers are used.</p>",
+    "fr": "<p>Le widget peut vibrer et afficher une alerte en arrière-plan lorsque tu atteins ton objectif de jeûne. Cette alarme est programmée <strong>localement</strong> sur la montre ; aucun service de notification push ni serveur externe n’est utilisé.</p>",
+    "ar": "<p>يمكن للودجت أن يهتز ويعرض تنبيهًا في الخلفية عند بلوغ هدف صيامك. تُجدوَل هذه الألارم <strong>محليًا</strong> على الساعة؛ ولا تُستخدم خدمات إشعارات الدفع أو خوادم خارجية.</p>"
+  },
+  "pp.ft.h4": {
+    "en": "4. Data we do NOT collect",
+    "fr": "4. Données que nous NE collectons PAS",
+    "ar": "4. بيانات لا نجمعها"
+  },
+  "pp.ft.b4": {
+    "en": "<ul><li>We do not collect personal or health data.</li><li>We do not use analytics, tracking or advertising identifiers.</li><li>We do not share or sell information to third parties.</li><li>We do not show ads.</li><li>No internet connection or user account required.</li></ul>",
+    "fr": "<ul><li>Nous ne collectons pas de données personnelles ou de santé.</li><li>Nous n’utilisons ni analytique, ni suivi, ni identifiants publicitaires.</li><li>Nous ne partageons ni ne vendons d’informations à des tiers.</li><li>Nous n’affichons pas de publicités.</li><li>Aucune connexion internet ni compte utilisateur requis.</li></ul>",
+    "ar": "<ul><li>لا نجمع بيانات شخصية أو صحية.</li><li>لا نستخدم التحليلات أو التتبّع أو معرّفات الإعلانات.</li><li>لا نشارك أو نبيع المعلومات لأطراف ثالثة.</li><li>لا نعرض إعلانات.</li><li>لا حاجة لاتصال بالإنترنت أو حساب مستخدم.</li></ul>"
+  },
+  "pp.ft.h5": {
+    "en": "5. Minors",
+    "fr": "5. Mineurs",
+    "ar": "5. القاصرون"
+  },
+  "pp.ft.b5": {
+    "en": "<p>Fasting Timer is not directed at children under 13 and does not knowingly collect their information.</p>",
+    "fr": "<p>Fasting Timer ne s’adresse pas aux enfants de moins de 13 ans et ne collecte pas sciemment leurs informations.</p>",
+    "ar": "<p>Fasting Timer غير موجّه للأطفال دون 13 عامًا ولا يجمع معلوماتهم عن قصد.</p>"
+  },
+  "pp.ft.h6": {
+    "en": "6. Changes to this policy",
+    "fr": "6. Modifications de cette politique",
+    "ar": "6. تغييرات هذه السياسة"
+  },
+  "pp.ft.b6": {
+    "en": "<p>If the app adds new features that change how information is handled, this policy will be updated and the new date shown above. Continued use of the app after an update implies acceptance of the changes.</p>",
+    "fr": "<p>Si l’app ajoute de nouvelles fonctionnalités qui changent la gestion des informations, cette politique sera mise à jour et la nouvelle date indiquée ci-dessus. L’utilisation continue de l’app après une mise à jour implique l’acceptation des changements.</p>",
+    "ar": "<p>إذا أضاف التطبيق ميزات جديدة تغيّر طريقة التعامل مع المعلومات، فسنحدّث هذه السياسة ونعرض التاريخ الجديد أعلاه. استمرارك في استخدام التطبيق بعد التحديث يعني قبولك للتغييرات.</p>"
+  },
+  "pp.ft.h7": {
+    "en": "7. Contact",
+    "fr": "7. Contact",
+    "ar": "7. التواصل"
+  },
+  "pp.ft.b7": {
+    "en": "<p>Questions about this policy or your data? Write to <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>",
+    "fr": "<p>Des questions sur cette politique ou tes données ? Écris à <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>",
+    "ar": "<p>أسئلة حول هذه السياسة أو بياناتك؟ راسل <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>"
   }
 };
 

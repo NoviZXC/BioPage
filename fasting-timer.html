@@ -1,0 +1,115 @@
+---
+title: Fasting Timer
+layout: page
+permalink: /apps/fasting-timer/
+description: "Fasting Timer — widget de Garmin Connect IQ para ayuno intermitente en el Fenix 8: progreso en vivo, edición manual de horarios y vista Glance. Diseñado y desarrollado por Hans Quiroz."
+---
+<style>
+  .ft-page { max-width: 760px; margin: 0 auto; }
+  .ft-back { display: inline-block; color: #86868b; font-size: 1.3rem; text-decoration: none; margin-bottom: 1.5rem; }
+  .ft-back:hover { color: #B8860B; }
+
+  .ft-hero {
+    text-align: center;
+    background: radial-gradient(120% 90% at 50% 0%, #1a1410 0%, #000 70%);
+    border-radius: 28px; padding: 48px 28px 44px; color: #fff;
+    box-shadow: 0 10px 40px rgba(0,0,0,.35);
+  }
+  .ft-hero img.icon { width: 108px; height: 108px; border-radius: 26px; box-shadow: 0 8px 28px rgba(255,150,20,.28); }
+  .ft-hero h1 { color: #fff; font-size: 2.6rem; font-weight: 700; margin: 20px 0 6px; }
+  .ft-hero .sub { color: #98989f; font-size: 1.5rem; line-height: 1.5; max-width: 440px; margin: 0 auto 22px; }
+  .ft-badge { display: inline-block; }
+  .ft-badge img { height: 44px; display: block; }
+
+  .ft-section-title { font-size: 1.9rem; font-weight: 600; color: #1d1d1f; margin: 3.5rem 0 1.8rem; text-align: center; }
+
+  .ft-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .ft-feature { background: #fff; border: 1px solid #ececef; border-radius: 18px; padding: 22px; }
+  .ft-feature .ic { width: 40px; height: 40px; border-radius: 12px; background: rgba(255,193,7,.14); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 12px; }
+  .ft-feature h3 { font-size: 1.45rem; font-weight: 600; color: #1d1d1f; margin: 0 0 5px; }
+  .ft-feature p { font-size: 1.3rem; color: #6b6b70; line-height: 1.5; margin: 0; }
+
+  .ft-shots { display: flex; gap: 16px; overflow-x: auto; padding: 6px 2px 16px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+  .ft-shots img { width: 210px; flex: none; border-radius: 50%; scroll-snap-align: center; box-shadow: 0 6px 24px rgba(0,0,0,.16); border: 1px solid #1c1c1e; }
+
+  .ft-privacy-note { text-align: center; color: #6b6b70; font-size: 1.35rem; line-height: 1.6; max-width: 500px; margin: 2.4rem auto 0; }
+  .ft-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin: 2rem 0 1rem; }
+  .ft-links a { text-decoration: none; font-size: 1.35rem; font-weight: 600; border-radius: 999px; padding: 11px 22px; }
+  .ft-links .primary { background: #FFC107; color: #1A1400; }
+  .ft-links .ghost { background: #f2f2f4; color: #1d1d1f; }
+  .ft-links a:hover { opacity: .88; }
+
+  .ft-devices { text-align: center; color: #a1a1a6; font-size: 1.2rem; margin-top: .8rem; }
+
+  .ft-tech { text-align: center; color: #a1a1a6; font-size: 1.2rem; margin-top: 2.5rem; line-height: 1.7; }
+
+  @media (max-width: 540px) {
+    .ft-features { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="ft-page">
+  <a class="ft-back" href="{{ site.url }}/apps" data-i18n="back.apps">‹ Apps</a>
+
+  <div class="ft-hero">
+    <img class="icon" src="{{ site.url }}/assets/images/fasting-timer-garmin/icon.png" alt="Fasting Timer" />
+    <h1>Fasting Timer</h1>
+    <p class="sub" data-i18n="ft.hero.tagline">Controla tu ayuno intermitente directo desde la muñeca, con un widget simple para tu Garmin Fenix 8.</p>
+    <a class="ft-badge" href="https://apps.garmin.com/apps/37851c74-8d98-4fa3-860b-bb2f064bf850" aria-label="Fasting Timer en Garmin Connect IQ Store">
+      <img src="{{ site.url }}/assets/images/fasting-timer-garmin/connect-iq-badge.svg" alt="Available on the Connect IQ Store" />
+    </a>
+  </div>
+
+  <h2 class="ft-section-title" data-i18n="if.what">Qué hace</h2>
+  <div class="ft-features">
+    <div class="ft-feature">
+      <div class="ic">⏱️</div>
+      <h3 data-i18n="ft.feat.start.t">Inicia con un toque</h3>
+      <p data-i18n="ft.feat.start.d">Empieza y detén tu ayuno directamente desde el widget, sin abrir el teléfono.</p>
+    </div>
+    <div class="ft-feature">
+      <div class="ic">✏️</div>
+      <h3 data-i18n="ft.feat.edit.t">Edición manual</h3>
+      <p data-i18n="ft.feat.edit.d">¿Olvidaste registrarlo? Ajusta la hora de inicio o fin manualmente cuando quieras.</p>
+    </div>
+    <div class="ft-feature">
+      <div class="ic">🔁</div>
+      <h3 data-i18n="ft.feat.toggle.t">Cuenta regresiva u hora meta</h3>
+      <p data-i18n="ft.feat.toggle.d">Alterna entre tiempo restante y la hora exacta en la que termina tu ayuno.</p>
+    </div>
+    <div class="ft-feature">
+      <div class="ic">👁️</div>
+      <h3 data-i18n="ft.feat.glance.t">Vista Glance</h3>
+      <p data-i18n="ft.feat.glance.d">Progreso en vivo desde la lista de widgets, incluyendo el tiempo extra tras alcanzar tu meta.</p>
+    </div>
+    <div class="ft-feature">
+      <div class="ic">📋</div>
+      <h3 data-i18n="ft.feat.plans.t">Planes de ayuno</h3>
+      <p data-i18n="ft.feat.plans.d">16:8, 18:6, 20:4 o el plan que prefieras, con la ventana de alimentación siempre a la vista.</p>
+    </div>
+    <div class="ft-feature">
+      <div class="ic">🔔</div>
+      <h3 data-i18n="ft.feat.alarm.t">Alarma en segundo plano</h3>
+      <p data-i18n="ft.feat.alarm.d">Un aviso te notifica en la muñeca cuando alcanzas tu meta, sin mantener la pantalla abierta.</p>
+    </div>
+  </div>
+
+  <h2 class="ft-section-title" data-i18n="if.how">Cómo se ve</h2>
+  <div class="ft-shots">
+    <img src="{{ site.url }}/assets/images/fasting-timer-garmin/active.jpg" alt="Ayuno activo con tiempo restante" />
+    <img src="{{ site.url }}/assets/images/fasting-timer-garmin/countdown.jpg" alt="Cuenta regresiva y hora de fin" />
+    <img src="{{ site.url }}/assets/images/fasting-timer-garmin/plans.jpg" alt="Selección de plan de ayuno" />
+    <img src="{{ site.url }}/assets/images/fasting-timer-garmin/settings.jpg" alt="Ajustes del widget" />
+  </div>
+
+  <p class="ft-privacy-note" data-i18n="ft.privacy">
+    <strong>Tu privacidad, primero.</strong> Todo se guarda en tu reloj. Sin cuenta, sin servidores, sin conexión a internet y sin anuncios.
+  </p>
+
+  <div class="ft-links">
+    <a class="ghost" href="{{ site.url }}/apps/fasting-timer/privacidad" data-i18n="ft.privacyBtn">Política de privacidad</a>
+  </div>
+  <p class="ft-devices" data-i18n="ft.devices">Compatible con fēnix 8 (43mm, 47mm), fēnix 8 Solar (47mm, 51mm) y fēnix 8 Pro (47mm)</p>
+
+  <p class="ft-tech" data-i18n="ft.tech">Diseñado y desarrollado por Hans Quiroz · Monkey C · Garmin Connect IQ</p>
+</div>
