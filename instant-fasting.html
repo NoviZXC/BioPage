@@ -1,0 +1,111 @@
+---
+title: Instant Fasting
+layout: page
+permalink: /apps/instant-fasting/
+description: "Instant Fasting — app de iOS para ayuno intermitente: anillo de etapas en tiempo real, Apple Watch, widgets y Live Activity. Diseñada y desarrollada por Hans Quiroz."
+---
+<style>
+  .if-page { max-width: 760px; margin: 0 auto; }
+  .if-back { display: inline-block; color: #86868b; font-size: 1.3rem; text-decoration: none; margin-bottom: 1.5rem; }
+  .if-back:hover { color: #B8860B; }
+
+  .if-hero {
+    text-align: center;
+    background: radial-gradient(120% 90% at 50% 0%, #1a1410 0%, #000 70%);
+    border-radius: 28px; padding: 48px 28px 44px; color: #fff;
+    box-shadow: 0 10px 40px rgba(0,0,0,.35);
+  }
+  .if-hero img.icon { width: 108px; height: 108px; border-radius: 26px; box-shadow: 0 8px 28px rgba(255,150,20,.28); }
+  .if-hero h1 { color: #fff; font-size: 2.6rem; font-weight: 700; margin: 20px 0 6px; }
+  .if-hero .sub { color: #98989f; font-size: 1.5rem; line-height: 1.5; max-width: 440px; margin: 0 auto 22px; }
+  .if-badge { display: inline-block; font-size: 1.15rem; font-weight: 600; color: #1A1400; background: #FFC107; border-radius: 999px; padding: 7px 18px; }
+
+  .if-section-title { font-size: 1.9rem; font-weight: 600; color: #1d1d1f; margin: 3.5rem 0 1.8rem; text-align: center; }
+
+  .if-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .if-feature { background: #fff; border: 1px solid #ececef; border-radius: 18px; padding: 22px; }
+  .if-feature .ic { width: 40px; height: 40px; border-radius: 12px; background: rgba(255,193,7,.14); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 12px; }
+  .if-feature h3 { font-size: 1.45rem; font-weight: 600; color: #1d1d1f; margin: 0 0 5px; }
+  .if-feature p { font-size: 1.3rem; color: #6b6b70; line-height: 1.5; margin: 0; }
+
+  .if-shots { display: flex; gap: 16px; overflow-x: auto; padding: 6px 2px 16px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+  .if-shots img { width: 210px; flex: none; border-radius: 22px; scroll-snap-align: center; box-shadow: 0 6px 24px rgba(0,0,0,.16); border: 1px solid #1c1c1e; }
+  .if-shots img.watch { width: 150px; align-self: center; border-radius: 20px; }
+
+  .if-privacy-note { text-align: center; color: #6b6b70; font-size: 1.35rem; line-height: 1.6; max-width: 500px; margin: 2.4rem auto 0; }
+  .if-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin: 2rem 0 1rem; }
+  .if-links a { text-decoration: none; font-size: 1.35rem; font-weight: 600; border-radius: 999px; padding: 11px 22px; }
+  .if-links .primary { background: #FFC107; color: #1A1400; }
+  .if-links .ghost { background: #f2f2f4; color: #1d1d1f; }
+  .if-links a:hover { opacity: .88; }
+
+  .if-tech { text-align: center; color: #a1a1a6; font-size: 1.2rem; margin-top: 2.5rem; line-height: 1.7; }
+
+  @media (max-width: 540px) {
+    .if-features { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="if-page">
+  <a class="if-back" href="{{ site.url }}/apps">‹ Apps</a>
+
+  <div class="if-hero">
+    <img class="icon" src="{{ site.url }}/assets/images/instant-fasting/icon.png" alt="Instant Fasting" />
+    <h1>Instant Fasting</h1>
+    <p class="sub">Ayuno intermitente simple. Un anillo te muestra en qué etapa está tu cuerpo, en tiempo real.</p>
+    <span class="if-badge">Próximamente en App Store</span>
+  </div>
+
+  <h2 class="if-section-title">Qué hace</h2>
+  <div class="if-features">
+    <div class="if-feature">
+      <div class="ic">🔥</div>
+      <h3>Anillo de etapas</h3>
+      <p>Sigue en vivo la etapa bioquímica de tu ayuno: azúcar, quema de grasa, cetosis y autofagia.</p>
+    </div>
+    <div class="if-feature">
+      <div class="ic">⏱️</div>
+      <h3>Planes flexibles</h3>
+      <p>De 12:12 a OMAD, o crea tu plan personalizado. Ajusta inicio y fin cuando quieras.</p>
+    </div>
+    <div class="if-feature">
+      <div class="ic">⌚️</div>
+      <h3>Apple Watch</h3>
+      <p>Empieza y termina el ayuno desde la muñeca, con complicación para tu carátula.</p>
+    </div>
+    <div class="if-feature">
+      <div class="ic">📊</div>
+      <h3>Historial y rachas</h3>
+      <p>Tus ayunos pasados, racha actual y mejor racha, con tus horas de la semana.</p>
+    </div>
+    <div class="if-feature">
+      <div class="ic">🔔</div>
+      <h3>Widget y Live Activity</h3>
+      <p>Sigue tu progreso desde la pantalla de inicio, la pantalla bloqueada y la Dynamic Island.</p>
+    </div>
+    <div class="if-feature">
+      <div class="ic">🍎</div>
+      <h3>Apple Health</h3>
+      <p>Si registras una comida durante el ayuno, la app te avisa. Solo lee; nunca escribe en Salud.</p>
+    </div>
+  </div>
+
+  <h2 class="if-section-title">Cómo se ve</h2>
+  <div class="if-shots">
+    <img src="{{ site.url }}/assets/images/instant-fasting/active.png" alt="Ayuno activo con anillo de etapas" />
+    <img src="{{ site.url }}/assets/images/instant-fasting/idle.png" alt="Pantalla de inicio, listo para ayunar" />
+    <img src="{{ site.url }}/assets/images/instant-fasting/plans.png" alt="Planes de ayuno" />
+    <img src="{{ site.url }}/assets/images/instant-fasting/history.png" alt="Historial y rachas" />
+    <img class="watch" src="{{ site.url }}/assets/images/instant-fasting/watch.png" alt="App de Apple Watch" />
+  </div>
+
+  <p class="if-privacy-note">
+    <strong>Tu privacidad, primero.</strong> Todo se queda en tu dispositivo. Sin servidores, sin recopilación de datos, sin rastreo y sin anuncios.
+  </p>
+
+  <div class="if-links">
+    <a class="ghost" href="{{ site.url }}/apps/instant-fasting/privacidad">Política de privacidad</a>
+  </div>
+
+  <p class="if-tech">Diseñada y desarrollada por Hans Quiroz · SwiftUI · iOS &amp; watchOS · HealthKit · WidgetKit</p>
+</div>
