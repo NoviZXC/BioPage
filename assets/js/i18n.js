@@ -315,9 +315,9 @@ window.I18N_STRINGS = {
     "ar": "أداة صيام متقطع لساعة Garmin Fenix 8، مع عرض Glance وتعديل يدوي."
   },
   "ft.soon": {
-    "en": "Coming soon to the Connect IQ Store",
-    "fr": "Bientôt sur le Connect IQ Store",
-    "ar": "قريبًا على متجر Connect IQ"
+    "en": "Available on the Connect IQ Store",
+    "fr": "Disponible sur le Connect IQ Store",
+    "ar": "متاح على متجر Connect IQ"
   },
   "ft.hero.tagline": {
     "en": "Track your intermittent fasting right from your wrist, with a simple widget for your Garmin Fenix 8.",
