@@ -310,9 +310,9 @@ window.I18N_STRINGS = {
     "ar": "<li><a href=\"https://www.usil.edu.pe/\">جامعة San Ignacio de Loyola</a> — إدارة الأعمال</li><li><a href=\"https://www.pucp.edu.pe/\">PUCP</a> — الإدارة والقيادة العليا</li><li><a href=\"https://pbs.edu.pe/default.aspx\">Pacífico Business School</a> — تصميم وإدارة تجربة العملاء</li><li><a href=\"https://www.colectivo23.com/rutas/product-management\">Colectivo23</a> — برنامج Product Manager</li>"
   },
   "apps.ft.tagline": {
-    "en": "Intermittent fasting widget for Garmin Fenix 8, with Glance view and manual editing.",
-    "fr": "Widget de jeûne intermittent pour Garmin Fenix 8, avec vue Glance et modification manuelle.",
-    "ar": "أداة صيام متقطع لساعة Garmin Fenix 8، مع عرض Glance وتعديل يدوي."
+    "en": "Intermittent fasting widget for Garmin Fenix 8 and Fenix 6, with Glance view and manual editing.",
+    "fr": "Widget de jeûne intermittent pour Garmin Fenix 8 et Fenix 6, avec vue Glance et modification manuelle.",
+    "ar": "أداة صيام متقطع لساعة Garmin Fenix 8 وFenix 6، مع عرض Glance وتعديل يدوي."
   },
   "ft.soon": {
     "en": "Available on the Connect IQ Store",
@@ -320,9 +320,9 @@ window.I18N_STRINGS = {
     "ar": "متاح على متجر Connect IQ"
   },
   "ft.hero.tagline": {
-    "en": "Track your intermittent fasting right from your wrist, with a simple widget for your Garmin Fenix 8.",
-    "fr": "Suis ton jeûne intermittent directement depuis ton poignet, avec un widget simple pour ta Garmin Fenix 8.",
-    "ar": "تابع صيامك المتقطع مباشرة من معصمك، بأداة بسيطة لساعة Garmin Fenix 8."
+    "en": "Track your intermittent fasting right from your wrist, with a simple widget for your Garmin Fenix 8 or Fenix 6.",
+    "fr": "Suis ton jeûne intermittent directement depuis ton poignet, avec un widget simple pour ta Garmin Fenix 8 ou Fenix 6.",
+    "ar": "تابع صيامك المتقطع مباشرة من معصمك، بأداة بسيطة لساعة Garmin Fenix 8 أو Fenix 6."
   },
   "ft.feat.start.t": {
     "en": "Start with one tap",
@@ -395,9 +395,9 @@ window.I18N_STRINGS = {
     "ar": "سياسة الخصوصية"
   },
   "ft.devices": {
-    "en": "Compatible with fēnix 8 (43mm, 47mm), fēnix 8 Solar (47mm, 51mm) and fēnix 8 Pro (47mm)",
-    "fr": "Compatible avec fēnix 8 (43mm, 47mm), fēnix 8 Solar (47mm, 51mm) et fēnix 8 Pro (47mm)",
-    "ar": "متوافقة مع fēnix 8 (43mm، 47mm)، وfēnix 8 Solar (47mm، 51mm)، وfēnix 8 Pro (47mm)"
+    "en": "Compatible with fēnix 8 (43mm, 47mm), fēnix 8 Solar (47mm, 51mm) and fēnix 8 Pro (47mm) · Also available for the fēnix 6 series (6, 6s, 6 Pro, 6s Pro, 6X Pro) as a separate Connect IQ Store listing",
+    "fr": "Compatible avec fēnix 8 (43mm, 47mm), fēnix 8 Solar (47mm, 51mm) et fēnix 8 Pro (47mm) · Également disponible pour la gamme fēnix 6 (6, 6s, 6 Pro, 6s Pro, 6X Pro) en tant que fiche séparée sur le Connect IQ Store",
+    "ar": "متوافقة مع fēnix 8 (43mm، 47mm)، وfēnix 8 Solar (47mm، 51mm)، وfēnix 8 Pro (47mm) · متوفرة أيضًا لسلسلة fēnix 6 (6، 6s، 6 Pro، 6s Pro، 6X Pro) كإدراج منفصل في متجر Connect IQ"
   },
   "ft.tech": {
     "en": "Designed and built by Hans Quiroz · Monkey C · Garmin Connect IQ",
