@@ -24,12 +24,6 @@ description: "Fasting Timer — widget de Garmin Connect IQ para ayuno intermite
   .ft-platform { display: flex; flex-direction: column; align-items: center; gap: 10px; }
   .ft-platform-label { font-size: 1.1rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #8a8a90; }
   .ft-platform-divider { width: 1px; background: rgba(255,255,255,.14); align-self: stretch; margin: 4px 0; }
-  .ft-badge-text {
-    display: flex; align-items: center; height: 44px; padding: 0 18px;
-    border-radius: 10px; background: #fff; color: #1A1400;
-    font-size: 1.3rem; font-weight: 600; text-decoration: none;
-  }
-  .ft-badge-text:hover { opacity: .88; }
 
   @media (max-width: 420px) {
     .ft-platform-divider { display: none; }
@@ -79,8 +73,8 @@ description: "Fasting Timer — widget de Garmin Connect IQ para ayuno intermite
       <div class="ft-platform-divider"></div>
       <div class="ft-platform">
         <span class="ft-platform-label">Pebble</span>
-        <a class="ft-badge-text" href="https://apps.repebble.com/fasting-timer_6bb880eacfa64c94822ae579" aria-label="Fasting Timer en Pebble Appstore">
-          <span data-i18n="ft.pebbleBadge">Disponible en Pebble Appstore</span>
+        <a class="ft-badge" href="https://apps.repebble.com/fasting-timer_6bb880eacfa64c94822ae579" aria-label="Fasting Timer en Pebble Appstore">
+          <img src="{{ site.url }}/assets/images/fasting-timer-pebble/pebble-appstore-badge.png" alt="Available on the Pebble Appstore" />
         </a>
       </div>
     </div>
