@@ -1,0 +1,117 @@
+---
+title: InstantBalance
+layout: page
+permalink: /apps/instantbalance/
+description: "InstantBalance — app de iOS de finanzas personales: saldo real al instante, proyección a fin de mes, presupuestos y multi-moneda. Tus datos se quedan en tu iPhone. Diseñada y desarrollada por Hans Quiroz."
+---
+<style>
+  .ib-page { max-width: 760px; margin: 0 auto; }
+  .ib-back { display: inline-block; color: #86868b; font-size: 1.3rem; text-decoration: none; margin-bottom: 1.5rem; }
+  .ib-back:hover { color: #B8860B; }
+
+  .ib-hero {
+    text-align: center;
+    background: radial-gradient(120% 90% at 50% 0%, #14170f 0%, #000 70%);
+    border-radius: 28px; padding: 48px 28px 44px; color: #fff;
+    box-shadow: 0 10px 40px rgba(0,0,0,.35);
+  }
+  .ib-hero img.icon { width: 108px; height: 108px; border-radius: 26px; box-shadow: 0 8px 28px rgba(255,193,7,.26); }
+  .ib-hero h1 { color: #fff; font-size: 2.6rem; font-weight: 700; margin: 20px 0 6px; }
+  .ib-hero .sub { color: #98989f; font-size: 1.5rem; line-height: 1.5; max-width: 460px; margin: 0 auto 22px; }
+  .ib-badge { display: inline-block; font-size: 1.15rem; font-weight: 600; color: #1A1400; background: #FFC107; border-radius: 999px; padding: 7px 18px; }
+
+  .ib-section-title { font-size: 1.9rem; font-weight: 600; color: #1d1d1f; margin: 3.5rem 0 1.8rem; text-align: center; }
+
+  .ib-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .ib-feature { background: #fff; border: 1px solid #ececef; border-radius: 18px; padding: 22px; }
+  .ib-feature .ic { width: 40px; height: 40px; border-radius: 12px; background: rgba(255,193,7,.14); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 12px; }
+  .ib-feature h3 { font-size: 1.45rem; font-weight: 600; color: #1d1d1f; margin: 0 0 5px; }
+  .ib-feature p { font-size: 1.3rem; color: #6b6b70; line-height: 1.5; margin: 0; }
+
+  .ib-support { background: #f7f7f8; border: 1px solid #ececef; border-radius: 20px; padding: 26px 24px; margin-top: 1.2rem; }
+  .ib-support p { font-size: 1.35rem; color: #4b4b50; line-height: 1.65; margin: 0 0 .9rem; }
+  .ib-support p:last-child { margin-bottom: 0; }
+  .ib-support a { color: #B8860B; font-weight: 600; }
+  .ib-support ul { margin: .2rem 0 .9rem; padding-left: 1.3rem; }
+  .ib-support li { font-size: 1.35rem; color: #4b4b50; line-height: 1.6; margin-bottom: .25rem; }
+
+  .ib-privacy-note { text-align: center; color: #6b6b70; font-size: 1.35rem; line-height: 1.6; max-width: 520px; margin: 2.4rem auto 0; }
+  .ib-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin: 2rem 0 1rem; }
+  .ib-links a { text-decoration: none; font-size: 1.35rem; font-weight: 600; border-radius: 999px; padding: 11px 22px; }
+  .ib-links .primary { background: #FFC107; color: #1A1400; }
+  .ib-links .ghost { background: #f2f2f4; color: #1d1d1f; }
+  .ib-links a:hover { opacity: .88; }
+
+  .ib-tech { text-align: center; color: #a1a1a6; font-size: 1.2rem; margin-top: 2.5rem; line-height: 1.7; }
+
+  @media (max-width: 540px) {
+    .ib-features { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="ib-page">
+  <a class="ib-back" href="{{ site.url }}/apps" data-i18n="back.apps">‹ Apps</a>
+
+  <div class="ib-hero">
+    <img class="icon" src="{{ site.url }}/assets/images/instantbalance/icon.png" alt="InstantBalance" />
+    <h1>InstantBalance</h1>
+    <p class="sub" data-i18n="ib.hero.tagline">Cuánto dinero tienes de verdad, ahora. No es una app de contabilidad: es saber en qué estás parado antes de gastar.</p>
+    <span class="ib-badge" data-i18n="common.soon">Próximamente en App Store</span>
+  </div>
+
+  <h2 class="ib-section-title" data-i18n="ib.what">Qué hace</h2>
+  <div class="ib-features">
+    <div class="ib-feature">
+      <div class="ic">💰</div>
+      <h3 data-i18n="ib.feat.now.t">Dinero actual, no teórico</h3>
+      <p data-i18n="ib.feat.now.d">El número grande es lo que tienes hoy, sin contar movimientos con fecha futura que todavía no ocurrieron.</p>
+    </div>
+    <div class="ib-feature">
+      <div class="ic">📈</div>
+      <h3 data-i18n="ib.feat.proj.t">Proyección con desglose</h3>
+      <p data-i18n="ib.feat.proj.d">Cuánto te va a quedar a fin de mes, y de dónde sale ese número: lo que hay, lo programado y tu gasto variable.</p>
+    </div>
+    <div class="ib-feature">
+      <div class="ic">🎯</div>
+      <h3 data-i18n="ib.feat.budget.t">Presupuestos que se entienden</h3>
+      <p data-i18n="ib.feat.budget.d">Mensuales, semanales, trimestrales o anuales. Si te pasaste, resta. Sin números que se contradigan entre pantallas.</p>
+    </div>
+    <div class="ib-feature">
+      <div class="ic">⚡️</div>
+      <h3 data-i18n="ib.feat.fast.t">Registro en segundos</h3>
+      <p data-i18n="ib.feat.fast.d">Widget en la pantalla de inicio, Apple Watch, atajos de voz o foto del recibo.</p>
+    </div>
+    <div class="ib-feature">
+      <div class="ic">🌎</div>
+      <h3 data-i18n="ib.feat.fx.t">Multi-moneda de verdad</h3>
+      <p data-i18n="ib.feat.fx.d">Cada movimiento guarda el tipo de cambio del día en que ocurrió, así tu histórico no se deforma después.</p>
+    </div>
+    <div class="ib-feature">
+      <div class="ic">🔒</div>
+      <h3 data-i18n="ib.feat.local.t">Tus datos son tuyos</h3>
+      <p data-i18n="ib.feat.local.d">Todo vive en tu iPhone. Sin cuentas, sin registro, sin servidores. Exporta un archivo cuando quieras.</p>
+    </div>
+  </div>
+
+  <h2 class="ib-section-title" data-i18n="ib.support.title">Soporte</h2>
+  <div class="ib-support">
+    <p data-i18n="ib.support.intro">¿Algo no funciona, o se te ocurre cómo mejorarlo? Escríbeme a <a href="mailto:nquiroz@gmail.com">nquiroz@gmail.com</a>. Respondo yo, no un bot; suele tomarme un par de días.</p>
+    <p data-i18n="ib.support.help">Para que pueda ayudarte más rápido, cuéntame:</p>
+    <ul>
+      <li data-i18n="ib.support.li1">Qué esperabas que pasara y qué pasó.</li>
+      <li data-i18n="ib.support.li2">Tu versión de iOS y tu modelo de iPhone.</li>
+      <li data-i18n="ib.support.li3">Una captura, si la pantalla lo explica mejor que las palabras.</li>
+    </ul>
+    <p data-i18n="ib.support.privacy">No me mandes capturas con tus saldos reales si no quieres: tapa los números, la mayoría de problemas se entienden igual. Tus datos financieros viven solo en tu iPhone y yo no tengo forma de verlos.</p>
+  </div>
+
+  <p class="ib-privacy-note" data-i18n="ib.privacy">
+    <strong>Tu privacidad, primero.</strong> Todo se queda en tu dispositivo. Sin servidores, sin recopilación de datos, sin rastreo y sin anuncios.
+  </p>
+
+  <div class="ib-links">
+    <a class="ghost" href="{{ site.url }}/apps/instantbalance/privacidad" data-i18n="ib.privacyBtn">Política de privacidad</a>
+  </div>
+
+  <p class="ib-tech" data-i18n="ib.tech">Diseñada y desarrollada por Hans Quiroz · SwiftUI · SwiftData · iOS &amp; watchOS · WidgetKit</p>
+</div>

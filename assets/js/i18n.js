@@ -44,6 +44,131 @@ window.I18N_STRINGS = {
     "fr": "Des apps iOS que je conçois et développe — de l’idée à l’App Store.",
     "ar": "تطبيقات iOS أصمّمها وأطوّرها — من الفكرة إلى App Store."
   },
+  "apps.ib.tagline": {
+    "en": "Frictionless personal finance: your real balance at a glance, end-of-month projection and budgets that add up.",
+    "fr": "Des finances personnelles sans friction : votre solde réel en un coup d’œil, projection de fin de mois et budgets cohérents.",
+    "ar": "إدارة مالية شخصية بلا تعقيد: رصيدك الحقيقي في لمحة، وتوقّع نهاية الشهر، وميزانيات واضحة."
+  },
+  "ib.hero.tagline": {
+    "en": "How much money you actually have, right now. It isn’t an accounting app — it’s knowing where you stand before you spend.",
+    "fr": "Combien d’argent tu as vraiment, maintenant. Ce n’est pas une app de comptabilité : c’est savoir où tu en es avant de dépenser.",
+    "ar": "كم تملك من المال فعليًا، الآن. ليس تطبيق محاسبة — بل معرفة موقفك قبل أن تنفق."
+  },
+  "ib.what": {
+    "en": "What it does",
+    "fr": "Ce qu’elle fait",
+    "ar": "ماذا يفعل"
+  },
+  "ib.feat.now.t": {
+    "en": "Real balance, not theoretical",
+    "fr": "Solde réel, pas théorique",
+    "ar": "رصيد حقيقي، لا نظري"
+  },
+  "ib.feat.now.d": {
+    "en": "The big number is what you have today, leaving out future-dated entries that haven’t happened yet.",
+    "fr": "Le grand chiffre, c’est ce que tu as aujourd’hui, sans les écritures datées dans le futur qui ne sont pas encore survenues.",
+    "ar": "الرقم الكبير هو ما تملكه اليوم، دون الحركات المؤرخة مستقبلًا التي لم تحدث بعد."
+  },
+  "ib.feat.proj.t": {
+    "en": "Projection you can open up",
+    "fr": "Une projection que tu peux décortiquer",
+    "ar": "توقّع يمكنك تفصيله"
+  },
+  "ib.feat.proj.d": {
+    "en": "What you’ll have left at month’s end, and exactly where that number comes from: what’s there, what’s scheduled and your variable spending.",
+    "fr": "Ce qu’il te restera en fin de mois, et d’où sort exactement ce chiffre : ce que tu as, ce qui est programmé et tes dépenses variables.",
+    "ar": "كم سيتبقّى لك في نهاية الشهر، ومن أين يأتي هذا الرقم بالضبط: ما لديك، وما هو مجدول، وإنفاقك المتغيّر."
+  },
+  "ib.feat.budget.t": {
+    "en": "Budgets that make sense",
+    "fr": "Des budgets compréhensibles",
+    "ar": "ميزانيات مفهومة"
+  },
+  "ib.feat.budget.d": {
+    "en": "Monthly, weekly, quarterly or yearly. Go over and it subtracts. No numbers contradicting each other between screens.",
+    "fr": "Mensuels, hebdomadaires, trimestriels ou annuels. Si tu dépasses, ça se soustrait. Aucun chiffre qui se contredit d’un écran à l’autre.",
+    "ar": "شهرية أو أسبوعية أو ربع سنوية أو سنوية. إذا تجاوزت، تُطرح. ولا أرقام تتناقض بين الشاشات."
+  },
+  "ib.feat.fast.t": {
+    "en": "Log it in seconds",
+    "fr": "Saisie en quelques secondes",
+    "ar": "تسجيل في ثوانٍ"
+  },
+  "ib.feat.fast.d": {
+    "en": "Home screen widget, Apple Watch, voice shortcuts or a photo of the receipt.",
+    "fr": "Widget sur l’écran d’accueil, Apple Watch, raccourcis vocaux ou photo du reçu.",
+    "ar": "ودجت على الشاشة الرئيسية، أو Apple Watch، أو اختصارات صوتية، أو صورة للإيصال."
+  },
+  "ib.feat.fx.t": {
+    "en": "Multi-currency done right",
+    "fr": "Multidevise, correctement",
+    "ar": "تعدّد العملات كما ينبغي"
+  },
+  "ib.feat.fx.d": {
+    "en": "Every entry stores the exchange rate of the day it happened, so your history doesn’t warp later on.",
+    "fr": "Chaque écriture conserve le taux de change du jour où elle a eu lieu : ton historique ne se déforme pas par la suite.",
+    "ar": "كل حركة تحفظ سعر الصرف في يوم حدوثها، فلا يتشوّه سجلّك لاحقًا."
+  },
+  "ib.feat.local.t": {
+    "en": "Your data is yours",
+    "fr": "Tes données t’appartiennent",
+    "ar": "بياناتك ملكك"
+  },
+  "ib.feat.local.d": {
+    "en": "Everything lives on your iPhone. No accounts, no sign-up, no servers. Export a file whenever you like.",
+    "fr": "Tout vit sur ton iPhone. Sans compte, sans inscription, sans serveurs. Exporte un fichier quand tu veux.",
+    "ar": "كل شيء يبقى على جهاز iPhone الخاص بك. بلا حسابات ولا تسجيل ولا خوادم. صدّر ملفًا متى شئت."
+  },
+  "ib.support.title": {
+    "en": "Support",
+    "fr": "Assistance",
+    "ar": "الدعم"
+  },
+  "ib.support.intro": {
+    "en": "Something not working, or an idea to make it better? Write to <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>. I answer personally, not a bot; it usually takes me a couple of days.",
+    "fr": "Quelque chose ne marche pas, ou tu as une idée pour l’améliorer ? Écris à <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>. C’est moi qui réponds, pas un bot ; ça me prend en général deux ou trois jours.",
+    "ar": "هل هناك خلل، أو لديك فكرة لتحسينه؟ راسلني على <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>. أردّ بنفسي، لا روبوت؛ ويستغرق ذلك عادةً يومين."
+  },
+  "ib.support.help": {
+    "en": "To help you faster, tell me:",
+    "fr": "Pour t’aider plus vite, indique-moi :",
+    "ar": "لأساعدك بسرعة، أخبرني:"
+  },
+  "ib.support.li1": {
+    "en": "What you expected to happen, and what happened instead.",
+    "fr": "Ce que tu attendais, et ce qui s’est passé à la place.",
+    "ar": "ما الذي توقّعت حدوثه، وما الذي حدث بدلًا منه."
+  },
+  "ib.support.li2": {
+    "en": "Your iOS version and iPhone model.",
+    "fr": "Ta version d’iOS et ton modèle d’iPhone.",
+    "ar": "إصدار iOS وطراز iPhone لديك."
+  },
+  "ib.support.li3": {
+    "en": "A screenshot, if the screen explains it better than words.",
+    "fr": "Une capture d’écran, si l’écran l’explique mieux que les mots.",
+    "ar": "لقطة شاشة، إن كانت الشاشة تشرح الأمر أفضل من الكلمات."
+  },
+  "ib.support.privacy": {
+    "en": "Don’t send screenshots with your real balances if you’d rather not — cover the numbers, most problems are just as clear. Your financial data lives only on your iPhone and I have no way to see it.",
+    "fr": "N’envoie pas de captures avec tes soldes réels si tu préfères : masque les chiffres, la plupart des problèmes se comprennent tout aussi bien. Tes données financières vivent uniquement sur ton iPhone et je n’ai aucun moyen de les voir.",
+    "ar": "لا ترسل لقطات تحتوي أرصدتك الحقيقية إن لم ترغب — غطِّ الأرقام، فمعظم المشكلات تُفهم كما هي. بياناتك المالية تبقى على جهازك وحده ولا سبيل لي لرؤيتها."
+  },
+  "ib.privacy": {
+    "en": "<strong>Your privacy comes first.</strong> Everything stays on your device. No servers, no data collection, no tracking and no ads.",
+    "fr": "<strong>Ta vie privée d’abord.</strong> Tout reste sur ton appareil. Sans serveurs, sans collecte de données, sans pistage et sans publicité.",
+    "ar": "<strong>خصوصيتك أولًا.</strong> كل شيء يبقى على جهازك. بلا خوادم ولا جمع بيانات ولا تتبّع ولا إعلانات."
+  },
+  "ib.privacyBtn": {
+    "en": "Privacy policy",
+    "fr": "Politique de confidentialité",
+    "ar": "سياسة الخصوصية"
+  },
+  "ib.tech": {
+    "en": "Designed and built by Hans Quiroz · SwiftUI · SwiftData · iOS &amp; watchOS · WidgetKit",
+    "fr": "Conçue et développée par Hans Quiroz · SwiftUI · SwiftData · iOS &amp; watchOS · WidgetKit",
+    "ar": "تصميم وتطوير Hans Quiroz · SwiftUI · SwiftData · iOS &amp; watchOS · WidgetKit"
+  },
   "apps.if.tagline": {
     "en": "Simple intermittent fasting, with a stage ring, Apple Watch and widgets.",
     "fr": "Jeûne intermittent simple, avec anneau d’étapes, Apple Watch et widgets.",
