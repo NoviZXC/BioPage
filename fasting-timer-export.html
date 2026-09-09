@@ -1,0 +1,167 @@
+---
+title: Fasting Timer — Exportar
+layout: page
+permalink: /f/
+description: "Decodifica el historial de ayunos exportado desde el widget Fasting Timer de Garmin y descárgalo como CSV. Los datos nunca salen de tu navegador."
+sitemap: false
+---
+<style>
+  .fx { max-width: 760px; margin: 0 auto; }
+  .fx-note { color: #86868b; font-size: 1.35rem; line-height: 1.5; margin-bottom: 2rem; }
+  .fx-actions { margin: 1.5rem 0 2rem; }
+  .fx-btn {
+    display: inline-block; background: #B8860B; color: #fff; border: 0;
+    padding: 0.9rem 1.6rem; border-radius: 8px; font-size: 1.4rem;
+    cursor: pointer; text-decoration: none;
+  }
+  .fx-btn:disabled { background: #3a3a3c; cursor: default; }
+  .fx-empty { color: #86868b; font-size: 1.4rem; padding: 2rem 0; }
+  table.fx-t { width: 100%; border-collapse: collapse; font-size: 1.3rem; }
+  table.fx-t th, table.fx-t td { padding: 0.6rem 0.4rem; text-align: left; border-bottom: 1px solid #2a2a2c; }
+  table.fx-t th { color: #86868b; font-weight: 500; }
+  .fx-ok { color: #34c759; }
+  .fx-sum { color: #86868b; font-size: 1.3rem; margin-bottom: 1rem; }
+</style>
+
+<div class="fx">
+  <h1>Historial de ayunos</h1>
+
+  <p class="fx-note">
+    Los datos viajan en la parte de la dirección que va después de <code>#</code>,
+    que los navegadores <strong>nunca envían al servidor</strong>. Todo lo que ves
+    aquí se decodifica en tu propio dispositivo. No se guarda nada, no hay cuenta
+    y no queda copia en ningún sitio.
+  </p>
+
+  <div id="fx-summary" class="fx-sum"></div>
+
+  <div class="fx-actions">
+    <button id="fx-csv" class="fx-btn" disabled>Descargar CSV</button>
+  </div>
+
+  <div id="fx-out"></div>
+</div>
+
+<script>
+(function () {
+  // Espejo de FastingModel.MODES en el widget. Si allí se añade un modo,
+  // hay que añadirlo aquí en la MISMA posición: el índice viaja en el QR.
+  var MODES = [12, 16, 18, 20, 24, 36];
+  var MODE_NAMES = ['Circadiano', '16:8', '18:6', '20:4', 'OMAD', '36h'];
+
+  function fromBase36(s) {
+    if (s === '' || s === undefined) { return null; }
+    return parseInt(s, 36);
+  }
+
+  function fmtDur(mins) {
+    var h = Math.floor(mins / 60), m = mins % 60;
+    return h + 'h ' + (m < 10 ? '0' : '') + m + 'm';
+  }
+
+  function fmtDate(ts) {
+    var d = new Date(ts * 1000);
+    return d.toLocaleDateString() + ' ' +
+      d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+
+  // Formato: 1|<t0>|<delta>,<dur>,<modo>,<objetivo>|...
+  // Tiempos en minutos y base36; el objetivo va vacío cuando es el del modo.
+  function decode(payload) {
+    var parts = payload.split('|');
+    if (parts[0] !== '1') { throw new Error('Formato no reconocido: ' + parts[0]); }
+    var t0 = fromBase36(parts[1]);
+    var out = [];
+    for (var i = 2; i < parts.length; i++) {
+      if (!parts[i]) { continue; }
+      var f = parts[i].split(',');
+      var startMin = t0 + fromBase36(f[0]);
+      var durMin = fromBase36(f[1]);
+      var mode = parseInt(f[2], 10);
+      var targetMin = f[3] === '' ? null : fromBase36(f[3]);
+      if (targetMin === null && mode >= 0 && mode < MODES.length) {
+        targetMin = MODES[mode] * 60;
+      }
+      out.push({
+        start: startMin * 60,
+        end: (startMin + durMin) * 60,
+        durMin: durMin,
+        mode: mode,
+        modeName: (mode >= 0 && mode < MODE_NAMES.length) ? MODE_NAMES[mode] : 'Personalizado',
+        targetMin: targetMin,
+        hit: targetMin !== null && durMin >= targetMin
+      });
+    }
+    return out;
+  }
+
+  function render(rows) {
+    var out = document.getElementById('fx-out');
+    if (!rows.length) {
+      out.innerHTML = '<p class="fx-empty">No hay ayunos en este enlace.</p>';
+      return;
+    }
+
+    var total = rows.reduce(function (a, r) { return a + r.durMin; }, 0);
+    var hits = rows.filter(function (r) { return r.hit; }).length;
+    document.getElementById('fx-summary').textContent =
+      rows.length + ' ayunos · ' + Math.round(total / 60) + ' h en total · ' +
+      hits + ' cumplieron su objetivo';
+
+    var html = '<table class="fx-t"><thead><tr><th>Inicio</th><th>Fin</th>' +
+      '<th>Duración</th><th>Objetivo</th><th>Modo</th></tr></thead><tbody>';
+    rows.forEach(function (r) {
+      html += '<tr><td>' + fmtDate(r.start) + '</td><td>' + fmtDate(r.end) + '</td>' +
+        '<td>' + fmtDur(r.durMin) + (r.hit ? ' <span class="fx-ok">OK</span>' : '') + '</td>' +
+        '<td>' + (r.targetMin !== null ? fmtDur(r.targetMin) : '—') + '</td>' +
+        '<td>' + r.modeName + '</td></tr>';
+    });
+    out.innerHTML = html + '</tbody></table>';
+  }
+
+  function toCsv(rows) {
+    var lines = ['inicio,fin,duracion_min,objetivo_min,modo,cumplido'];
+    rows.forEach(function (r) {
+      lines.push([
+        new Date(r.start * 1000).toISOString(),
+        new Date(r.end * 1000).toISOString(),
+        r.durMin,
+        r.targetMin === null ? '' : r.targetMin,
+        r.modeName,
+        r.hit ? '1' : '0'
+      ].join(','));
+    });
+    return lines.join('\n');
+  }
+
+  var payload = (window.location.hash || '').replace(/^#/, '');
+  var out = document.getElementById('fx-out');
+
+  if (!payload) {
+    out.innerHTML = '<p class="fx-empty">Abre esta página escaneando el código QR ' +
+      'del widget: Ajustes → Exportar.</p>';
+    return;
+  }
+
+  var rows;
+  try {
+    rows = decode(decodeURIComponent(payload));
+  } catch (e) {
+    out.innerHTML = '<p class="fx-empty">No se pudo leer el enlace (' + e.message + ').</p>';
+    return;
+  }
+
+  render(rows);
+
+  var btn = document.getElementById('fx-csv');
+  btn.disabled = false;
+  btn.addEventListener('click', function () {
+    var blob = new Blob([toCsv(rows)], { type: 'text/csv;charset=utf-8;' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'fasting-timer.csv';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+})();
+</script>
