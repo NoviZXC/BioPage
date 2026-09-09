@@ -8,6 +8,11 @@ sitemap: false
 <style>
   .fx { max-width: 760px; margin: 0 auto; }
   .fx-note { color: #86868b; font-size: 1.35rem; line-height: 1.5; margin-bottom: 2rem; }
+  .fx-nodl { display: none; color: #86868b; font-size: 1.2rem; margin: -1rem 0 1.5rem; }
+  .fx-nodl a { color: #B8860B; }
+  .fx-fallback { display: none; margin-bottom: 2rem; }
+  .fx-ta { width: 100%; box-sizing: border-box; font-family: ui-monospace, Menlo, monospace;
+           font-size: 1.1rem; padding: 0.8rem; border: 1px solid #d2d2d7; border-radius: 8px; }
   .fx-actions { margin: 1.5rem 0 2rem; }
   .fx-btn {
     display: inline-block; background: #B8860B; color: #fff; border: 0;
@@ -38,6 +43,9 @@ sitemap: false
   <div class="fx-actions">
     <button id="fx-csv" class="fx-btn" disabled>Descargar CSV</button>
   </div>
+
+  <p id="fx-nodl" class="fx-nodl">¿No se descargó nada? <a href="#">Muestra el CSV en texto</a></p>
+  <div id="fx-fallback" class="fx-fallback"></div>
 
   <div id="fx-out"></div>
 </div>
@@ -153,15 +161,97 @@ sitemap: false
 
   render(rows);
 
+  // Bajar el CSV. La primera versión de esto no funcionaba en iPhone, que es
+  // justo el caso normal: se llega aquí escaneando un QR con el móvil. Tres
+  // motivos, los tres reales:
+  //   1. El <a> nunca se añadía al documento, y Safari ignora .click() sobre
+  //      un ancla que no está en el DOM.
+  //   2. revokeObjectURL() corría síncrono justo después del click y anulaba
+  //      el blob antes de que la descarga arrancara.
+  //   3. iOS Safari no respeta el atributo download en URLs blob.
+  // Por eso ahora se intenta primero compartir de verdad (en iOS eso abre la
+  // hoja de compartir con "Guardar en Archivos"), luego la descarga clásica,
+  // y si nada de eso existe se muestra el CSV para copiarlo a mano. Siempre
+  // queda una salida visible: el botón nunca puede "no hacer nada".
+  var FILENAME = 'fasting-timer.csv';
+
+  function showFallback(csv, reason) {
+    var box = document.getElementById('fx-fallback');
+    box.innerHTML =
+      '<p class="fx-note">' + reason + ' Copia el texto de aquí abajo y gu\u00e1rdalo como ' +
+      '<code>' + FILENAME + '</code>.</p>' +
+      '<textarea class="fx-ta" readonly rows="8"></textarea>' +
+      '<div class="fx-actions"><button id="fx-copy" class="fx-btn">Copiar</button></div>';
+    var ta = box.querySelector('.fx-ta');
+    ta.value = csv;
+    box.style.display = 'block';
+    ta.focus();
+    ta.setSelectionRange(0, ta.value.length);
+    document.getElementById('fx-copy').addEventListener('click', function () {
+      var done = function () { this.textContent = 'Copiado'; }.bind(this);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(csv).then(done, function () { ta.select(); });
+      } else {
+        ta.select();
+      }
+    });
+  }
+
+  function downloadViaAnchor(csv) {
+    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = FILENAME;
+    a.style.display = 'none';
+    // En el DOM: sin esto Safari y Firefox no disparan el click.
+    document.body.appendChild(a);
+    a.click();
+    // Con retardo: revocar en el mismo tick cancela la descarga.
+    setTimeout(function () {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 2000);
+  }
+
   var btn = document.getElementById('fx-csv');
   btn.disabled = false;
   btn.addEventListener('click', function () {
-    var blob = new Blob([toCsv(rows)], { type: 'text/csv;charset=utf-8;' });
-    var a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'fasting-timer.csv';
-    a.click();
-    URL.revokeObjectURL(a.href);
+    var csv = toCsv(rows);
+
+    // Compartir un fichero de verdad. Es el camino bueno en iOS, donde el
+    // atributo download no es de fiar. canShare() con :files es la única
+    // comprobación que sirve: navigator.share existe en sitios donde
+    // compartir ficheros no.
+    try {
+      if (navigator.canShare && typeof File === 'function') {
+        var file = new File([csv], FILENAME, { type: 'text/csv' });
+        if (navigator.canShare({ files: [file] })) {
+          navigator.share({ files: [file], title: 'Historial de ayunos' })
+            .catch(function (err) {
+              // AbortError = el usuario cerró la hoja de compartir a propósito.
+              if (err && err.name === 'AbortError') { return; }
+              showFallback(csv, 'No se pudo compartir el archivo.');
+            });
+          return;
+        }
+      }
+    } catch (e) { /* sigue por la vía clásica */ }
+
+    if (typeof Blob === 'function' && 'download' in document.createElement('a')) {
+      downloadViaAnchor(csv);
+      // Si el navegador dijo que soporta download pero no pasó nada, el
+      // usuario tiene el texto a un toque: se ofrece igual, sin taparlo.
+      var hint = document.getElementById('fx-nodl');
+      hint.style.display = 'block';
+      hint.onclick = function () {
+        hint.style.display = 'none';
+        showFallback(csv, 'Aqu\u00ed tienes el CSV en texto.');
+      };
+      return;
+    }
+
+    showFallback(csv, 'Tu navegador no permite descargar archivos.');
   });
 })();
 </script>
