@@ -444,6 +444,11 @@ window.I18N_STRINGS = {
     "fr": "Disponible sur le Connect IQ Store et le Pebble Appstore",
     "ar": "متاح على متجر Connect IQ ومتجر Pebble"
   },
+  "ft.badge.review": {
+    "en": "New version under review on the Connect IQ Store.",
+    "fr": "Nouvelle version en cours de validation sur le Connect IQ Store.",
+    "ar": "الإصدار الجديد قيد المراجعة في متجر Connect IQ."
+  },
   "ft.hero.tagline": {
     "en": "Track your intermittent fasting right from your wrist, with a simple widget for your Garmin Fenix 8/6 or your Pebble.",
     "fr": "Suis ton jeûne intermittent directement depuis ton poignet, avec un widget simple pour ta Garmin Fenix 8/6 ou ta Pebble.",

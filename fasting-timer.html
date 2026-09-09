@@ -20,6 +20,8 @@ description: "Fasting Timer — widget de Garmin Connect IQ para ayuno intermite
   .ft-hero .sub { color: #98989f; font-size: 1.5rem; line-height: 1.5; max-width: 440px; margin: 0 auto 22px; }
   .ft-badge { display: inline-block; }
   .ft-badge img { height: 44px; display: block; }
+  .ft-badge--pending { cursor: default; opacity: .4; filter: grayscale(1); }
+  .ft-badge-note { font-size: 1rem; color: #8a8a90; text-align: center; max-width: 200px; line-height: 1.4; }
   .ft-badges { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; align-items: stretch; margin-top: 6px; }
   .ft-platform { display: flex; flex-direction: column; align-items: center; gap: 10px; }
   .ft-platform-label { font-size: 1.1rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #8a8a90; }
@@ -66,9 +68,10 @@ description: "Fasting Timer — widget de Garmin Connect IQ para ayuno intermite
     <div class="ft-badges">
       <div class="ft-platform">
         <span class="ft-platform-label">Garmin</span>
-        <a class="ft-badge" href="https://apps.garmin.com/apps/37851c74-8d98-4fa3-860b-bb2f064bf850" aria-label="Fasting Timer en Garmin Connect IQ Store">
+        <span class="ft-badge ft-badge--pending" role="img" aria-label="Fasting Timer, en revisión en la Connect IQ Store">
           <img src="{{ site.url }}/assets/images/fasting-timer-garmin/connect-iq-badge.svg" alt="Available on the Connect IQ Store" />
-        </a>
+        </span>
+        <p class="ft-badge-note" data-i18n="ft.badge.review">Nueva versión en revisión en la Connect IQ Store.</p>
       </div>
       <div class="ft-platform-divider"></div>
       <div class="ft-platform">
