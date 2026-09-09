@@ -13,6 +13,13 @@ sitemap: false
   .fx-fallback { display: none; margin-bottom: 2rem; }
   .fx-ta { width: 100%; box-sizing: border-box; font-family: ui-monospace, Menlo, monospace;
            font-size: 1.1rem; padding: 0.8rem; border: 1px solid #d2d2d7; border-radius: 8px; }
+  /* Bloque de apoyo. Va DESPUÉS de la tabla a propósito: primero se resuelve
+     lo que la persona vino a hacer —ver y bajar su historial— y solo entonces
+     se pide algo. Al revés sería un peaje. */
+  .fx-support { margin: 3.5rem 0 1rem; padding-top: 2rem; border-top: 1px solid #e5e5ea; }
+  .fx-support h2 { font-size: 1.6rem; margin: 0 0 0.6rem; }
+  .fx-support p { color: #86868b; font-size: 1.3rem; line-height: 1.5; margin: 0 0 1.4rem; }
+  .fx-btn-ghost { background: transparent; color: #B8860B; border: 1px solid #B8860B; }
   .fx-actions { margin: 1.5rem 0 2rem; }
   .fx-btn {
     display: inline-block; background: #B8860B; color: #fff; border: 0;
@@ -48,6 +55,17 @@ sitemap: false
   <div id="fx-fallback" class="fx-fallback"></div>
 
   <div id="fx-out"></div>
+
+  <div class="fx-support">
+    <h2>¿Te sirve Fasting Timer?</h2>
+    <p>
+      Es gratis, sin anuncios y sin cuentas, y va a seguir así. Si quieres apoyar
+      el desarrollo puedes hacerlo aquí — es opcional y no cambia nada de lo que ves.
+    </p>
+    <a class="fx-btn fx-btn-ghost"
+       href="https://www.paypal.com/donate/?hosted_button_id=ZR27Z8H76YLX8"
+       target="_blank" rel="noopener noreferrer">Apoyar el proyecto</a>
+  </div>
 </div>
 
 <script>
