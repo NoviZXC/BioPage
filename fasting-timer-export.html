@@ -70,8 +70,8 @@ sitemap: false
 
 <script>
 (function () {
-  // Espejo de FastingModel.MODES en el widget. Si allí se añade un modo,
-  // hay que añadirlo aquí en la MISMA posición: el índice viaja en el QR.
+  /* Espejo de FastingModel.MODES en el widget. Si allí se añade un modo, */
+  /* hay que añadirlo aquí en la MISMA posición: el índice viaja en el QR. */
   var MODES = [12, 16, 18, 20, 24, 36, 14];
   var MODE_NAMES = ['Circadiano', '16:8', '18:6', '20:4', 'OMAD', '36h', '14:10'];
 
@@ -91,8 +91,8 @@ sitemap: false
       d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   }
 
-  // Formato: 1|<t0>|<delta>,<dur>,<modo>,<objetivo>|...
-  // Tiempos en minutos y base36; el objetivo va vacío cuando es el del modo.
+  /* Formato: 1|<t0>|<delta>,<dur>,<modo>,<objetivo>|... */
+  /* Tiempos en minutos y base36; el objetivo va vacío cuando es el del modo. */
   function decode(payload) {
     var parts = payload.split('|');
     if (parts[0] !== '1') { throw new Error('Formato no reconocido: ' + parts[0]); }
@@ -179,18 +179,18 @@ sitemap: false
 
   render(rows);
 
-  // Bajar el CSV. La primera versión de esto no funcionaba en iPhone, que es
-  // justo el caso normal: se llega aquí escaneando un QR con el móvil. Tres
-  // motivos, los tres reales:
-  //   1. El <a> nunca se añadía al documento, y Safari ignora .click() sobre
-  //      un ancla que no está en el DOM.
-  //   2. revokeObjectURL() corría síncrono justo después del click y anulaba
-  //      el blob antes de que la descarga arrancara.
-  //   3. iOS Safari no respeta el atributo download en URLs blob.
-  // Por eso ahora se intenta primero compartir de verdad (en iOS eso abre la
-  // hoja de compartir con "Guardar en Archivos"), luego la descarga clásica,
-  // y si nada de eso existe se muestra el CSV para copiarlo a mano. Siempre
-  // queda una salida visible: el botón nunca puede "no hacer nada".
+  /* Bajar el CSV. La primera versión de esto no funcionaba en iPhone, que es */
+  /* justo el caso normal: se llega aquí escaneando un QR con el móvil. Tres */
+  /* motivos, los tres reales: */
+  /*   1. El <a> nunca se añadía al documento, y Safari ignora .click() sobre */
+  /*      un ancla que no está en el DOM. */
+  /*   2. revokeObjectURL() corría síncrono justo después del click y anulaba */
+  /*      el blob antes de que la descarga arrancara. */
+  /*   3. iOS Safari no respeta el atributo download en URLs blob. */
+  /* Por eso ahora se intenta primero compartir de verdad (en iOS eso abre la */
+  /* hoja de compartir con "Guardar en Archivos"), luego la descarga clásica, */
+  /* y si nada de eso existe se muestra el CSV para copiarlo a mano. Siempre */
+  /* queda una salida visible: el botón nunca puede "no hacer nada". */
   var FILENAME = 'fasting-timer.csv';
 
   function showFallback(csv, reason) {
@@ -222,10 +222,10 @@ sitemap: false
     a.href = url;
     a.download = FILENAME;
     a.style.display = 'none';
-    // En el DOM: sin esto Safari y Firefox no disparan el click.
+    /* En el DOM: sin esto Safari y Firefox no disparan el click. */
     document.body.appendChild(a);
     a.click();
-    // Con retardo: revocar en el mismo tick cancela la descarga.
+    /* Con retardo: revocar en el mismo tick cancela la descarga. */
     setTimeout(function () {
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
@@ -237,17 +237,17 @@ sitemap: false
   btn.addEventListener('click', function () {
     var csv = toCsv(rows);
 
-    // Compartir un fichero de verdad. Es el camino bueno en iOS, donde el
-    // atributo download no es de fiar. canShare() con :files es la única
-    // comprobación que sirve: navigator.share existe en sitios donde
-    // compartir ficheros no.
+    /* Compartir un fichero de verdad. Es el camino bueno en iOS, donde el */
+    /* atributo download no es de fiar. canShare() con :files es la única */
+    /* comprobación que sirve: navigator.share existe en sitios donde */
+    /* compartir ficheros no. */
     try {
       if (navigator.canShare && typeof File === 'function') {
         var file = new File([csv], FILENAME, { type: 'text/csv' });
         if (navigator.canShare({ files: [file] })) {
           navigator.share({ files: [file], title: 'Historial de ayunos' })
             .catch(function (err) {
-              // AbortError = el usuario cerró la hoja de compartir a propósito.
+              /* AbortError = el usuario cerró la hoja de compartir a propósito. */
               if (err && err.name === 'AbortError') { return; }
               showFallback(csv, 'No se pudo compartir el archivo.');
             });
@@ -258,8 +258,8 @@ sitemap: false
 
     if (typeof Blob === 'function' && 'download' in document.createElement('a')) {
       downloadViaAnchor(csv);
-      // Si el navegador dijo que soporta download pero no pasó nada, el
-      // usuario tiene el texto a un toque: se ofrece igual, sin taparlo.
+      /* Si el navegador dijo que soporta download pero no pasó nada, el */
+      /* usuario tiene el texto a un toque: se ofrece igual, sin taparlo. */
       var hint = document.getElementById('fx-nodl');
       hint.style.display = 'block';
       hint.onclick = function () {
