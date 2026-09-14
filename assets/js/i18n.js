@@ -435,24 +435,19 @@ window.I18N_STRINGS = {
     "ar": "<li><a href=\"https://www.usil.edu.pe/\">جامعة San Ignacio de Loyola</a> — إدارة الأعمال</li><li><a href=\"https://www.pucp.edu.pe/\">PUCP</a> — الإدارة والقيادة العليا</li><li><a href=\"https://pbs.edu.pe/default.aspx\">Pacífico Business School</a> — تصميم وإدارة تجربة العملاء</li><li><a href=\"https://www.colectivo23.com/rutas/product-management\">Colectivo23</a> — برنامج Product Manager</li>"
   },
   "apps.ft.tagline": {
-    "en": "Intermittent fasting widget for Garmin Fenix 8/6 and Pebble, with Glance view and manual editing.",
-    "fr": "Widget de jeûne intermittent pour Garmin Fenix 8/6 et Pebble, avec vue Glance et modification manuelle.",
-    "ar": "أداة صيام متقطع لساعة Garmin Fenix 8/6 وPebble، مع عرض Glance وتعديل يدوي."
+    "en": "Intermittent fasting widget for Garmin and Pebble, with Glance view and manual editing.",
+    "fr": "Widget de jeûne intermittent pour Garmin et Pebble, avec vue Glance et modification manuelle.",
+    "ar": "أداة صيام متقطع لساعات Garmin وPebble، مع عرض Glance وتعديل يدوي."
   },
   "ft.soon": {
     "en": "Available on the Connect IQ Store and Pebble Appstore",
     "fr": "Disponible sur le Connect IQ Store et le Pebble Appstore",
     "ar": "متاح على متجر Connect IQ ومتجر Pebble"
   },
-  "ft.badge.review": {
-    "en": "New version under review on the Connect IQ Store.",
-    "fr": "Nouvelle version en cours de validation sur le Connect IQ Store.",
-    "ar": "الإصدار الجديد قيد المراجعة في متجر Connect IQ."
-  },
   "ft.hero.tagline": {
-    "en": "Track your intermittent fasting right from your wrist, with a simple widget for your Garmin Fenix 8/6 or your Pebble.",
-    "fr": "Suis ton jeûne intermittent directement depuis ton poignet, avec un widget simple pour ta Garmin Fenix 8/6 ou ta Pebble.",
-    "ar": "تابع صيامك المتقطع مباشرة من معصمك، بأداة بسيطة لساعة Garmin Fenix 8/6 أو ساعة Pebble."
+    "en": "Track your intermittent fasting right from your wrist, with a simple widget for your Garmin fenix, Forerunner or vívoactive, or your Pebble.",
+    "fr": "Suis ton jeûne intermittent directement depuis ton poignet, avec un widget simple pour ta Garmin fenix, Forerunner ou vívoactive, ou ta Pebble.",
+    "ar": "تابع صيامك المتقطع مباشرة من معصمك، بأداة بسيطة لساعات Garmin fenix أو Forerunner أو vívoactive، أو ساعة Pebble."
   },
   "ft.feat.start.t": {
     "en": "Start with one tap",
@@ -525,9 +520,9 @@ window.I18N_STRINGS = {
     "ar": "سياسة الخصوصية"
   },
   "ft.devices": {
-    "en": "Compatible with fēnix 8 (43mm, 47mm), fēnix 8 Solar (47mm, 51mm) and fēnix 8 Pro (47mm) · Also available for the fēnix 6 series (6, 6s, 6 Pro, 6s Pro, 6X Pro) as a separate Connect IQ Store listing · And for the new Pebble by Core Devices (Core Time 2, Core 2 Duo, Pebble Round 2)",
-    "fr": "Compatible avec fēnix 8 (43mm, 47mm), fēnix 8 Solar (47mm, 51mm) et fēnix 8 Pro (47mm) · Également disponible pour la gamme fēnix 6 (6, 6s, 6 Pro, 6s Pro, 6X Pro) en tant que fiche séparée sur le Connect IQ Store · Et pour les nouvelles Pebble de Core Devices (Core Time 2, Core 2 Duo, Pebble Round 2)",
-    "ar": "متوافقة مع fēnix 8 (43mm، 47mm)، وfēnix 8 Solar (47mm، 51mm)، وfēnix 8 Pro (47mm) · متوفرة أيضًا لسلسلة fēnix 6 (6، 6s، 6 Pro، 6s Pro، 6X Pro) كإدراج منفصل في متجر Connect IQ · ومتوفرة أيضًا لساعات Pebble الجديدة من Core Devices (Core Time 2، Core 2 Duo، Pebble Round 2)"
+    "en": "Compatible with fēnix 7, fēnix 8 and fēnix 9 (Solar and Pro included), Forerunner (70, 165, 170, 255, 265, 570, 955, 965, 970), Enduro 2, tactix 7 and 8, and vívoactive 5 and 6 · And with the new Pebble by Core Devices (Core Time 2, Core 2 Duo, Pebble Round 2)",
+    "fr": "Compatible avec fēnix 7, fēnix 8 et fēnix 9 (Solar et Pro incluses), Forerunner (70, 165, 170, 255, 265, 570, 955, 965, 970), Enduro 2, tactix 7 et 8, et vívoactive 5 et 6 · Et avec les nouvelles Pebble de Core Devices (Core Time 2, Core 2 Duo, Pebble Round 2)",
+    "ar": "متوافقة مع fēnix 7 وfēnix 8 وfēnix 9 (بما فيها Solar وPro)، وForerunner (70، 165، 170، 255، 265، 570، 955، 965، 970)، وEnduro 2، وtactix 7 و8، وvívoactive 5 و6 · ومع ساعات Pebble الجديدة من Core Devices (Core Time 2، Core 2 Duo، Pebble Round 2)"
   },
   "ft.tech": {
     "en": "Designed and built by Hans Quiroz · Monkey C and C · Garmin Connect IQ and Pebble",
