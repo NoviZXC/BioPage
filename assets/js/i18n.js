@@ -435,19 +435,19 @@ window.I18N_STRINGS = {
     "ar": "<li><a href=\"https://www.usil.edu.pe/\">جامعة San Ignacio de Loyola</a> — إدارة الأعمال</li><li><a href=\"https://www.pucp.edu.pe/\">PUCP</a> — الإدارة والقيادة العليا</li><li><a href=\"https://pbs.edu.pe/default.aspx\">Pacífico Business School</a> — تصميم وإدارة تجربة العملاء</li><li><a href=\"https://www.colectivo23.com/rutas/product-management\">Colectivo23</a> — برنامج Product Manager</li>"
   },
   "apps.ft.tagline": {
-    "en": "Intermittent fasting widget for Garmin and Pebble, with Glance view and manual editing.",
-    "fr": "Widget de jeûne intermittent pour Garmin et Pebble, avec vue Glance et modification manuelle.",
-    "ar": "أداة صيام متقطع لساعات Garmin وPebble، مع عرض Glance وتعديل يدوي."
+    "en": "Intermittent fasting app for Pebble, with quick view and manual editing.",
+    "fr": "App de jeûne intermittent pour Pebble, avec vue rapide et modification manuelle.",
+    "ar": "تطبيق صيام متقطع لساعات Pebble، مع عرض سريع وتعديل يدوي."
   },
   "ft.soon": {
-    "en": "Available on the Connect IQ Store and Pebble Appstore",
-    "fr": "Disponible sur le Connect IQ Store et le Pebble Appstore",
-    "ar": "متاح على متجر Connect IQ ومتجر Pebble"
+    "en": "Available on the Pebble Appstore",
+    "fr": "Disponible sur le Pebble Appstore",
+    "ar": "متاح على متجر Pebble"
   },
   "ft.hero.tagline": {
-    "en": "Track your intermittent fasting right from your wrist, with a simple widget for your Garmin fenix, Forerunner or vívoactive, or your Pebble.",
-    "fr": "Suis ton jeûne intermittent directement depuis ton poignet, avec un widget simple pour ta Garmin fenix, Forerunner ou vívoactive, ou ta Pebble.",
-    "ar": "تابع صيامك المتقطع مباشرة من معصمك، بأداة بسيطة لساعات Garmin fenix أو Forerunner أو vívoactive، أو ساعة Pebble."
+    "en": "Track your intermittent fasting right from your wrist, with a simple app for your Pebble.",
+    "fr": "Suis ton jeûne intermittent directement depuis ton poignet, avec une app simple pour ta Pebble.",
+    "ar": "تابع صيامك المتقطع مباشرة من معصمك، بتطبيق بسيط لساعة Pebble."
   },
   "ft.feat.start.t": {
     "en": "Start with one tap",
@@ -455,9 +455,9 @@ window.I18N_STRINGS = {
     "ar": "ابدأ بلمسة واحدة"
   },
   "ft.feat.start.d": {
-    "en": "Start and stop your fast directly from the widget, without touching your phone.",
-    "fr": "Démarre et arrête ton jeûne directement depuis le widget, sans toucher ton téléphone.",
-    "ar": "ابدأ وأنهِ صيامك مباشرة من الودجت، دون الحاجة لهاتفك."
+    "en": "Start and stop your fast directly from the watch, without touching your phone.",
+    "fr": "Démarre et arrête ton jeûne directement depuis la montre, sans toucher ton téléphone.",
+    "ar": "ابدأ وأنهِ صيامك مباشرة من الساعة، دون الحاجة لهاتفك."
   },
   "ft.feat.edit.t": {
     "en": "Manual editing",
@@ -480,14 +480,14 @@ window.I18N_STRINGS = {
     "ar": "بدّل بين الوقت المتبقي والوقت الدقيق الذي ينتهي فيه صيامك."
   },
   "ft.feat.glance.t": {
-    "en": "Glance view",
-    "fr": "Vue Glance",
-    "ar": "عرض Glance"
+    "en": "Quick view",
+    "fr": "Vue rapide",
+    "ar": "عرض سريع"
   },
   "ft.feat.glance.d": {
-    "en": "Live progress from the widget list, including overtime once you reach your goal.",
-    "fr": "Progression en direct depuis la liste des widgets, y compris le temps supplémentaire une fois ton objectif atteint.",
-    "ar": "تقدّم مباشر من قائمة الودجت، بما في ذلك الوقت الإضافي بعد بلوغ هدفك."
+    "en": "Live progress from the watch app menu, including overtime once you reach your goal.",
+    "fr": "Progression en direct depuis le menu d’apps de la montre, y compris le temps supplémentaire une fois ton objectif atteint.",
+    "ar": "تقدّم مباشر من قائمة تطبيقات الساعة، بما في ذلك الوقت الإضافي بعد بلوغ هدفك."
   },
   "ft.feat.plans.t": {
     "en": "Fasting plans",
@@ -520,14 +520,14 @@ window.I18N_STRINGS = {
     "ar": "سياسة الخصوصية"
   },
   "ft.devices": {
-    "en": "Compatible with fēnix 7, fēnix 8 and fēnix 9 (Solar and Pro included), Forerunner (70, 165, 170, 255, 265, 570, 955, 965, 970), Enduro 2, tactix 7 and 8, and vívoactive 5 and 6 · And with the new Pebble by Core Devices (Core Time 2, Core 2 Duo, Pebble Round 2)",
-    "fr": "Compatible avec fēnix 7, fēnix 8 et fēnix 9 (Solar et Pro incluses), Forerunner (70, 165, 170, 255, 265, 570, 955, 965, 970), Enduro 2, tactix 7 et 8, et vívoactive 5 et 6 · Et avec les nouvelles Pebble de Core Devices (Core Time 2, Core 2 Duo, Pebble Round 2)",
-    "ar": "متوافقة مع fēnix 7 وfēnix 8 وfēnix 9 (بما فيها Solar وPro)، وForerunner (70، 165، 170، 255، 265، 570، 955، 965، 970)، وEnduro 2، وtactix 7 و8، وvívoactive 5 و6 · ومع ساعات Pebble الجديدة من Core Devices (Core Time 2، Core 2 Duo، Pebble Round 2)"
+    "en": "Compatible with Pebble by Core Devices (Core Time 2, Core 2 Duo, Pebble Round 2) and with the classic Pebble (Time, Time Round, Pebble 2)",
+    "fr": "Compatible avec les Pebble de Core Devices (Core Time 2, Core 2 Duo, Pebble Round 2) et avec les Pebble classiques (Time, Time Round, Pebble 2)",
+    "ar": "متوافقة مع ساعات Pebble من Core Devices (Core Time 2، Core 2 Duo، Pebble Round 2) ومع ساعات Pebble الكلاسيكية (Time، Time Round، Pebble 2)"
   },
   "ft.tech": {
-    "en": "Designed and built by Hans Quiroz · Monkey C and C · Garmin Connect IQ and Pebble",
-    "fr": "Conçu et développé par Hans Quiroz · Monkey C et C · Garmin Connect IQ et Pebble",
-    "ar": "من تصميم وتطوير Hans Quiroz · Monkey C وC · Garmin Connect IQ وPebble"
+    "en": "Designed and built by Hans Quiroz · C · PebbleOS",
+    "fr": "Conçu et développé par Hans Quiroz · C · PebbleOS",
+    "ar": "من تصميم وتطوير Hans Quiroz · C · PebbleOS"
   },
   "back.ft": {
     "en": "‹ Fasting Timer",
@@ -555,9 +555,9 @@ window.I18N_STRINGS = {
     "ar": "1. المسؤول"
   },
   "pp.ft.b1": {
-    "en": "<p>Fasting Timer is a Garmin Connect IQ widget developed independently by Hans Quiroz. For any privacy question, write to <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>",
-    "fr": "<p>Fasting Timer est un widget Garmin Connect IQ développé de façon indépendante par Hans Quiroz. Pour toute question sur la confidentialité, écris à <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>",
-    "ar": "<p>Fasting Timer أداة Garmin Connect IQ طوّرها Hans Quiroz بشكل مستقل. لأي استفسار حول الخصوصية، راسل <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>"
+    "en": "<p>Fasting Timer is a Pebble app developed independently by Hans Quiroz. For any privacy question, write to <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>",
+    "fr": "<p>Fasting Timer est une app Pebble développée de façon indépendante par Hans Quiroz. Pour toute question sur la confidentialité, écris à <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>",
+    "ar": "<p>Fasting Timer تطبيق Pebble طوّره Hans Quiroz بشكل مستقل. لأي استفسار حول الخصوصية، راسل <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>"
   },
   "pp.ft.h2": {
     "en": "2. What information the app handles",
@@ -565,9 +565,9 @@ window.I18N_STRINGS = {
     "ar": "2. ما المعلومات التي يتعامل معها التطبيق"
   },
   "pp.ft.b2": {
-    "en": "<p>Fasting Timer works <strong>entirely on your watch</strong>. The information you create —your fasting schedule, chosen plan and history— is stored locally on the Garmin device using its internal storage. This information <strong>is never sent to any server</strong> nor received by the developer.</p>",
-    "fr": "<p>Fasting Timer fonctionne <strong>entièrement sur ta montre</strong>. Les informations que tu crées —ton programme de jeûne, le plan choisi et ton historique— sont stockées localement sur l’appareil Garmin via son stockage interne. Ces informations <strong>ne sont jamais envoyées à un serveur</strong> ni reçues par le développeur.</p>",
-    "ar": "<p>يعمل Fasting Timer <strong>بالكامل على ساعتك</strong>. المعلومات التي تنشئها —جدول صيامك، الخطة المختارة، وسجلك— تُخزَّن محليًا على جهاز Garmin عبر تخزينه الداخلي. هذه المعلومات <strong>لا تُرسَل إلى أي خادم</strong> ولا يستلمها المطوّر.</p>"
+    "en": "<p>Fasting Timer works <strong>entirely on your watch</strong>. The information you create —your fasting schedule, chosen plan and history— is stored locally on the watch using its internal storage. This information <strong>is never sent to any server</strong> nor received by the developer.</p>",
+    "fr": "<p>Fasting Timer fonctionne <strong>entièrement sur ta montre</strong>. Les informations que tu crées —ton programme de jeûne, le plan choisi et ton historique— sont stockées localement sur la montre via son stockage interne. Ces informations <strong>ne sont jamais envoyées à un serveur</strong> ni reçues par le développeur.</p>",
+    "ar": "<p>يعمل Fasting Timer <strong>بالكامل على ساعتك</strong>. المعلومات التي تنشئها —جدول صيامك، الخطة المختارة، وسجلك— تُخزَّن محليًا على الساعة عبر تخزينها الداخلي. هذه المعلومات <strong>لا تُرسَل إلى أي خادم</strong> ولا يستلمها المطوّر.</p>"
   },
   "pp.ft.h3": {
     "en": "3. Notifications",
@@ -575,9 +575,9 @@ window.I18N_STRINGS = {
     "ar": "3. الإشعارات"
   },
   "pp.ft.b3": {
-    "en": "<p>The widget can vibrate and show a background alert when you reach your fasting goal. That alarm is scheduled <strong>locally</strong> on the watch; no push notification services or external servers are used.</p>",
-    "fr": "<p>Le widget peut vibrer et afficher une alerte en arrière-plan lorsque tu atteins ton objectif de jeûne. Cette alarme est programmée <strong>localement</strong> sur la montre ; aucun service de notification push ni serveur externe n’est utilisé.</p>",
-    "ar": "<p>يمكن للودجت أن يهتز ويعرض تنبيهًا في الخلفية عند بلوغ هدف صيامك. تُجدوَل هذه الألارم <strong>محليًا</strong> على الساعة؛ ولا تُستخدم خدمات إشعارات الدفع أو خوادم خارجية.</p>"
+    "en": "<p>The app can vibrate and show a background alert when you reach your fasting goal. That alarm is scheduled <strong>locally</strong> on the watch; no push notification services or external servers are used.</p>",
+    "fr": "<p>L’app peut vibrer et afficher une alerte en arrière-plan lorsque tu atteins ton objectif de jeûne. Cette alarme est programmée <strong>localement</strong> sur la montre ; aucun service de notification push ni serveur externe n’est utilisé.</p>",
+    "ar": "<p>يمكن للتطبيق أن يهتز ويعرض تنبيهًا في الخلفية عند بلوغ هدف صيامك. تُجدوَل هذه الألارم <strong>محليًا</strong> على الساعة؛ ولا تُستخدم خدمات إشعارات الدفع أو خوادم خارجية.</p>"
   },
   "pp.ft.h4": {
     "en": "4. Data we do NOT collect",
