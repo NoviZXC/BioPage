@@ -435,39 +435,39 @@ window.I18N_STRINGS = {
     "ar": "<li><a href=\"https://www.usil.edu.pe/\">جامعة San Ignacio de Loyola</a> — إدارة الأعمال</li><li><a href=\"https://www.pucp.edu.pe/\">PUCP</a> — الإدارة والقيادة العليا</li><li><a href=\"https://pbs.edu.pe/default.aspx\">Pacífico Business School</a> — تصميم وإدارة تجربة العملاء</li><li><a href=\"https://www.colectivo23.com/rutas/product-management\">Colectivo23</a> — برنامج Product Manager</li>"
   },
   "apps.ft.tagline": {
-    "en": "Intermittent fasting app for Pebble, with quick view and manual editing.",
-    "fr": "App de jeûne intermittent pour Pebble, avec vue rapide et modification manuelle.",
-    "ar": "تطبيق صيام متقطع لساعات Pebble، مع عرض سريع وتعديل يدوي."
+    "en": "Intermittent fasting for Garmin and Pebble, with physiological stages, history and achievements.",
+    "fr": "Jeûne intermittent pour Garmin et Pebble, avec phases physiologiques, historique et succès.",
+    "ar": "صيام متقطع لساعات Garmin وPebble، مع المراحل الفسيولوجية والسجل والإنجازات."
   },
   "ft.soon": {
-    "en": "Available on the Pebble Appstore",
-    "fr": "Disponible sur le Pebble Appstore",
-    "ar": "متاح على متجر Pebble"
+    "en": "Available on the Connect IQ Store and Pebble Appstore",
+    "fr": "Disponible sur le Connect IQ Store et le Pebble Appstore",
+    "ar": "متاح على متجر Connect IQ ومتجر Pebble"
   },
   "ft.hero.tagline": {
-    "en": "Track your intermittent fasting right from your wrist, with a simple app for your Pebble.",
-    "fr": "Suis ton jeûne intermittent directement depuis ton poignet, avec une app simple pour ta Pebble.",
-    "ar": "تابع صيامك المتقطع مباشرة من معصمك، بتطبيق بسيط لساعة Pebble."
+    "en": "Track your intermittent fasting from your wrist and see which stage you are really in, on your Garmin fēnix, Forerunner or vívoactive, or on your Pebble.",
+    "fr": "Suis ton jeûne intermittent depuis ton poignet et vois dans quelle phase tu es vraiment, sur ta Garmin fēnix, Forerunner ou vívoactive, ou sur ta Pebble.",
+    "ar": "تابع صيامك المتقطع من معصمك واعرف في أي مرحلة أنت فعلًا، على ساعة Garmin fēnix أو Forerunner أو vívoactive، أو على ساعة Pebble."
   },
   "ft.feat.start.t": {
-    "en": "Start with one tap",
-    "fr": "Démarre en un geste",
-    "ar": "ابدأ بلمسة واحدة"
+    "en": "One button, done",
+    "fr": "Un bouton, c’est tout",
+    "ar": "زر واحد وانتهى"
   },
   "ft.feat.start.d": {
-    "en": "Start and stop your fast directly from the watch, without touching your phone.",
-    "fr": "Démarre et arrête ton jeûne directement depuis la montre, sans toucher ton téléphone.",
-    "ar": "ابدأ وأنهِ صيامك مباشرة من الساعة، دون الحاجة لهاتفك."
+    "en": "START begins the fast and START ends it. On vívoactive, one tap on the screen.",
+    "fr": "START lance le jeûne et START l’arrête. Sur vívoactive, une touche sur l’écran.",
+    "ar": "زر START يبدأ الصيام وSTART ينهيه. على vívoactive، لمسة واحدة على الشاشة."
   },
   "ft.feat.edit.t": {
-    "en": "Manual editing",
-    "fr": "Modification manuelle",
-    "ar": "تعديل يدوي"
+    "en": "Editable history",
+    "fr": "Historique modifiable",
+    "ar": "سجل قابل للتعديل"
   },
   "ft.feat.edit.d": {
-    "en": "Forgot to log it? Adjust the start or end time manually whenever you want.",
-    "fr": "Tu as oublié de l’enregistrer ? Ajuste l’heure de début ou de fin manuellement quand tu veux.",
-    "ar": "نسيت أن تسجّله؟ عدّل وقت البداية أو النهاية يدويًا في أي وقت."
+    "en": "Your last 30 fasts, with streak and personal best. Forgot to end one? The app asks when you really finished.",
+    "fr": "Tes 30 derniers jeûnes, avec série et record personnel. Oublié d’en arrêter un ? L’app te demande quand tu as vraiment fini.",
+    "ar": "آخر 30 صيامًا لك، مع السلسلة والرقم القياسي الشخصي. نسيت إنهاء صيام؟ يسألك التطبيق متى انتهيت فعلًا."
   },
   "ft.feat.toggle.t": {
     "en": "Countdown or target time",
@@ -480,14 +480,14 @@ window.I18N_STRINGS = {
     "ar": "بدّل بين الوقت المتبقي والوقت الدقيق الذي ينتهي فيه صيامك."
   },
   "ft.feat.glance.t": {
-    "en": "Quick view",
-    "fr": "Vue rapide",
-    "ar": "عرض سريع"
+    "en": "Glance view",
+    "fr": "Vue Glance",
+    "ar": "عرض Glance"
   },
   "ft.feat.glance.d": {
-    "en": "Live progress from the watch app menu, including overtime once you reach your goal.",
-    "fr": "Progression en direct depuis le menu d’apps de la montre, y compris le temps supplémentaire une fois ton objectif atteint.",
-    "ar": "تقدّم مباشر من قائمة تطبيقات الساعة، بما في ذلك الوقت الإضافي بعد بلوغ هدفك."
+    "en": "Your fast live from the widget list, without opening anything, including overtime past your goal.",
+    "fr": "Ton jeûne en direct depuis la liste des widgets, sans rien ouvrir, y compris le temps au-delà de ton objectif.",
+    "ar": "صيامك مباشرة من قائمة الودجت دون فتح أي شيء، بما في ذلك الوقت الإضافي بعد هدفك."
   },
   "ft.feat.plans.t": {
     "en": "Fasting plans",
@@ -495,9 +495,9 @@ window.I18N_STRINGS = {
     "ar": "خطط الصيام"
   },
   "ft.feat.plans.d": {
-    "en": "16:8, 18:6, 20:4 or whichever plan you prefer, with your eating window always in view.",
-    "fr": "16:8, 18:6, 20:4 ou le plan de ton choix, avec ta fenêtre alimentaire toujours visible.",
-    "ar": "16:8 أو 18:6 أو 20:4 أو أي خطة تفضّلها، مع نافذة الأكل دائمًا أمام عينيك."
+    "en": "14:10, 16:8, 18:6, 20:4, OMAD, 36 h or your own goal, from 1 to 72 hours.",
+    "fr": "14:10, 16:8, 18:6, 20:4, OMAD, 36 h ou ton propre objectif, de 1 à 72 heures.",
+    "ar": "14:10 و16:8 و18:6 و20:4 وOMAD و36 ساعة أو هدفك الخاص، من ساعة إلى 72 ساعة."
   },
   "ft.feat.alarm.t": {
     "en": "Background alarm",
@@ -508,6 +508,51 @@ window.I18N_STRINGS = {
     "en": "An alert notifies you on your wrist when you reach your goal, without keeping the screen open.",
     "fr": "Une alerte te prévient au poignet quand tu atteins ton objectif, sans garder l’écran ouvert.",
     "ar": "ينبهك تنبيه على معصمك عند بلوغ هدفك، دون الحاجة لإبقاء الشاشة مفتوحة."
+  },
+  "ft.feat.stages.t": {
+    "en": "8 fasting stages",
+    "fr": "8 phases de jeûne",
+    "ar": "8 مراحل للصيام"
+  },
+  "ft.feat.stages.d": {
+    "en": "The progress ring is split into stages, from digestion to deep autophagy: you see where you are and what comes next.",
+    "fr": "L’anneau de progression est découpé en phases, de la digestion à l’autophagie profonde : tu vois où tu en es et ce qui vient.",
+    "ar": "حلقة التقدّم مقسّمة إلى مراحل، من الهضم إلى الالتهام الذاتي العميق: ترى أين أنت وما القادم."
+  },
+  "ft.feat.circ.t": {
+    "en": "Circadian mode",
+    "fr": "Mode circadien",
+    "ar": "الوضع اليومي (Circadian)"
+  },
+  "ft.feat.circ.d": {
+    "en": "Your eating window comes from your real sunrise and sunset, and adjusts to the season on its own. No location access.",
+    "fr": "Ta fenêtre alimentaire vient de ton vrai lever et coucher de soleil, et suit la saison toute seule. Sans accès à ta position.",
+    "ar": "نافذة الأكل تُحسب من شروق الشمس وغروبها الفعليين وتتكيّف مع الفصل تلقائيًا. دون الوصول إلى موقعك."
+  },
+  "ft.feat.ach.t": {
+    "en": "17 achievements",
+    "fr": "17 succès",
+    "ar": "17 إنجازًا"
+  },
+  "ft.feat.ach.d": {
+    "en": "From your first fast to a 30-day streak, to help you stay consistent.",
+    "fr": "Du premier jeûne à une série de 30 jours, pour garder le rythme.",
+    "ar": "من صيامك الأول إلى سلسلة من 30 يومًا، لتحافظ على الاستمرارية."
+  },
+  "ft.feat.export.t": {
+    "en": "Export to CSV",
+    "fr": "Export CSV",
+    "ar": "التصدير إلى CSV"
+  },
+  "ft.feat.export.d": {
+    "en": "Scan a QR code with your phone and download your history. The data is decoded in your browser, not on a server.",
+    "fr": "Scanne un QR code avec ton téléphone et télécharge ton historique. Les données sont décodées dans ton navigateur, pas sur un serveur.",
+    "ar": "امسح رمز QR بهاتفك ونزّل سجلك. تُفك البيانات في متصفحك، لا على خادم."
+  },
+  "ft.pebble.note": {
+    "en": "On Pebble: one-tap start, manual editing, fasting plans, quick view and an alarm when you reach your goal.",
+    "fr": "Sur Pebble : démarrage en une touche, modification manuelle, plans de jeûne, vue rapide et alarme à l’objectif.",
+    "ar": "على Pebble: بدء بلمسة واحدة، تعديل يدوي، خطط صيام، عرض سريع، وتنبيه عند بلوغ هدفك."
   },
   "ft.privacy": {
     "en": "<strong>Your privacy, first.</strong> Everything stays on your watch. No account, no servers, no internet connection and no ads.",
@@ -520,14 +565,14 @@ window.I18N_STRINGS = {
     "ar": "سياسة الخصوصية"
   },
   "ft.devices": {
-    "en": "Compatible with Pebble by Core Devices (Core Time 2, Core 2 Duo, Pebble Round 2) and with the classic Pebble (Time, Time Round, Pebble 2)",
-    "fr": "Compatible avec les Pebble de Core Devices (Core Time 2, Core 2 Duo, Pebble Round 2) et avec les Pebble classiques (Time, Time Round, Pebble 2)",
-    "ar": "متوافقة مع ساعات Pebble من Core Devices (Core Time 2، Core 2 Duo، Pebble Round 2) ومع ساعات Pebble الكلاسيكية (Time، Time Round، Pebble 2)"
+    "en": "Garmin: fēnix 7, fēnix 8 and fēnix 9 (Solar and Pro included), Forerunner (70, 165, 170, 255, 265, 570, 955, 965, 970) and vívoactive 5 and 6 · Pebble: Core Devices models (Core Time 2, Core 2 Duo, Pebble Round 2) and the classics (Time, Time Round, Pebble 2)",
+    "fr": "Garmin : fēnix 7, fēnix 8 et fēnix 9 (Solar et Pro incluses), Forerunner (70, 165, 170, 255, 265, 570, 955, 965, 970) et vívoactive 5 et 6 · Pebble : les modèles Core Devices (Core Time 2, Core 2 Duo, Pebble Round 2) et les classiques (Time, Time Round, Pebble 2)",
+    "ar": "Garmin: fēnix 7 وfēnix 8 وfēnix 9 (بما فيها Solar وPro)، وForerunner (70، 165، 170، 255، 265، 570، 955، 965، 970)، وvívoactive 5 و6 · Pebble: طرازات Core Devices (Core Time 2، Core 2 Duo، Pebble Round 2) والكلاسيكية (Time، Time Round، Pebble 2)"
   },
   "ft.tech": {
-    "en": "Designed and built by Hans Quiroz · C · PebbleOS",
-    "fr": "Conçu et développé par Hans Quiroz · C · PebbleOS",
-    "ar": "من تصميم وتطوير Hans Quiroz · C · PebbleOS"
+    "en": "Designed and built by Hans Quiroz · Monkey C and C · Garmin Connect IQ and PebbleOS",
+    "fr": "Conçu et développé par Hans Quiroz · Monkey C et C · Garmin Connect IQ et PebbleOS",
+    "ar": "من تصميم وتطوير Hans Quiroz · Monkey C وC · Garmin Connect IQ وPebbleOS"
   },
   "back.ft": {
     "en": "‹ Fasting Timer",
@@ -555,9 +600,9 @@ window.I18N_STRINGS = {
     "ar": "1. المسؤول"
   },
   "pp.ft.b1": {
-    "en": "<p>Fasting Timer is a Pebble app developed independently by Hans Quiroz. For any privacy question, write to <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>",
-    "fr": "<p>Fasting Timer est une app Pebble développée de façon indépendante par Hans Quiroz. Pour toute question sur la confidentialité, écris à <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>",
-    "ar": "<p>Fasting Timer تطبيق Pebble طوّره Hans Quiroz بشكل مستقل. لأي استفسار حول الخصوصية، راسل <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>"
+    "en": "<p>Fasting Timer is a Garmin Connect IQ and Pebble app developed independently by Hans Quiroz. For any privacy question, write to <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>",
+    "fr": "<p>Fasting Timer est une app Garmin Connect IQ et Pebble développée de façon indépendante par Hans Quiroz. Pour toute question sur la confidentialité, écris à <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>",
+    "ar": "<p>Fasting Timer تطبيق لساعات Garmin Connect IQ وPebble طوّره Hans Quiroz بشكل مستقل. لأي استفسار حول الخصوصية، راسل <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>"
   },
   "pp.ft.h2": {
     "en": "2. What information the app handles",
