@@ -445,9 +445,9 @@ window.I18N_STRINGS = {
     "ar": "متاح على متجر Connect IQ ومتجر Pebble"
   },
   "ft.hero.tagline": {
-    "en": "Track your intermittent fasting from your wrist and see which stage you are really in, on your Garmin fēnix, Forerunner or vívoactive, or on your Pebble.",
-    "fr": "Suis ton jeûne intermittent depuis ton poignet et vois dans quelle phase tu es vraiment, sur ta Garmin fēnix, Forerunner ou vívoactive, ou sur ta Pebble.",
-    "ar": "تابع صيامك المتقطع من معصمك واعرف في أي مرحلة أنت فعلًا، على ساعة Garmin fēnix أو Forerunner أو vívoactive، أو على ساعة Pebble."
+    "en": "Track your intermittent fasting from your wrist and see which stage you are really in, on your Garmin fēnix, Enduro, epix, Forerunner, Venu or vívoactive, or on your Pebble.",
+    "fr": "Suis ton jeûne intermittent depuis ton poignet et vois dans quelle phase tu es vraiment, sur ta Garmin fēnix, Enduro, epix, Forerunner, Venu ou vívoactive, ou sur ta Pebble.",
+    "ar": "تابع صيامك المتقطع من معصمك واعرف في أي مرحلة أنت فعلًا، على ساعة Garmin fēnix أو Enduro أو epix أو Forerunner أو Venu أو vívoactive، أو على ساعة Pebble."
   },
   "ft.feat.start.t": {
     "en": "One button, done",
@@ -565,9 +565,9 @@ window.I18N_STRINGS = {
     "ar": "سياسة الخصوصية"
   },
   "ft.devices": {
-    "en": "Garmin: fēnix 7, fēnix 8 and fēnix 9 (Solar and Pro included), Forerunner (70, 165, 170, 255, 265, 570, 955, 965, 970), vívoactive 5 and 6, Enduro 2, tactix 7 and 8, and quatix 7 and 8 · Pebble: Core Devices models (Core Time 2, Core 2 Duo, Pebble Round 2) and the classics (Time, Time Round, Pebble 2)",
-    "fr": "Garmin : fēnix 7, fēnix 8 et fēnix 9 (Solar et Pro incluses), Forerunner (70, 165, 170, 255, 265, 570, 955, 965, 970), vívoactive 5 et 6, Enduro 2, tactix 7 et 8, et quatix 7 et 8 · Pebble : les modèles Core Devices (Core Time 2, Core 2 Duo, Pebble Round 2) et les classiques (Time, Time Round, Pebble 2)",
-    "ar": "Garmin: fēnix 7 وfēnix 8 وfēnix 9 (بما فيها Solar وPro)، وForerunner (70، 165، 170، 255، 265، 570، 955، 965، 970)، وvívoactive 5 و6، وEnduro 2، وtactix 7 و8، وquatix 7 و8 · Pebble: طرازات Core Devices (Core Time 2، Core 2 Duo، Pebble Round 2) والكلاسيكية (Time، Time Round، Pebble 2)"
+    "en": "Garmin: fēnix 7, fēnix 8 and fēnix 9 (Solar and Pro included), Forerunner (70, 165, 170, 255, 265, 570, 955, 965, 970), fēnix E, epix (Gen 2) and epix Pro, Enduro 2, 3 and 4, vívoactive 5 and 6, Venu 3, 3S and 4, MARQ (Gen 2), D2 Mach, Descent Mk3, tactix 7 and 8, and quatix 7 and 8 · Pebble: Core Devices models (Core Time 2, Core 2 Duo, Pebble Round 2) and the classics (Time, Time Round, Pebble 2)",
+    "fr": "Garmin : fēnix 7, fēnix 8 et fēnix 9 (Solar et Pro incluses), Forerunner (70, 165, 170, 255, 265, 570, 955, 965, 970), fēnix E, epix (Gen 2) et epix Pro, Enduro 2, 3 et 4, vívoactive 5 et 6, Venu 3, 3S et 4, MARQ (Gen 2), D2 Mach, Descent Mk3, tactix 7 et 8, et quatix 7 et 8 · Pebble : les modèles Core Devices (Core Time 2, Core 2 Duo, Pebble Round 2) et les classiques (Time, Time Round, Pebble 2)",
+    "ar": "Garmin: fēnix 7 وfēnix 8 وfēnix 9 (بما فيها Solar وPro)، وForerunner (70، 165، 170، 255، 265، 570، 955، 965، 970)، وfēnix E، وepix (Gen 2) وepix Pro، وEnduro 2 و3 و4، وvívoactive 5 و6، وVenu 3 و3S و4، وMARQ (Gen 2)، وD2 Mach، وDescent Mk3، وtactix 7 و8، وquatix 7 و8 · Pebble: طرازات Core Devices (Core Time 2، Core 2 Duo، Pebble Round 2) والكلاسيكية (Time، Time Round، Pebble 2)"
   },
   "ft.tech": {
     "en": "Designed and built by Hans Quiroz · Monkey C and C · Garmin Connect IQ and PebbleOS",
