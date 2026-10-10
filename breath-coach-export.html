@@ -1,0 +1,227 @@
+---
+title: Breath Coach — Exportar
+layout: page
+permalink: /b/
+description: "Decodifica el historial de sesiones exportado desde la app Breath Coach de UNA Watch y descárgalo como CSV. Los datos nunca salen de tu navegador."
+sitemap: false
+---
+<style>
+  .fx { max-width: 760px; margin: 0 auto; }
+  .fx-note { color: #86868b; font-size: 1.35rem; line-height: 1.5; margin-bottom: 2rem; }
+  .fx-nodl { display: none; color: #86868b; font-size: 1.2rem; margin: -1rem 0 1.5rem; }
+  .fx-nodl a { color: #B8860B; }
+  .fx-fallback { display: none; margin-bottom: 2rem; }
+  .fx-ta { width: 100%; box-sizing: border-box; font-family: ui-monospace, Menlo, monospace;
+           font-size: 1.1rem; padding: 0.8rem; border: 1px solid #d2d2d7; border-radius: 8px; }
+  .fx-actions { margin: 1.5rem 0 2rem; }
+  .fx-btn {
+    display: inline-block; background: #B8860B; color: #fff; border: 0;
+    padding: 0.9rem 1.6rem; border-radius: 8px; font-size: 1.4rem;
+    cursor: pointer; text-decoration: none;
+  }
+  .fx-btn:disabled { background: #3a3a3c; cursor: default; }
+  .fx-empty { color: #86868b; font-size: 1.4rem; padding: 2rem 0; }
+  table.fx-t { width: 100%; border-collapse: collapse; font-size: 1.3rem; }
+  table.fx-t th, table.fx-t td { padding: 0.6rem 0.4rem; text-align: left; border-bottom: 1px solid #2a2a2c; }
+  table.fx-t th { color: #86868b; font-weight: 500; }
+  .fx-sum { color: #86868b; font-size: 1.3rem; margin-bottom: 1rem; }
+</style>
+
+<div class="fx">
+  <h1>Historial de respiración</h1>
+
+  <p class="fx-note">
+    Los datos viajan en la parte de la dirección que va después de <code>#</code>,
+    que los navegadores <strong>nunca envían al servidor</strong>. Todo lo que ves
+    aquí se decodifica en tu propio dispositivo. No se guarda nada, no hay cuenta
+    y no queda copia en ningún sitio.
+  </p>
+
+  <div id="fx-summary" class="fx-sum"></div>
+
+  <div class="fx-actions">
+    <button id="fx-csv" class="fx-btn" disabled>Descargar CSV</button>
+  </div>
+
+  <p id="fx-nodl" class="fx-nodl">¿No se descargó nada? <a href="#">Muestra el CSV en texto</a></p>
+  <div id="fx-fallback" class="fx-fallback"></div>
+
+  <div id="fx-out"></div>
+
+</div>
+
+<script>
+(function () {
+  /* Espejo de kPatterns en la app (logic/src/Breath.cpp). Si allí se añade un ritmo, */
+  /* hay que añadirlo aquí en la MISMA posición: el índice viaja en el QR. */
+  var PATTERNS = ['Box 4·4·4·4', '4-7-8', 'Coherent 5·5', 'Calm 4·6'];
+
+  function fromBase36(s) {
+    if (s === '' || s === undefined) { return null; }
+    return parseInt(s, 36);
+  }
+
+  function fmtDur(secs) {
+    var m = Math.floor(secs / 60), s = secs % 60;
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function fmtDate(ts) {
+    var d = new Date(ts * 1000);
+    return d.toLocaleDateString() + ' ' +
+      d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+
+  /* Formato: 1|<t0>|<d>,<segundos>,<ritmo>,<pulso antes>,<pulso después>|... */
+  /* t0 y d en minutos, todo en base36; el pulso va vacío cuando no hubo dato. */
+  function decode(payload) {
+    var parts = payload.split('|');
+    if (parts[0] !== '1') { throw new Error('Formato no reconocido: ' + parts[0]); }
+    var t0 = fromBase36(parts[1]);
+    var out = [];
+    for (var i = 2; i < parts.length; i++) {
+      if (!parts[i]) { continue; }
+      var f = parts[i].split(',');
+      var p = parseInt(f[2], 10);
+      out.push({
+        start: (t0 + fromBase36(f[0])) * 60,
+        secs: fromBase36(f[1]),
+        patternName: (p >= 0 && p < PATTERNS.length) ? PATTERNS[p] : '?',
+        hrBefore: fromBase36(f[3]),
+        hrAfter: fromBase36(f[4])
+      });
+    }
+    return out;
+  }
+
+  function fmtHr(v) { return v === null ? '—' : String(v); }
+
+  function render(rows) {
+    var out = document.getElementById('fx-out');
+    if (!rows.length) {
+      out.innerHTML = '<p class="fx-empty">No hay sesiones en este enlace.</p>';
+      return;
+    }
+
+    var total = rows.reduce(function (a, r) { return a + r.secs; }, 0);
+    document.getElementById('fx-summary').textContent =
+      rows.length + ' sesiones · ' + Math.round(total / 60) + ' min en total';
+
+    var html = '<table class="fx-t"><thead><tr><th>Inicio</th><th>Duración</th>' +
+      '<th>Ritmo</th><th>Pulso (lpm)</th></tr></thead><tbody>';
+    rows.forEach(function (r) {
+      html += '<tr><td>' + fmtDate(r.start) + '</td><td>' + fmtDur(r.secs) + '</td>' +
+        '<td>' + r.patternName + '</td>' +
+        '<td>' + fmtHr(r.hrBefore) + ' → ' + fmtHr(r.hrAfter) + '</td></tr>';
+    });
+    out.innerHTML = html + '</tbody></table>';
+  }
+
+  function toCsv(rows) {
+    var lines = ['inicio,duracion_s,ritmo,pulso_antes,pulso_despues'];
+    rows.forEach(function (r) {
+      lines.push([
+        new Date(r.start * 1000).toISOString(),
+        r.secs,
+        r.patternName,
+        r.hrBefore === null ? '' : r.hrBefore,
+        r.hrAfter === null ? '' : r.hrAfter
+      ].join(','));
+    });
+    return lines.join('\n');
+  }
+
+  var payload = (window.location.hash || '').replace(/^#/, '');
+  var out = document.getElementById('fx-out');
+
+  if (!payload) {
+    out.innerHTML = '<p class="fx-empty">Abre esta página escaneando el código QR ' +
+      'de la app: Menú → Exportar.</p>';
+    return;
+  }
+
+  var rows;
+  try {
+    rows = decode(decodeURIComponent(payload));
+  } catch (e) {
+    out.innerHTML = '<p class="fx-empty">No se pudo leer el enlace (' + e.message + ').</p>';
+    return;
+  }
+
+  render(rows);
+
+  /* Bajar el CSV: igual que en la página de Fasting Timer (/f/). Primero compartir */
+  /* un archivo (en iOS abre "Guardar en Archivos"), luego la descarga clásica y, */
+  /* si nada de eso existe, el CSV en texto para copiarlo. */
+  var FILENAME = 'breath-coach.csv';
+
+  function showFallback(csv, reason) {
+    var box = document.getElementById('fx-fallback');
+    box.innerHTML =
+      '<p class="fx-note">' + reason + ' Copia el texto de aquí abajo y guárdalo como ' +
+      '<code>' + FILENAME + '</code>.</p>' +
+      '<textarea class="fx-ta" readonly rows="8"></textarea>' +
+      '<div class="fx-actions"><button id="fx-copy" class="fx-btn">Copiar</button></div>';
+    var ta = box.querySelector('.fx-ta');
+    ta.value = csv;
+    box.style.display = 'block';
+    ta.focus();
+    ta.setSelectionRange(0, ta.value.length);
+    document.getElementById('fx-copy').addEventListener('click', function () {
+      var done = function () { this.textContent = 'Copiado'; }.bind(this);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(csv).then(done, function () { ta.select(); });
+      } else {
+        ta.select();
+      }
+    });
+  }
+
+  function downloadViaAnchor(csv) {
+    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = FILENAME;
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 2000);
+  }
+
+  var btn = document.getElementById('fx-csv');
+  btn.disabled = false;
+  btn.addEventListener('click', function () {
+    var csv = toCsv(rows);
+    try {
+      if (navigator.canShare && typeof File === 'function') {
+        var file = new File([csv], FILENAME, { type: 'text/csv' });
+        if (navigator.canShare({ files: [file] })) {
+          navigator.share({ files: [file], title: 'Historial de respiración' })
+            .catch(function (err) {
+              if (err && err.name === 'AbortError') { return; }
+              showFallback(csv, 'No se pudo compartir el archivo.');
+            });
+          return;
+        }
+      }
+    } catch (e) { /* sigue por la vía clásica */ }
+
+    if (typeof Blob === 'function' && 'download' in document.createElement('a')) {
+      downloadViaAnchor(csv);
+      var hint = document.getElementById('fx-nodl');
+      hint.style.display = 'block';
+      hint.onclick = function () {
+        hint.style.display = 'none';
+        showFallback(csv, 'Aquí tienes el CSV en texto.');
+      };
+      return;
+    }
+
+    showFallback(csv, 'Tu navegador no permite descargar archivos.');
+  });
+})();
+</script>
