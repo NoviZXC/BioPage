@@ -161,7 +161,12 @@ sitemap: false
   try {
     rows = decode(decodeURIComponent(payload));
   } catch (e) {
-    out.innerHTML = '<p class="fx-empty">No se pudo leer el enlace (' + e.message + ').</p>';
+    /* textContent, no innerHTML: el mensaje lleva texto del enlace y no debe ejecutarse. */
+    var msg = document.createElement('p');
+    msg.className = 'fx-empty';
+    msg.textContent = 'No se pudo leer el enlace (' + e.message + ').';
+    out.textContent = '';
+    out.appendChild(msg);
     return;
   }
 
