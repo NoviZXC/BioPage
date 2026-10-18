@@ -1,0 +1,234 @@
+---
+title: Habit Tracker — Exportar
+layout: page
+permalink: /h/
+description: "Decodifica los hábitos exportados desde la app Habit Tracker de UNA Watch y descárgalos como CSV. Los datos nunca salen de tu navegador."
+sitemap: false
+---
+<style>
+  .fx { max-width: 760px; margin: 0 auto; }
+  .fx-note { color: #86868b; font-size: 1.35rem; line-height: 1.5; margin-bottom: 2rem; }
+  .fx-nodl { display: none; color: #86868b; font-size: 1.2rem; margin: -1rem 0 1.5rem; }
+  .fx-nodl a { color: #B8860B; }
+  .fx-fallback { display: none; margin-bottom: 2rem; }
+  .fx-ta { width: 100%; box-sizing: border-box; font-family: ui-monospace, Menlo, monospace;
+           font-size: 1.1rem; padding: 0.8rem; border: 1px solid #d2d2d7; border-radius: 8px; }
+  .fx-actions { margin: 1.5rem 0 2rem; }
+  .fx-btn {
+    display: inline-block; background: #B8860B; color: #fff; border: 0;
+    padding: 0.9rem 1.6rem; border-radius: 8px; font-size: 1.4rem;
+    cursor: pointer; text-decoration: none;
+  }
+  .fx-btn:disabled { background: #3a3a3c; cursor: default; }
+  .fx-empty { color: #86868b; font-size: 1.4rem; padding: 2rem 0; }
+  table.fx-t { width: 100%; border-collapse: collapse; font-size: 1.3rem; }
+  table.fx-t th, table.fx-t td { padding: 0.6rem 0.4rem; text-align: left; border-bottom: 1px solid #2a2a2c; }
+  table.fx-t th { color: #86868b; font-weight: 500; }
+  .fx-sum { color: #86868b; font-size: 1.3rem; margin-bottom: 1rem; }
+  .fx-days { font-family: ui-monospace, Menlo, monospace; letter-spacing: 1px; white-space: nowrap; }
+  .fx-on { color: #40c0c0; }
+  .fx-off { color: #555; }
+</style>
+
+<div class="fx">
+  <h1>Historial de hábitos</h1>
+
+  <p class="fx-note">
+    Los datos viajan en la parte de la dirección que va después de <code>#</code>,
+    que los navegadores <strong>nunca envían al servidor</strong>. Todo lo que ves
+    aquí se decodifica en tu propio dispositivo. No se guarda nada, no hay cuenta
+    y no queda copia en ningún sitio.
+  </p>
+
+  <div id="fx-summary" class="fx-sum"></div>
+
+  <div class="fx-actions">
+    <button id="fx-csv" class="fx-btn" disabled>Descargar CSV</button>
+  </div>
+
+  <p id="fx-nodl" class="fx-nodl">¿No se descargó nada? <a href="#">Muestra el CSV en texto</a></p>
+  <div id="fx-fallback" class="fx-fallback"></div>
+
+  <div id="fx-out"></div>
+
+</div>
+
+<script>
+(function () {
+  /* Espejo de HabitId en la app (logic/include/hb/State.hpp). Si allí se añade un hábito, */
+  /* hay que añadirlo aquí en la MISMA posición: el índice viaja en el QR. */
+  var HABITS = ['Agua', 'Ejercicio', 'Caminar', 'Leer', 'Meditar', 'Estirar', 'Vitaminas', 'Frutas y verduras',
+                'Sin azúcar', 'Sin alcohol', 'Dormir temprano', 'Diario', 'Estudiar', 'Practicar', 'Hilo dental', 'Ordenar'];
+  var DAYS = 60;
+  var SHOW = 30;
+
+  /* Formato: 1|<día de hoy>|<hábito>.<meta>.<días hechos>|...  (día y máscara en base36; bit i = hace i días) */
+  function decode(payload) {
+    var parts = payload.split('|');
+    if (parts[0] !== '1') { throw new Error('Formato no reconocido: ' + parts[0]); }
+    var today = parseInt(parts[1], 36);
+    if (isNaN(today)) { throw new Error('día inválido'); }
+    var habits = [];
+    for (var i = 2; i < parts.length; i++) {
+      if (!parts[i]) { continue; }
+      var f = parts[i].split('.');
+      var id = parseInt(f[0], 10);
+      var mask = BigInt(0);
+      var digits = f[2] || '0';
+      for (var k = 0; k < digits.length; k++) {
+        mask = mask * BigInt(36) + BigInt(parseInt(digits[k], 36));
+      }
+      var done = [];
+      for (var d = 0; d < DAYS; d++) {
+        done.push(((mask >> BigInt(d)) & BigInt(1)) === BigInt(1));
+      }
+      habits.push({ id: id, name: (id >= 0 && id < HABITS.length) ? HABITS[id] : ('#' + id),
+                    target: parseInt(f[1], 10), done: done });
+    }
+    return { today: today, habits: habits };
+  }
+
+  function dateOf(day) {
+    return new Date(day * 86400000).toISOString().slice(0, 10);
+  }
+
+  function streak(done) {
+    var start = done[0] ? 0 : 1;
+    var n = 0;
+    for (var d = start; d < DAYS && done[d]; d++) { n++; }
+    return n;
+  }
+
+  function render(data) {
+    var out = document.getElementById('fx-out');
+    if (!data.habits.length) {
+      out.innerHTML = '<p class="fx-empty">No hay hábitos en este enlace.</p>';
+      return;
+    }
+    var total = 0;
+    data.habits.forEach(function (h) { for (var d = 0; d < SHOW; d++) { if (h.done[d]) { total++; } } });
+    document.getElementById('fx-summary').textContent =
+      data.habits.length + ' hábitos · ' + total + ' días cumplidos en los últimos ' + SHOW + ' · hasta el ' + dateOf(data.today);
+
+    var html = '<table class="fx-t"><thead><tr><th>Hábito</th><th>Meta diaria</th><th>Racha</th>' +
+      '<th>Últimos ' + SHOW + ' días (hoy a la derecha)</th></tr></thead><tbody>';
+    data.habits.forEach(function (h) {
+      var cells = '';
+      for (var d = SHOW - 1; d >= 0; d--) {
+        cells += h.done[d] ? '<span class="fx-on">■</span>' : '<span class="fx-off">■</span>';
+      }
+      html += '<tr><td>' + h.name + '</td><td>' + h.target + '</td><td>' + streak(h.done) + '</td>' +
+        '<td class="fx-days">' + cells + '</td></tr>';
+    });
+    out.innerHTML = html + '</tbody></table>';
+  }
+
+  function toCsv(data) {
+    var lines = ['fecha,habito,meta_diaria,cumplido'];
+    for (var d = DAYS - 1; d >= 0; d--) {
+      data.habits.forEach(function (h) {
+        lines.push([dateOf(data.today - d), h.name, h.target, h.done[d] ? '1' : '0'].join(','));
+      });
+    }
+    return lines.join('\n');
+  }
+
+  var payload = (window.location.hash || '').replace(/^#/, '');
+  var out = document.getElementById('fx-out');
+
+  if (!payload) {
+    out.innerHTML = '<p class="fx-empty">Abre esta página escaneando el código QR ' +
+      'de la app: Menú → Exportar.</p>';
+    return;
+  }
+
+  var data;
+  try {
+    data = decode(decodeURIComponent(payload));
+  } catch (e) {
+    /* textContent, nunca innerHTML: el mensaje puede llevar texto del enlace (lo escribe quien lo comparte). */
+    var err = document.createElement('p');
+    err.className = 'fx-empty';
+    err.textContent = 'No se pudo leer el enlace (' + e.message + ').';
+    out.innerHTML = '';
+    out.appendChild(err);
+    return;
+  }
+
+  render(data);
+
+  /* Bajar el CSV: igual que en las páginas de Fasting Timer (/f/) y Breath Coach (/b/). Primero compartir */
+  /* un archivo (en iOS abre "Guardar en Archivos"), luego la descarga clásica y, si nada de eso existe, */
+  /* el CSV en texto para copiarlo. */
+  var FILENAME = 'habit-tracker.csv';
+
+  function showFallback(csv, reason) {
+    var box = document.getElementById('fx-fallback');
+    box.innerHTML =
+      '<p class="fx-note">' + reason + ' Copia el texto de aquí abajo y guárdalo como ' +
+      '<code>' + FILENAME + '</code>.</p>' +
+      '<textarea class="fx-ta" readonly rows="8"></textarea>' +
+      '<div class="fx-actions"><button id="fx-copy" class="fx-btn">Copiar</button></div>';
+    var ta = box.querySelector('.fx-ta');
+    ta.value = csv;
+    box.style.display = 'block';
+    ta.focus();
+    ta.setSelectionRange(0, ta.value.length);
+    document.getElementById('fx-copy').addEventListener('click', function () {
+      var done = function () { this.textContent = 'Copiado'; }.bind(this);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(csv).then(done, function () { ta.select(); });
+      } else {
+        ta.select();
+      }
+    });
+  }
+
+  function downloadViaAnchor(csv) {
+    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = FILENAME;
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 2000);
+  }
+
+  var btn = document.getElementById('fx-csv');
+  btn.disabled = false;
+  btn.addEventListener('click', function () {
+    var csv = toCsv(data);
+    try {
+      if (navigator.canShare && typeof File === 'function') {
+        var file = new File([csv], FILENAME, { type: 'text/csv' });
+        if (navigator.canShare({ files: [file] })) {
+          navigator.share({ files: [file], title: 'Historial de hábitos' })
+            .catch(function (err) {
+              if (err && err.name === 'AbortError') { return; }
+              showFallback(csv, 'No se pudo compartir el archivo.');
+            });
+          return;
+        }
+      }
+    } catch (e) { /* sigue por la vía clásica */ }
+
+    if (typeof Blob === 'function' && 'download' in document.createElement('a')) {
+      downloadViaAnchor(csv);
+      var hint = document.getElementById('fx-nodl');
+      hint.style.display = 'block';
+      hint.onclick = function () {
+        hint.style.display = 'none';
+        showFallback(csv, 'Aquí tienes el CSV en texto.');
+      };
+      return;
+    }
+
+    showFallback(csv, 'Tu navegador no permite descargar archivos.');
+  });
+})();
+</script>
