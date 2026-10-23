@@ -5,7 +5,7 @@ layout: compress
 <html lang="es" dir="ltr">
 <head>
 
-    {% if site.analytics-google %}
+    {% if site.analytics-google and page.analytics != false %}
         {% include analytics-google.html %}
     {% endif %}
 

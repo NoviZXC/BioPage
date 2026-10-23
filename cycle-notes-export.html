@@ -1,0 +1,333 @@
+---
+title: Registro — Exportar
+layout: page
+permalink: /r/
+description: "Decodifica el registro exportado desde la app Cycle Notes de UNA Watch y descárgalo como CSV. Los datos nunca salen de tu navegador."
+sitemap: false
+analytics: false
+---
+<style>
+  .fx { max-width: 760px; margin: 0 auto; }
+  .fx-note { color: #86868b; font-size: 1.35rem; line-height: 1.5; margin-bottom: 2rem; }
+  .fx-nodl { display: none; color: #86868b; font-size: 1.2rem; margin: -1rem 0 1.5rem; }
+  .fx-nodl a { color: #B8860B; }
+  .fx-fallback { display: none; margin-bottom: 2rem; }
+  .fx-ta { width: 100%; box-sizing: border-box; font-family: ui-monospace, Menlo, monospace;
+           font-size: 1.1rem; padding: 0.8rem; border: 1px solid #d2d2d7; border-radius: 8px; }
+  .fx-actions { margin: 1.5rem 0 2rem; }
+  .fx-btn {
+    display: inline-block; background: #B8860B; color: #fff; border: 0; margin: 0 0.6rem 0.6rem 0;
+    padding: 0.9rem 1.6rem; border-radius: 8px; font-size: 1.4rem;
+    cursor: pointer; text-decoration: none;
+  }
+  .fx-btn:disabled { background: #3a3a3c; cursor: default; }
+  .fx-empty { color: #86868b; font-size: 1.4rem; padding: 2rem 0; }
+  table.fx-t { width: 100%; border-collapse: collapse; font-size: 1.3rem; margin-bottom: 2rem; }
+  table.fx-t th, table.fx-t td { padding: 0.6rem 0.4rem; text-align: left; border-bottom: 1px solid #2a2a2c; }
+  table.fx-t th { color: #86868b; font-weight: 500; }
+  .fx-sum { color: #86868b; font-size: 1.3rem; margin-bottom: 1rem; }
+  .fx-off { color: #86868b; }
+  .fx-legal { color: #86868b; font-size: 1.1rem; line-height: 1.5; margin-top: 2rem; }
+</style>
+
+<div class="fx">
+  <h1>Registro personal</h1>
+  <p class="fx-note"><strong>No es un método anticonceptivo.</strong> Solo un registro personal para entender tu regla.
+    Las estimaciones son promedios simples de tus propios registros: nada científico ni médico.</p>
+
+  <p class="fx-note">
+    Los datos viajan en la parte de la dirección que va después de <code>#</code>,
+    que los navegadores <strong>nunca envían al servidor</strong>. Todo lo que ves
+    aquí se decodifica en tu propio dispositivo. La página no guarda nada y no hay
+    cuenta. (El enlace completo sí queda en el historial de tu navegador.)
+  </p>
+
+  <div id="fx-summary" class="fx-sum"></div>
+
+  <div class="fx-actions">
+    <button id="fx-csv-starts" class="fx-btn" disabled>Descargar CSV de inicios</button>
+    <button id="fx-csv-days" class="fx-btn" disabled>Descargar CSV diario</button>
+  </div>
+
+  <p id="fx-nodl" class="fx-nodl">¿No se descargó nada? <a href="#">Muestra el CSV en texto</a></p>
+  <div id="fx-fallback" class="fx-fallback"></div>
+
+  <div id="fx-out"></div>
+
+  <p class="fx-legal">
+    Un registro personal. Las estimaciones pueden fallar. No es un producto sanitario: no sirve para
+    anticoncepción ni para planificar o evitar un embarazo, ni para diagnosticar nada.
+  </p>
+</div>
+
+<script>
+(function () {
+  /* Espejo de cn::Symptom y cn::Flow en la app (logic/include/cn/State.hpp). Si allí se cambia el orden, */
+  /* hay que cambiarlo aquí: los bits viajan en el QR. */
+  var SYMPTOMS = ['calambres', 'dolor de cabeza', 'cansancio', 'hinchazón', 'sensibilidad', 'antojos', 'mal ánimo', 'insomnio'];
+  var FLOWS = ['', 'ligero', 'medio', 'abundante'];
+
+  /* Formato: 1|<hoy>|<inicio>.<días de regla>[x],...|<2 caracteres por día, hoy primero>  (todo en base36).   */
+  /* La regla dura "días de regla" (0 = sin fin anotado); "x" = el usuario excluyó ese ciclo.                  */
+  /* Cada día: bits 0-1 flujo, bits 2-9 síntomas.                                                              */
+  /* Un número de día razonable (1970-2169): fuera de eso Date no sabe dibujarlo y la página se rompería. */
+  var MAX_DAY = 73000;
+  function dayNum(text) {
+    var n = /^[0-9a-z]{1,6}$/.test(text || '') ? parseInt(text, 36) : NaN;
+    if (isNaN(n) || n > MAX_DAY) { throw new Error('día inválido'); }
+    return n;
+  }
+
+  function decode(payload) {
+    var parts = payload.split('|');
+    if (parts[0] !== '1') { throw new Error('Formato no reconocido'); }
+    var today = dayNum(parts[1]);
+    var starts = [];
+    (parts[2] || '').split(',').forEach(function (c) {
+      if (!c) { return; }
+      /* Los días de regla son una sola cifra base36 (0..f): con "+" la "x" de excluido se la comía el grupo anterior. */
+      var m = /^([0-9a-z]{1,6})\.([0-9a-f])(x?)$/.exec(c);
+      if (!m || starts.length >= 30) { throw new Error('inicio inválido'); }
+      starts.push({ start: dayNum(m[1]), plen: parseInt(m[2], 36), excluded: m[3] === 'x' });
+    });
+    var days = [];
+    var log = parts[3] || '';
+    if (log.length > 800 || !/^[0-9a-z]*$/.test(log)) { throw new Error('registro inválido'); }
+    for (var i = 0; i + 1 < log.length; i += 2) {
+      days.push(parseInt(log.substr(i, 2), 36));
+    }
+    return { today: today, starts: starts, days: days };
+  }
+
+  function dateOf(day) {
+    return new Date(day * 86400000).toISOString().slice(0, 10);
+  }
+
+  function median(v) {
+    if (!v.length) { return 0; }
+    var s = v.slice().sort(function (a, b) { return a - b; });
+    var n = s.length;
+    return n % 2 ? s[(n - 1) / 2] : Math.floor((s[n / 2 - 1] + s[n / 2] + 1) / 2);
+  }
+
+  function lengths(data) {
+    /* Duración de cada ciclo (hasta el siguiente inicio); 0 para el último. Cuentan los de 15 a 60 días sin excluir. */
+    var out = [];
+    for (var i = 0; i < data.starts.length; i++) {
+      var next = data.starts[i + 1];
+      var len = next ? next.start - data.starts[i].start : 0;
+      out.push({ len: len, counts: len >= 15 && len <= 60 && !data.starts[i].excluded });
+    }
+    return out;
+  }
+
+  function symText(e) {
+    var s = [];
+    for (var b = 0; b < SYMPTOMS.length; b++) {
+      if ((e >> (2 + b)) & 1) { s.push(SYMPTOMS[b]); }
+    }
+    return s.join(' + ');
+  }
+
+  function cell(text, cls) {
+    var td = document.createElement('td');
+    if (cls) { td.className = cls; }
+    td.textContent = text;
+    return td;
+  }
+
+  function render(data) {
+    var out = document.getElementById('fx-out');
+    out.textContent = '';
+    if (!data.starts.length) {
+      var p = document.createElement('p');
+      p.className = 'fx-empty';
+      p.textContent = 'No hay registros en este enlace.';
+      out.appendChild(p);
+      return;
+    }
+    var ls = lengths(data);
+    var valid = ls.filter(function (l) { return l.counts; }).map(function (l) { return l.len; });
+    var recent = valid.slice(-6);
+    document.getElementById('fx-summary').textContent =
+      data.starts.length + ' inicios · ' + valid.length + ' ciclos válidos · ciclo habitual ' +
+      (recent.length ? median(recent) + ' días' : 'sin datos') + ' · hasta el ' + dateOf(data.today);
+
+    var table = document.createElement('table');
+    table.className = 'fx-t';
+    var head = document.createElement('tr');
+    ['Inicio', 'Días de regla', 'Duración del ciclo', 'Cuenta'].forEach(function (h) {
+      var th = document.createElement('th');
+      th.textContent = h;
+      head.appendChild(th);
+    });
+    var thead = document.createElement('thead');
+    thead.appendChild(head);
+    table.appendChild(thead);
+    var body = document.createElement('tbody');
+    for (var i = data.starts.length - 1; i >= 0; i--) {
+      var s = data.starts[i];
+      var tr = document.createElement('tr');
+      tr.appendChild(cell(dateOf(s.start)));
+      tr.appendChild(cell(s.plen ? String(s.plen) : '—'));
+      tr.appendChild(cell(ls[i].len ? ls[i].len + ' días' : 'en curso'));
+      tr.appendChild(cell(s.excluded ? 'excluido' : (ls[i].len && !ls[i].counts ? 'fuera de 15–60 días' : 'sí'),
+                          s.excluded || (ls[i].len && !ls[i].counts) ? 'fx-off' : ''));
+      body.appendChild(tr);
+    }
+    table.appendChild(body);
+    out.appendChild(table);
+  }
+
+  /* Campo CSV: entre comillas si lleva coma, comilla o salto de línea (hoy ninguno los lleva; por si cambian los textos). */
+  function csvField(v) {
+    var s = String(v);
+    return /[",\r\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  }
+
+  /* Con BOM para que Excel lea las tildes como UTF-8. */
+  var BOM = '﻿';
+
+  function startsCsv(data) {
+    var ls = lengths(data);
+    var lines = ['inicio,fin,dias_de_regla,duracion_ciclo,excluido'];
+    data.starts.forEach(function (s, i) {
+      var end = s.plen ? dateOf(s.start + s.plen - 1) : '';
+      lines.push([dateOf(s.start), end, s.plen || '', ls[i].len || '', s.excluded ? '1' : '0'].map(csvField).join(','));
+    });
+    return BOM + lines.join('\n');
+  }
+
+  function daysCsv(data) {
+    var lines = ['fecha,flujo,sintomas'];
+    for (var d = data.days.length - 1; d >= 0; d--) {
+      var e = data.days[d];
+      lines.push([dateOf(data.today - d), FLOWS[e & 3], symText(e)].map(csvField).join(','));
+    }
+    return BOM + lines.join('\n');
+  }
+
+  var payload = (window.location.hash || '').replace(/^#/, '');
+  var out = document.getElementById('fx-out');
+
+  if (!payload) {
+    var hint = document.createElement('p');
+    hint.className = 'fx-empty';
+    hint.textContent = 'Abre esta página escaneando el código QR de la app: Menú → Exportar.';
+    out.appendChild(hint);
+    return;
+  }
+
+  var data;
+  try {
+    data = decode(decodeURIComponent(payload));
+  } catch (e) {
+    /* textContent, nunca innerHTML: el mensaje puede llevar texto del enlace (lo escribe quien lo comparte). */
+    var err = document.createElement('p');
+    err.className = 'fx-empty';
+    err.textContent = 'No se pudo leer el enlace (' + e.message + ').';
+    out.textContent = '';
+    out.appendChild(err);
+    return;
+  }
+
+  try {
+    render(data);
+  } catch (e) {
+    var bad = document.createElement('p');
+    bad.className = 'fx-empty';
+    bad.textContent = 'No se pudo mostrar el registro de este enlace.';
+    out.textContent = '';
+    out.appendChild(bad);
+    return;
+  }
+
+  /* Bajar el CSV: igual que en las otras páginas de exportación. Primero compartir un archivo (en iOS abre */
+  /* "Guardar en Archivos"), luego la descarga clásica y, si nada de eso existe, el CSV en texto para copiarlo. */
+  function showFallback(csv, filename, reason) {
+    var box = document.getElementById('fx-fallback');
+    box.textContent = '';
+    var note = document.createElement('p');
+    note.className = 'fx-note';
+    note.textContent = reason + ' Copia el texto de aquí abajo y guárdalo como ' + filename + '.';
+    var ta = document.createElement('textarea');
+    ta.className = 'fx-ta';
+    ta.readOnly = true;
+    ta.rows = 8;
+    ta.value = csv;
+    var actions = document.createElement('div');
+    actions.className = 'fx-actions';
+    var copy = document.createElement('button');
+    copy.className = 'fx-btn';
+    copy.textContent = 'Copiar';
+    actions.appendChild(copy);
+    box.appendChild(note);
+    box.appendChild(ta);
+    box.appendChild(actions);
+    box.style.display = 'block';
+    ta.focus();
+    ta.setSelectionRange(0, ta.value.length);
+    copy.addEventListener('click', function () {
+      var done = function () { copy.textContent = 'Copiado'; };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(csv).then(done, function () { ta.select(); });
+      } else {
+        ta.select();
+      }
+    });
+  }
+
+  function downloadViaAnchor(csv, filename) {
+    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 2000);
+  }
+
+  function wire(id, makeCsv, filename) {
+    var btn = document.getElementById(id);
+    btn.disabled = false;
+    btn.addEventListener('click', function () {
+      var csv = makeCsv(data);
+      try {
+        if (navigator.canShare && typeof File === 'function') {
+          var file = new File([csv], filename, { type: 'text/csv' });
+          if (navigator.canShare({ files: [file] })) {
+            navigator.share({ files: [file], title: 'Registro' })
+              .catch(function (err) {
+                if (err && err.name === 'AbortError') { return; }
+                showFallback(csv, filename, 'No se pudo compartir el archivo.');
+              });
+            return;
+          }
+        }
+      } catch (e) { /* sigue por la vía clásica */ }
+
+      if (typeof Blob === 'function' && 'download' in document.createElement('a')) {
+        downloadViaAnchor(csv, filename);
+        var nodl = document.getElementById('fx-nodl');
+        nodl.style.display = 'block';
+        nodl.onclick = function (ev) {
+          if (ev && ev.preventDefault) { ev.preventDefault(); }   /* sin esto el "#" borra del enlace los datos */
+          nodl.style.display = 'none';
+          showFallback(csv, filename, 'Aquí tienes el CSV en texto.');
+        };
+        return;
+      }
+
+      showFallback(csv, filename, 'Tu navegador no permite descargar archivos.');
+    });
+  }
+
+  wire('fx-csv-starts', startsCsv, 'registro-inicios.csv');
+  wire('fx-csv-days', daysCsv, 'registro-diario.csv');
+})();
+</script>
