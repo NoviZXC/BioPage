@@ -329,6 +329,86 @@ window.I18N_STRINGS = {
     "fr": "Politique de confidentialité",
     "ar": "سياسة الخصوصية"
   },
+  "ppsv.updated": {
+      "en": "StemView · Last updated: October 26, 2026",
+      "fr": "StemView · Dernière mise à jour : 26 octobre 2026",
+      "ar": "StemView · آخر تحديث: 26 أكتوبر 2026"
+  },
+  "ppsv.tldr": {
+      "en": "<p><strong>In short:</strong> StemView has no accounts, shows no ads, uses no analytics and doesn’t track you. Your ride data goes from the watch to the display over Bluetooth and never passes through any server. To activate a display, the app only sends your store’s purchase receipt (Apple or Google Play) and the board identifier.</p>",
+      "fr": "<p><strong>En bref :</strong> StemView n’a pas de comptes, n’affiche pas de publicité, n’utilise pas d’analytique et ne vous suit pas. Les données de votre sortie vont de la montre à l’écran en Bluetooth et ne passent par aucun serveur. Pour activer un écran, l’app n’envoie que le reçu d’achat de votre boutique (Apple ou Google Play) et l’identifiant de la carte.</p>",
+      "ar": "<p><strong>باختصار:</strong> لا يحتوي StemView على حسابات ولا إعلانات ولا تحليلات ولا يتتبعك. تنتقل بيانات رحلتك من الساعة إلى الشاشة عبر البلوتوث ولا تمر بأي خادم. لتفعيل شاشة، يرسل التطبيق فقط إيصال الشراء من متجرك (Apple أو Google Play) ومعرّف اللوحة.</p>"
+  },
+  "ppsv.h1": {
+      "en": "1. Who is responsible",
+      "fr": "1. Responsable",
+      "ar": "1. الجهة المسؤولة"
+  },
+  "ppsv.b1": {
+      "en": "<p>StemView is an independent project developed by Hans Quiroz. For any privacy question write to <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>",
+      "fr": "<p>StemView est un projet indépendant développé par Hans Quiroz. Pour toute question de confidentialité, écrivez à <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>",
+      "ar": "<p>StemView مشروع مستقل يطوّره هانس كيروز. لأي سؤال عن الخصوصية راسل <a href=\"mailto:nquiroz@gmail.com\">nquiroz@gmail.com</a>.</p>"
+  },
+  "ppsv.h2": {
+      "en": "2. Your activity data",
+      "fr": "2. Données de votre activité",
+      "ar": "2. بيانات نشاطك"
+  },
+  "ppsv.b2": {
+      "en": "<p>The data field on your watch sends the display, over Bluetooth and only while you ride, data such as speed, heart rate, power, position and weather. That link is direct between your watch and your display: <strong>it is not sent to the internet or to us</strong>. Your watch keeps recording the activity as always.</p>",
+      "fr": "<p>Le champ de données de votre montre envoie à l’écran, en Bluetooth et seulement pendant que vous roulez, des données comme la vitesse, la fréquence cardiaque, la puissance, la position et la météo. Cet échange est direct entre votre montre et votre écran : <strong>rien n’est envoyé sur internet ni à nous</strong>. Votre montre continue d’enregistrer l’activité comme d’habitude.</p>",
+      "ar": "<p>يرسل حقل البيانات في ساعتك إلى الشاشة، عبر البلوتوث وأثناء القيادة فقط، بيانات مثل السرعة ونبض القلب والقدرة والموقع والطقس. هذا الاتصال مباشر بين ساعتك وشاشتك: <strong>لا يُرسَل إلى الإنترنت ولا إلينا</strong>. وتواصل ساعتك تسجيل النشاط كالمعتاد.</p>"
+  },
+  "ppsv.h3": {
+      "en": "3. Display activation",
+      "fr": "3. Activation de l’écran",
+      "ar": "3. تفعيل الشاشة"
+  },
+  "ppsv.b3": {
+      "en": "<p>When you activate a display, the app sends our server your store’s purchase receipt (the Apple-signed transaction or the Google Play purchase token) and the board’s chip identifier. The receipt includes transaction, product and date identifiers, but not your name or email. The server verifies it with Apple or Google and only keeps a hashed summary of the purchase, the IDs of the activated boards and the activation dates, to enforce the 3-display limit per purchase and block refunded purchases. We don’t sell or share this data.</p>",
+      "fr": "<p>Lors de l’activation d’un écran, l’app envoie à notre serveur le reçu d’achat de votre boutique (la transaction signée par Apple ou le jeton d’achat Google Play) et l’identifiant de la puce de la carte. Le reçu contient des identifiants de transaction, de produit et de date, mais pas votre nom ni votre e-mail. Le serveur le vérifie auprès d’Apple ou de Google et ne conserve qu’un résumé haché de l’achat, les identifiants des cartes activées et les dates d’activation, pour appliquer la limite de 3 écrans par achat et bloquer les achats remboursés. Nous ne vendons ni ne partageons ces données.</p>",
+      "ar": "<p>عند تفعيل شاشة، يرسل التطبيق إلى خادمنا إيصال الشراء من متجرك (العملية الموقّعة من Apple أو رمز الشراء من Google Play) ومعرّف شريحة اللوحة. يتضمن الإيصال معرّفات العملية والمنتج والتاريخ، دون اسمك أو بريدك. يتحقق الخادم منه لدى Apple أو Google ولا يحتفظ إلا بملخص مُجزّأ لعملية الشراء ومعرّفات اللوحات المفعّلة وتواريخ التفعيل، لتطبيق حدّ 3 شاشات لكل عملية شراء ومنع عمليات الشراء المستردّة. لا نبيع هذه البيانات ولا نشاركها.</p>"
+  },
+  "ppsv.h4": {
+      "en": "4. Updates and maps",
+      "fr": "4. Mises à jour et cartes",
+      "ar": "4. التحديثات والخرائط"
+  },
+  "ppsv.b4": {
+      "en": "<p>To check for updates and download maps, the app sends our server the board’s activation certificate, which contains its identifier and a pseudonymous purchase reference. As with any internet connection, the server sees your IP address, but it doesn’t store it. To detect copied certificates it keeps a hashed summary of the source network and the certificate for 24 hours, and then deletes it.</p>",
+      "fr": "<p>Pour chercher des mises à jour et télécharger des cartes, l’app envoie à notre serveur le certificat d’activation de la carte, qui contient son identifiant et une référence pseudonyme de l’achat. Comme pour toute connexion internet, le serveur voit votre adresse IP, mais ne la conserve pas. Pour détecter les certificats copiés, il garde pendant 24 heures un résumé haché du réseau d’origine et du certificat, puis l’efface.</p>",
+      "ar": "<p>للبحث عن التحديثات وتنزيل الخرائط، يرسل التطبيق إلى خادمنا شهادة تفعيل اللوحة، وهي تتضمن معرّفها ومرجعًا مستعارًا لعملية الشراء. وكما في أي اتصال بالإنترنت، يرى الخادم عنوان IP الخاص بك لكنه لا يحفظه. ولكشف الشهادات المنسوخة يحتفظ لمدة 24 ساعة بملخص مُجزّأ للشبكة المصدر وللشهادة، ثم يحذفه.</p>"
+  },
+  "ppsv.h5": {
+      "en": "5. Permissions",
+      "fr": "5. Autorisations",
+      "ar": "5. الأذونات"
+  },
+  "ppsv.b5": {
+      "en": "<ul><li><strong>Bluetooth:</strong> to find and set up your display.</li><li><strong>Local network and WiFi hotspot:</strong> to send maps and updates to the display in workshop mode.</li><li><strong>Location (Android 12 or earlier only):</strong> those Android versions require it to scan for Bluetooth devices. The app doesn’t read your location.</li><li>On the watch, the field uses position, Bluetooth and your profile (HR zones) only to show your data on the display.</li></ul>",
+      "fr": "<ul><li><strong>Bluetooth :</strong> pour trouver et configurer votre écran.</li><li><strong>Réseau local et point d’accès WiFi :</strong> pour envoyer des cartes et des mises à jour à l’écran en mode atelier.</li><li><strong>Localisation (Android 12 ou antérieur uniquement) :</strong> ces versions d’Android l’exigent pour rechercher des appareils Bluetooth. L’app ne lit pas votre position.</li><li>Sur la montre, le champ utilise la position, le Bluetooth et votre profil (zones de FC) uniquement pour afficher vos données sur l’écran.</li></ul>",
+      "ar": "<ul><li><strong>البلوتوث:</strong> للعثور على شاشتك وضبطها.</li><li><strong>الشبكة المحلية ونقطة اتصال WiFi:</strong> لإرسال الخرائط والتحديثات إلى الشاشة في وضع الورشة.</li><li><strong>الموقع (Android 12 أو أقدم فقط):</strong> تتطلبه هذه الإصدارات من Android للبحث عن أجهزة البلوتوث. لا يقرأ التطبيق موقعك.</li><li>في الساعة، يستخدم الحقل الموقع والبلوتوث وملفك الشخصي (مناطق نبض القلب) فقط لعرض بياناتك على الشاشة.</li></ul>"
+  },
+  "ppsv.h6": {
+      "en": "6. Your rights",
+      "fr": "6. Vos droits",
+      "ar": "6. حقوقك"
+  },
+  "ppsv.b6": {
+      "en": "<p>You can ask us to delete the activation record tied to your purchase by writing to the email above. Already activated displays will keep working.</p>",
+      "fr": "<p>Vous pouvez demander la suppression du registre d’activations lié à votre achat en écrivant à l’adresse ci-dessus. Les écrans déjà activés continueront de fonctionner.</p>",
+      "ar": "<p>يمكنك طلب حذف سجل التفعيلات المرتبط بعملية شرائك بمراسلة البريد أعلاه. ستستمر الشاشات المفعّلة في العمل.</p>"
+  },
+  "ppsv.h7": {
+      "en": "7. Changes",
+      "fr": "7. Modifications",
+      "ar": "7. التغييرات"
+  },
+  "ppsv.b7": {
+      "en": "<p>If this policy changes, we’ll update this page and the date above.</p>",
+      "fr": "<p>Si cette politique change, nous mettrons à jour cette page et la date ci-dessus.</p>",
+      "ar": "<p>إذا تغيّرت هذه السياسة، سنحدّث هذه الصفحة والتاريخ أعلاه.</p>"
+  },
   "pp.updated": {
     "en": "Instant Fasting · Last updated: July 8, 2026",
     "fr": "Instant Fasting · Dernière mise à jour : 8 juillet 2026",

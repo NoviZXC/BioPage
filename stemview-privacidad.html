@@ -1,0 +1,48 @@
+---
+title: Privacidad · StemView
+layout: page
+permalink: /stemview/privacidad/
+noindex: true
+description: Política de privacidad de StemView (app para iOS y Android, campo de datos, pantalla y servidor de activación).
+---
+<style>
+  .pp { max-width: 680px; margin: 0 auto; }
+  .pp .back { display: inline-block; color: #86868b; font-size: 1.3rem; text-decoration: none; margin-bottom: 1.5rem; }
+  .pp h1 { font-size: 2.4rem; font-weight: 700; color: #1d1d1f; margin: 0 0 .4rem; }
+  .pp .updated { color: #a1a1a6; font-size: 1.25rem; margin-bottom: 2.4rem; }
+  .pp h2 { font-size: 1.6rem; font-weight: 600; color: #1d1d1f; margin: 2.6rem 0 .9rem; }
+  .pp p, .pp li { font-size: 1.4rem; line-height: 1.7; color: #4b4b50; }
+  .pp ul { padding-left: 1.4rem; }
+  .pp strong { color: #1d1d1f; }
+  .pp a { color: #B8860B; }
+  .pp .tldr { background: #f7f7f8; border: 1px solid #ececef; border-radius: 16px; padding: 20px 22px; }
+  .pp .tldr p { margin: 0; color: #1d1d1f; }
+</style>
+
+<div class="pp">
+  <h1 data-i18n="pp.title">Política de Privacidad</h1>
+  <p class="updated" data-i18n="ppsv.updated">StemView · Última actualización: 26 de octubre de 2026</p>
+
+  <div class="tldr" data-i18n="ppsv.tldr"><p><strong>En resumen:</strong> StemView no tiene cuentas, no muestra anuncios, no usa analítica y no te rastrea. Los datos de tu salida van del reloj a la pantalla por Bluetooth y no pasan por ningún servidor. Para activar una pantalla, la app solo envía el comprobante de compra de tu tienda (Apple o Google Play) y el identificador de la placa.</p></div>
+
+  <h2 data-i18n="ppsv.h1">1. Quién es responsable</h2>
+  <div data-i18n="ppsv.b1"><p>StemView es un proyecto independiente desarrollado por Hans Quiroz. Para cualquier consulta sobre privacidad escribe a <a href="mailto:nquiroz@gmail.com">nquiroz@gmail.com</a>.</p></div>
+
+  <h2 data-i18n="ppsv.h2">2. Datos de tu actividad</h2>
+  <div data-i18n="ppsv.b2"><p>El campo de datos de tu reloj envía a la pantalla, por Bluetooth y solo mientras pedaleas, datos como velocidad, frecuencia cardiaca, potencia, posición y clima. Ese envío es directo entre tu reloj y tu pantalla: <strong>no se transmite a internet ni a nosotros</strong>. Tu reloj sigue grabando la actividad como siempre.</p></div>
+
+  <h2 data-i18n="ppsv.h3">3. Activación de la pantalla</h2>
+  <div data-i18n="ppsv.b3"><p>Al activar una pantalla, la app envía a nuestro servidor el comprobante de compra de tu tienda (la transacción firmada por Apple o el token de compra de Google Play) y el identificador del chip de la placa. El comprobante incluye identificadores de la transacción, el producto y la fecha, pero no tu nombre ni tu correo. El servidor lo verifica con Apple o con Google y guarda solo un resumen cifrado de la compra, los identificadores de las placas activadas y las fechas de activación, para aplicar el límite de 3 pantallas por compra y bloquear compras reembolsadas. No vendemos ni compartimos estos datos.</p></div>
+
+  <h2 data-i18n="ppsv.h4">4. Actualizaciones y mapas</h2>
+  <div data-i18n="ppsv.b4"><p>Para buscar actualizaciones y descargar mapas, la app envía a nuestro servidor el certificado de activación de la placa, que contiene su identificador y una referencia seudónima de la compra. Como en cualquier conexión a internet, el servidor ve tu dirección IP, pero no la guarda. Para detectar certificados copiados guarda durante 24 horas un resumen cifrado de la red de origen y del certificado, y después lo borra.</p></div>
+
+  <h2 data-i18n="ppsv.h5">5. Permisos</h2>
+  <div data-i18n="ppsv.b5"><ul><li><strong>Bluetooth:</strong> para encontrar y configurar tu pantalla.</li><li><strong>Red local y punto de acceso WiFi:</strong> para enviar mapas y actualizaciones a la pantalla en modo taller.</li><li><strong>Ubicación (solo Android 12 o anterior):</strong> esas versiones de Android la exigen para buscar dispositivos Bluetooth. La app no lee tu ubicación.</li><li>En el reloj, el campo usa la posición, el Bluetooth y tu perfil (zonas de FC) solo para mostrar tus datos en la pantalla.</li></ul></div>
+
+  <h2 data-i18n="ppsv.h6">6. Tus derechos</h2>
+  <div data-i18n="ppsv.b6"><p>Puedes pedir que borremos el registro de activaciones asociado a tu compra escribiendo al correo de arriba. Las pantallas ya activadas seguirán funcionando.</p></div>
+
+  <h2 data-i18n="ppsv.h7">7. Cambios</h2>
+  <div data-i18n="ppsv.b7"><p>Si esta política cambia, actualizaremos esta página y la fecha de arriba.</p></div>
+</div>
