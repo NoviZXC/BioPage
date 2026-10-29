@@ -1,0 +1,585 @@
+---
+title: Workout Builder
+layout: page
+permalink: /w/
+description: "Build a simple structured run (warm-up, repeats of work and rest, cool-down) and download it as a .fit workout file for UNA Watch. Everything runs in your browser."
+sitemap: false
+analytics: false
+---
+<style>
+  .wb { max-width: 760px; margin: 0 auto; }
+  .wb-note { color: #86868b; font-size: 1.35rem; line-height: 1.5; margin-bottom: 1.6rem; }
+  .wb-lang { text-align: right; font-size: 1.2rem; margin-bottom: 0.4rem; }
+  .wb-lang button { background: none; border: 0; color: #86868b; cursor: pointer; font-size: 1.2rem; padding: 0 0.3rem; }
+  .wb-lang button[aria-pressed="true"] { color: #B8860B; text-decoration: underline; }
+  .wb fieldset { border: 1px solid #3a3a3c; border-radius: 10px; margin: 0 0 1.4rem; padding: 0.8rem 1.2rem 1.2rem; }
+  .wb legend { font-size: 1.4rem; font-weight: 600; padding: 0 0.5rem; }
+  .wb-row { display: flex; flex-wrap: wrap; gap: 0.8rem 1.2rem; align-items: flex-end; margin-top: 0.8rem; }
+  .wb-field { display: flex; flex-direction: column; font-size: 1.15rem; color: #86868b; }
+  .wb-field > span { margin-bottom: 0.3rem; }
+  .wb input, .wb select {
+    font: inherit; font-size: 1.35rem; padding: 0.5rem 0.7rem; border: 1px solid #86868b; border-radius: 8px;
+    background: transparent; color: inherit; min-width: 7rem; box-sizing: border-box;
+  }
+  .wb input[type="text"] { min-width: 16rem; }
+  .wb input[type="number"] { width: 7rem; min-width: 5rem; }
+  .wb-hint { color: #86868b; font-size: 1.15rem; margin: 0.6rem 0 0; }
+  .wb-actions { margin: 1.6rem 0 1rem; }
+  .wb-btn {
+    display: inline-block; background: #B8860B; color: #fff; border: 0; margin: 0 0.6rem 0.6rem 0;
+    padding: 0.9rem 1.6rem; border-radius: 8px; font-size: 1.4rem; cursor: pointer; text-decoration: none;
+  }
+  .wb-btn:disabled { background: #3a3a3c; cursor: default; }
+  .wb-errors { color: #d9534f; font-size: 1.25rem; margin: 0 0 1rem; padding-left: 1.4rem; }
+  .wb-errors:empty { display: none; }
+  .wb-plan { font-size: 1.3rem; line-height: 1.6; margin: 0 0 1rem; padding-left: 1.4rem; }
+  .wb-total { color: #86868b; font-size: 1.25rem; margin-bottom: 1rem; }
+  .wb-how { font-size: 1.25rem; line-height: 1.6; }
+  .wb-how code { font-size: 1.15rem; }
+  .wb-legal { color: #86868b; font-size: 1.1rem; line-height: 1.5; margin-top: 2rem; }
+</style>
+
+<div class="wb">
+  <div class="wb-lang" role="group" aria-label="Language">
+    <button type="button" id="wb-en" aria-pressed="true">English</button>|<button type="button" id="wb-es" aria-pressed="false">Español</button>
+  </div>
+  <h1 data-i18n="title">Workout Builder</h1>
+  <p class="wb-note" data-i18n="intro">Build a simple structured run, download it as a workout file and copy it to your UNA Watch over USB. The Running app lists it for that day and the Workout Today glance shows it on the glances screen.</p>
+  <p class="wb-note"><strong data-i18n="privacy">Everything runs in your browser.</strong> <span data-i18n="privacy2">The file is built on your device; nothing is uploaded and there is no account.</span></p>
+  <noscript><p class="wb-note">This page needs JavaScript to build the file.</p></noscript>
+
+  <fieldset>
+    <legend data-i18n="g.workout">Workout</legend>
+    <div class="wb-row">
+      <label class="wb-field"><span data-i18n="f.name">Name</span><input type="text" id="wb-name" maxlength="40" value="Intervals" autocomplete="off"></label>
+      <label class="wb-field"><span data-i18n="f.date">Day</span><input type="date" id="wb-date"></label>
+    </div>
+    <p class="wb-hint" data-i18n="h.name">The name shows on the watch. Plain letters and numbers fit best on the glances screen.</p>
+  </fieldset>
+
+  <fieldset>
+    <legend data-i18n="g.warm">Warm-up</legend>
+    <div class="wb-row" id="wb-warm"></div>
+  </fieldset>
+
+  <fieldset>
+    <legend data-i18n="g.work">Work and rest</legend>
+    <div class="wb-row">
+      <label class="wb-field"><span data-i18n="f.reps">Repeats</span><input type="number" id="wb-reps" min="1" max="99" step="1" value="5"></label>
+    </div>
+    <p class="wb-hint" data-i18n="h.work">Work: one effort. Rest: the recovery after each effort (leave it as None for continuous repeats).</p>
+    <div class="wb-row" id="wb-work"></div>
+    <div class="wb-row" id="wb-rest"></div>
+  </fieldset>
+
+  <fieldset>
+    <legend data-i18n="g.cool">Cool-down</legend>
+    <div class="wb-row" id="wb-cool"></div>
+  </fieldset>
+
+  <h2 data-i18n="g.plan">Your workout</h2>
+  <ul class="wb-errors" id="wb-errors" aria-live="polite"></ul>
+  <ol class="wb-plan" id="wb-plan"></ol>
+  <p class="wb-total" id="wb-total"></p>
+
+  <div class="wb-actions">
+    <button type="button" id="wb-download" class="wb-btn" disabled>Download</button>
+  </div>
+
+  <h2 data-i18n="g.how">Copy it to the watch</h2>
+  <ol class="wb-how">
+    <li data-i18n="how1">Download the file. It is named after the day, like <code>2026-11-03.fit</code>. Keep that name: the watch finds today's workout by it.</li>
+    <li data-i18n="how2">Connect the watch to your computer with its USB cable and open its drive.</li>
+    <li data-i18n="how3">Next to the <code>Apps</code> folder, create a folder <code>Workouts</code> and inside it a folder <code>Schedule</code> (skip what already exists).</li>
+    <li data-i18n="how4">Copy the file into <code>Workouts/Schedule</code>, so its full path is <code>Workouts/Schedule/YYYY-MM-DD.fit</code>. One file per day.</li>
+    <li data-i18n="how5">Eject the drive. On that day the Running app lists the workout, and the Workout Today glance shows it.</li>
+  </ol>
+  <p class="wb-note" data-i18n="soon">For now plans are copied over USB; sending them from the phone is coming from UNA. The watch needs firmware 1.6.0 or newer.</p>
+  <p class="wb-legal" data-i18n="legal">A planning aid for your own training. It builds a workout file and does nothing else.</p>
+</div>
+
+<script id="wb-fit">
+/* The workout file encoder and the form checks: pure functions, no DOM, so they can be tested on their own. */
+(function (root) {
+  'use strict';
+
+  var FIT_EPOCH = 631065600;      /* seconds from 1970-01-01 to the FIT epoch, 1989-12-31 */
+  var MAX_STEPS = 100;            /* steps in the file, repeat steps included: the most the watch reads */
+  var NAME_BYTES = 64;            /* wkt_name field size: 63 bytes of text and a NUL */
+  var STEP_NAME_BYTES = 16;
+
+  var CRC_TABLE = [0x0000, 0xCC01, 0xD801, 0x1400, 0xF001, 0x3C00, 0x2800, 0xE401,
+                   0xA001, 0x6C00, 0x7800, 0xB401, 0x5000, 0x9C01, 0x8801, 0x4400];
+  function crc16(bytes, from, to) {
+    var crc = 0;
+    for (var i = from; i < to; i++) {
+      var b = bytes[i];
+      var tmp = CRC_TABLE[crc & 0xF];
+      crc = (crc >> 4) & 0x0FFF;
+      crc = crc ^ tmp ^ CRC_TABLE[b & 0xF];
+      tmp = CRC_TABLE[crc & 0xF];
+      crc = (crc >> 4) & 0x0FFF;
+      crc = crc ^ tmp ^ CRC_TABLE[(b >> 4) & 0xF];
+    }
+    return crc;
+  }
+
+  /* UTF-8 of text, cut to at most max bytes without splitting a character. */
+  function utf8(text, max) {
+    var all = new TextEncoder().encode(String(text));
+    var n = Math.min(all.length, max);
+    while (n > 0 && n < all.length && (all[n] & 0xC0) === 0x80) { n--; }
+    return all.subarray(0, n);
+  }
+
+  function ByteList() { this.a = []; }
+  ByteList.prototype.u8 = function (v) { this.a.push(v & 0xFF); return this; };
+  ByteList.prototype.u16 = function (v) { return this.u8(v).u8(v >>> 8); };
+  ByteList.prototype.u32 = function (v) { return this.u8(v).u8(v >>> 8).u8(v >>> 16).u8(v >>> 24); };
+  ByteList.prototype.str = function (text, size) {
+    var t = utf8(text, size - 1);
+    for (var i = 0; i < size; i++) { this.u8(i < t.length ? t[i] : 0); }
+    return this;
+  };
+  ByteList.prototype.def = function (local, mesg, fields) {
+    this.u8(0x40 | local).u8(0).u8(0).u16(mesg).u8(fields.length);
+    for (var i = 0; i < fields.length; i++) { this.u8(fields[i][0]).u8(fields[i][1]).u8(fields[i][2]); }
+    return this;
+  };
+
+  var ENUM = 0x00, U16 = 0x84, U32 = 0x86, STRING = 0x07;
+  var DUR_TIME = 0, DUR_DISTANCE = 1, DUR_OPEN = 5, DUR_REPEAT = 6;
+  var TARGET_OPEN = 2;
+  var INTENSITY = { active: 0, rest: 1, warmup: 2, cooldown: 3 };
+  var INVALID32 = 0xFFFFFFFF;
+
+  /* Step counts with the repeats expanded, and the time and distance they add up to (what the watch shows). */
+  function summarize(steps) {
+    var s = { timeMs: 0, distanceCm: 0, steps: 0, open: 0 };
+    for (var i = 0; i < steps.length; i++) {
+      var st = steps[i];
+      if (st.type === 'repeat') { continue; }
+      var times = 1;
+      for (var j = i + 1; j < steps.length; j++) {
+        if (steps[j].type === 'repeat' && steps[j].from <= i) { times = steps[j].count; break; }
+      }
+      s.steps += times;
+      if (st.type === 'time') { s.timeMs += st.value * times; }
+      else if (st.type === 'distance') { s.distanceCm += st.value * times; }
+      else { s.open += times; }
+    }
+    return s;
+  }
+
+  /* spec = { name, date: {y, m, d}, steps: [ {type: 'time'|'distance'|'open', value, intensity, name}
+                                              | {type: 'repeat', from, count} ], nowMs }  ->  Uint8Array */
+  function buildFit(spec) {
+    var steps = spec.steps;
+    if (!steps.length || steps.length > MAX_STEPS) { throw new Error('steps'); }
+    var body = new ByteList();
+    var created = Math.max(0, Math.floor((spec.nowMs === undefined ? Date.now() : spec.nowMs) / 1000) - FIT_EPOCH);
+
+    /* file_id: type workout (5), the development manufacturer (255), product 0 */
+    body.def(0, 0, [[0, 1, ENUM], [1, 2, U16], [2, 2, U16], [4, 4, U32]]);
+    body.u8(0).u8(5).u16(255).u16(0).u32(created);
+
+    /* workout: running (sport 1), generic sub-sport, name and step count */
+    body.def(1, 26, [[4, 1, ENUM], [6, 2, U16], [8, NAME_BYTES, STRING], [11, 1, ENUM]]);
+    body.u8(1).u8(1).u16(steps.length).str(spec.name, NAME_BYTES).u8(0);
+
+    /* workout_step */
+    body.def(2, 27, [[254, 2, U16], [0, STEP_NAME_BYTES, STRING], [1, 1, ENUM], [2, 4, U32], [3, 1, ENUM],
+                     [4, 4, U32], [5, 4, U32], [6, 4, U32], [7, 1, ENUM]]);
+    for (var i = 0; i < steps.length; i++) {
+      var s = steps[i];
+      body.u8(2).u16(i);
+      if (s.type === 'repeat') {
+        /* repeat until steps complete: go back to step "from", "count" times in all */
+        body.str('', STEP_NAME_BYTES).u8(DUR_REPEAT).u32(s.from).u8(TARGET_OPEN).u32(s.count)
+            .u32(INVALID32).u32(INVALID32).u8(INTENSITY.active);
+      } else {
+        var dur = s.type === 'time' ? DUR_TIME : (s.type === 'distance' ? DUR_DISTANCE : DUR_OPEN);
+        body.str(s.name || '', STEP_NAME_BYTES).u8(dur).u32(s.type === 'open' ? INVALID32 : s.value)
+            .u8(TARGET_OPEN).u32(INVALID32).u32(INVALID32).u32(INVALID32).u8(INTENSITY[s.intensity]);
+      }
+    }
+
+    var records = body.a;
+    var out = new Uint8Array(14 + records.length + 2);
+    var h = new ByteList();
+    h.u8(14).u8(0x20).u16(2100).u32(records.length).u8(0x2E).u8(0x46).u8(0x49).u8(0x54);   /* ".FIT" */
+    for (var k = 0; k < 12; k++) { out[k] = h.a[k]; }
+    var hc = crc16(out, 0, 12);
+    out[12] = hc & 0xFF;
+    out[13] = hc >>> 8;
+    for (var r = 0; r < records.length; r++) { out[14 + r] = records[r]; }
+    var fc = crc16(out, 0, 14 + records.length);
+    out[14 + records.length] = fc & 0xFF;
+    out[15 + records.length] = fc >>> 8;
+    return out;
+  }
+
+  /* ---- Form checks ---- */
+
+  /* "mm:ss", "h:mm:ss" or a bare number of minutes -> milliseconds, or null. 1 s to 24 h. */
+  function parseTime(text) {
+    var t = String(text).trim();
+    var m;
+    var secs;
+    if ((m = /^(\d{1,3})$/.exec(t))) { secs = parseInt(m[1], 10) * 60; }
+    else if ((m = /^(\d{1,3}):([0-5]?\d)$/.exec(t))) { secs = parseInt(m[1], 10) * 60 + parseInt(m[2], 10); }
+    else if ((m = /^(\d{1,2}):([0-5]?\d):([0-5]?\d)$/.exec(t))) {
+      secs = parseInt(m[1], 10) * 3600 + parseInt(m[2], 10) * 60 + parseInt(m[3], 10);
+    } else { return null; }
+    return secs >= 1 && secs <= 86400 ? secs * 1000 : null;
+  }
+
+  var UNIT_CM = { m: 100, km: 100000, mi: 160934.4 };
+  /* A number (comma or dot) in m, km or mi -> centimetres, or null. 10 m to 1000 km. */
+  function parseDistance(text, unit) {
+    var t = String(text).trim().replace(',', '.');
+    if (!/^\d{1,6}(\.\d{1,3})?$/.test(t) || !UNIT_CM.hasOwnProperty(unit)) { return null; }
+    var cm = Math.round(parseFloat(t) * UNIT_CM[unit]);
+    return cm >= 1000 && cm <= 100000000 ? cm : null;
+  }
+
+  /* One step from its form row: {type: 'none'|'time'|'distance'|'open', value: text, unit}. null = none chosen. */
+  function stepFrom(row, intensity, name, field, errors) {
+    if (row.type === 'none') { return null; }
+    if (row.type === 'open') { return { type: 'open', intensity: intensity, name: name }; }
+    if (row.type === 'time') {
+      var ms = parseTime(row.value);
+      if (ms === null) { errors.push({ key: 'err.time', field: field }); return null; }
+      return { type: 'time', value: ms, intensity: intensity, name: name };
+    }
+    var cm = parseDistance(row.value, row.unit);
+    if (cm === null) { errors.push({ key: 'err.distance', field: field }); return null; }
+    return { type: 'distance', value: cm, intensity: intensity, name: name };
+  }
+
+  /* The nine form values -> the steps, or a list of {key, field} errors. */
+  function planFrom(form) {
+    var errors = [];
+    var steps = [];
+    var warm = stepFrom(form.warm, 'warmup', 'Warm-up', 'warm', errors);
+    var work = form.work.type === 'none' ? null : stepFrom(form.work, 'active', 'Work', 'work', errors);
+    var rest = stepFrom(form.rest, 'rest', 'Rest', 'rest', errors);
+    var cool = stepFrom(form.cool, 'cooldown', 'Cool-down', 'cool', errors);
+    var reps = /^\d{1,2}$/.test(String(form.reps).trim()) ? parseInt(form.reps, 10) : 0;
+    if (work && (reps < 1 || reps > 99)) { errors.push({ key: 'err.reps', field: 'reps' }); }
+    if (form.work.type === 'none' && !warm && !cool) { errors.push({ key: 'err.empty', field: 'work' }); }
+    if (errors.length) { return { errors: errors }; }
+    if (warm) { steps.push(warm); }
+    if (work) {
+      var first = steps.length;
+      steps.push(work);
+      if (rest) { steps.push(rest); }
+      if (reps > 1) { steps.push({ type: 'repeat', from: first, count: reps }); }
+    }
+    if (cool) { steps.push(cool); }
+    return { steps: steps, errors: [] };
+  }
+
+  /* "2026-11-03" -> {y, m, d} if it is a real day of 2000-2099, else null. */
+  function parseDate(text) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(text).trim());
+    if (!m) { return null; }
+    var y = parseInt(m[1], 10), mo = parseInt(m[2], 10), d = parseInt(m[3], 10);
+    var dt = new Date(Date.UTC(y, mo - 1, d));
+    if (y < 2000 || y > 2099 || dt.getUTCFullYear() !== y || dt.getUTCMonth() !== mo - 1 || dt.getUTCDate() !== d) { return null; }
+    return { y: y, m: mo, d: d };
+  }
+
+  function fileName(date) {
+    function p(n, w) { var s = String(n); while (s.length < w) { s = '0' + s; } return s; }
+    return p(date.y, 4) + '-' + p(date.m, 2) + '-' + p(date.d, 2) + '.fit';
+  }
+
+  root.WBFit = { buildFit: buildFit, summarize: summarize, planFrom: planFrom, parseTime: parseTime,
+                 parseDistance: parseDistance, parseDate: parseDate, fileName: fileName, crc16: crc16,
+                 MAX_STEPS: MAX_STEPS };
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+</script>
+
+<script id="wb-ui">
+(function () {
+  'use strict';
+  var Fit = window.WBFit;
+
+  var T = {
+    en: {
+      title: 'Workout Builder',
+      intro: 'Build a simple structured run, download it as a workout file and copy it to your UNA Watch over USB. The Running app lists it for that day and the Workout Today glance shows it on the glances screen.',
+      privacy: 'Everything runs in your browser.',
+      privacy2: 'The file is built on your device; nothing is uploaded and there is no account.',
+      'g.workout': 'Workout', 'g.warm': 'Warm-up', 'g.work': 'Work and rest', 'g.cool': 'Cool-down',
+      'g.plan': 'Your workout', 'g.how': 'Copy it to the watch',
+      'f.name': 'Name', 'f.date': 'Day', 'f.reps': 'Repeats', 'f.type': 'Ends by', 'f.value': 'Amount', 'f.unit': 'Unit',
+      'h.name': 'The name shows on the watch. Plain letters and numbers fit best on the glances screen.',
+      'h.work': 'Work: one effort. Rest: the recovery after each effort (leave it as None for continuous repeats).',
+      'row.work': 'Work', 'row.rest': 'Rest',
+      'type.none': 'None', 'type.time': 'Time', 'type.distance': 'Distance', 'type.open': 'Open (lap button)',
+      'ph.time': 'mm:ss', 'ph.distance': '0.4',
+      'err.time': 'Enter a time such as 10:00 (minutes and seconds) or a number of minutes, from 1 second to 24 hours.',
+      'err.distance': 'Enter a distance between 10 m and 1000 km, for example 400 with m, or 1.5 with km.',
+      'err.reps': 'Repeats must be a whole number from 1 to 99.',
+      'err.empty': 'Add at least one step: a warm-up, a work step or a cool-down.',
+      'err.date': 'Choose a valid day.',
+      'err.steps': 'A workout can have at most 100 steps once the repeats are counted.',
+      'err.field.warm': 'Warm-up', 'err.field.work': 'Work', 'err.field.rest': 'Rest', 'err.field.cool': 'Cool-down',
+      'err.field.reps': 'Repeats',
+      'dl': 'Download', 'dl.file': 'Download {file}',
+      'step.warm': 'Warm-up', 'step.cool': 'Cool-down', 'step.open': 'until you press the lap button',
+      'step.repeat': '{n} times: work {work}{rest}', 'step.rest': ', then rest {rest}', 'step.work': 'Work',
+      'total': '{steps} steps in all. Planned: {planned}. Steps ended by the lap button are not counted.',
+      'total.none': 'nothing with a set time or distance yet',
+      how1: 'Download the file. It is named after the day, like <code>2026-11-03.fit</code>. Keep that name: the watch finds today\'s workout by it.',
+      how2: 'Connect the watch to your computer with its USB cable and open its drive.',
+      how3: 'Next to the <code>Apps</code> folder, create a folder <code>Workouts</code> and inside it a folder <code>Schedule</code> (skip what already exists).',
+      how4: 'Copy the file into <code>Workouts/Schedule</code>, so its full path is <code>Workouts/Schedule/YYYY-MM-DD.fit</code>. One file per day.',
+      how5: 'Eject the drive. On that day the Running app lists the workout, and the Workout Today glance shows it.',
+      soon: 'For now plans are copied over USB; sending them from the phone is coming from UNA. The watch needs firmware 1.6.0 or newer.',
+      legal: 'A planning aid for your own training. It builds a workout file and does nothing else.'
+    },
+    es: {
+      title: 'Constructor de entrenos',
+      intro: 'Arma un entreno de carrera sencillo, descárgalo como archivo de entrenamiento y cópialo a tu UNA Watch por USB. La app Running lo muestra ese día y el glance Workout Today lo pone en la pantalla de glances.',
+      privacy: 'Todo ocurre en tu navegador.',
+      privacy2: 'El archivo se arma en tu dispositivo; no se sube nada y no hay cuenta.',
+      'g.workout': 'Entreno', 'g.warm': 'Calentamiento', 'g.work': 'Esfuerzo y descanso', 'g.cool': 'Enfriamiento',
+      'g.plan': 'Tu entreno', 'g.how': 'Cópialo al reloj',
+      'f.name': 'Nombre', 'f.date': 'Día', 'f.reps': 'Repeticiones', 'f.type': 'Termina por', 'f.value': 'Cantidad', 'f.unit': 'Unidad',
+      'h.name': 'El nombre se ve en el reloj. Letras y números sencillos caben mejor en la pantalla de glances.',
+      'h.work': 'Esfuerzo: una serie. Descanso: la recuperación tras cada serie (déjalo en Ninguno para repeticiones seguidas).',
+      'row.work': 'Esfuerzo', 'row.rest': 'Descanso',
+      'type.none': 'Ninguno', 'type.time': 'Tiempo', 'type.distance': 'Distancia', 'type.open': 'Libre (botón de vuelta)',
+      'ph.time': 'mm:ss', 'ph.distance': '0,4',
+      'err.time': 'Escribe un tiempo como 10:00 (minutos y segundos) o un número de minutos, de 1 segundo a 24 horas.',
+      'err.distance': 'Escribe una distancia entre 10 m y 1000 km, por ejemplo 400 con m, o 1,5 con km.',
+      'err.reps': 'Las repeticiones deben ser un número entero de 1 a 99.',
+      'err.empty': 'Añade al menos un paso: calentamiento, esfuerzo o enfriamiento.',
+      'err.date': 'Elige un día válido.',
+      'err.steps': 'Un entreno puede tener como máximo 100 pasos contando las repeticiones.',
+      'err.field.warm': 'Calentamiento', 'err.field.work': 'Esfuerzo', 'err.field.rest': 'Descanso', 'err.field.cool': 'Enfriamiento',
+      'err.field.reps': 'Repeticiones',
+      'dl': 'Descargar', 'dl.file': 'Descargar {file}',
+      'step.warm': 'Calentamiento', 'step.cool': 'Enfriamiento', 'step.open': 'hasta que pulses el botón de vuelta',
+      'step.repeat': '{n} veces: esfuerzo {work}{rest}', 'step.rest': ', luego descanso {rest}', 'step.work': 'Esfuerzo',
+      'total': '{steps} pasos en total. Planeado: {planned}. Los pasos que terminan con el botón de vuelta no cuentan.',
+      'total.none': 'nada con tiempo o distancia fijos todavía',
+      how1: 'Descarga el archivo. Lleva el nombre del día, como <code>2026-11-03.fit</code>. Conserva ese nombre: el reloj encuentra el entreno de hoy por él.',
+      how2: 'Conecta el reloj al ordenador con su cable USB y abre su unidad.',
+      how3: 'Junto a la carpeta <code>Apps</code>, crea una carpeta <code>Workouts</code> y dentro otra <code>Schedule</code> (omite lo que ya exista).',
+      how4: 'Copia el archivo en <code>Workouts/Schedule</code>, de modo que la ruta completa sea <code>Workouts/Schedule/AAAA-MM-DD.fit</code>. Un archivo por día.',
+      how5: 'Expulsa la unidad. Ese día la app Running muestra el entreno y el glance Workout Today también.',
+      soon: 'Por ahora los planes se copian por USB; enviarlos desde el móvil llegará de parte de UNA. El reloj necesita el firmware 1.6.0 o posterior.',
+      legal: 'Una ayuda para planificar tu propio entrenamiento. Arma un archivo de entrenamiento y nada más.'
+    }
+  };
+
+  var lang = /^es/i.test(navigator.language || '') ? 'es' : 'en';
+  function tr(key, vars) {
+    var s = (T[lang] && T[lang][key]) || T.en[key] || key;
+    if (vars) { Object.keys(vars).forEach(function (k) { s = s.split('{' + k + '}').join(vars[k]); }); }
+    return s;
+  }
+
+  function el(tag, attrs, text) {
+    var e = document.createElement(tag);
+    if (attrs) { Object.keys(attrs).forEach(function (k) { e.setAttribute(k, attrs[k]); }); }
+    if (text !== undefined) { e.textContent = text; }
+    return e;
+  }
+
+  /* A row of "ends by / amount / unit" controls inside the element with the given id. */
+  function stepRow(id, rowKey, types, defaults) {
+    var box = document.getElementById(id);
+    var fields = {};
+    if (rowKey) { box.appendChild(el('strong', { 'data-i18n': rowKey, style: 'min-width:6rem' }, '')); }
+    var type = el('select', { 'aria-label': 'type' });
+    types.forEach(function (t) { type.appendChild(el('option', { value: t }, '')); });
+    var value = el('input', { type: 'text', size: '8', inputmode: 'text', autocomplete: 'off' });
+    var unit = el('select', {});
+    ['m', 'km', 'mi'].forEach(function (u) { unit.appendChild(el('option', { value: u }, u)); });
+    var wrapT = el('label', { 'class': 'wb-field' });
+    wrapT.appendChild(el('span', { 'data-i18n': 'f.type' }, ''));
+    wrapT.appendChild(type);
+    var wrapV = el('label', { 'class': 'wb-field' });
+    wrapV.appendChild(el('span', { 'data-i18n': 'f.value' }, ''));
+    wrapV.appendChild(value);
+    var wrapU = el('label', { 'class': 'wb-field' });
+    wrapU.appendChild(el('span', { 'data-i18n': 'f.unit' }, ''));
+    wrapU.appendChild(unit);
+    box.appendChild(wrapT);
+    box.appendChild(wrapV);
+    box.appendChild(wrapU);
+    type.value = defaults.type;
+    value.value = defaults.value;
+    unit.value = defaults.unit;
+    fields.type = type; fields.value = value; fields.unit = unit; fields.wrapV = wrapV; fields.wrapU = wrapU;
+    fields.types = types;
+    return fields;
+  }
+
+  var rows = {
+    warm: stepRow('wb-warm', null, ['none', 'time', 'distance', 'open'], { type: 'time', value: '10:00', unit: 'km' }),
+    work: stepRow('wb-work', 'row.work', ['time', 'distance'], { type: 'distance', value: '400', unit: 'm' }),
+    rest: stepRow('wb-rest', 'row.rest', ['none', 'time', 'distance', 'open'], { type: 'time', value: '1:30', unit: 'm' }),
+    cool: stepRow('wb-cool', null, ['none', 'time', 'distance', 'open'], { type: 'time', value: '5:00', unit: 'km' })
+  };
+  var reps = document.getElementById('wb-reps');
+  var nameBox = document.getElementById('wb-name');
+  var dateBox = document.getElementById('wb-date');
+  var button = document.getElementById('wb-download');
+  var errorsBox = document.getElementById('wb-errors');
+  var planBox = document.getElementById('wb-plan');
+  var totalBox = document.getElementById('wb-total');
+  var current = null;   /* what the download button will build */
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  (function defaultDate() {
+    var d = new Date();
+    dateBox.value = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+  })();
+
+  function formatTime(ms) {
+    var s = Math.round(ms / 1000);
+    var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), r = s % 60;
+    return h ? h + ':' + pad(m) + ':' + pad(r) : m + ':' + pad(r);
+  }
+  function formatDistance(cm) {
+    var m = Math.round(cm / 100);
+    if (m < 1000) { return m + ' m'; }
+    var km = Math.round(cm / 10000) / 10;
+    return km + ' km';
+  }
+  function stepText(s) {
+    if (s.type === 'time') { return formatTime(s.value); }
+    if (s.type === 'distance') { return formatDistance(s.value); }
+    return tr('step.open');
+  }
+
+  function applyLanguage() {
+    document.documentElement.setAttribute('lang', lang);
+    var nodes = document.querySelectorAll('[data-i18n]');
+    for (var i = 0; i < nodes.length; i++) {
+      var key = nodes[i].getAttribute('data-i18n');
+      var text = tr(key);
+      if (text.indexOf('<code>') >= 0) { renderRich(nodes[i], text); } else { nodes[i].textContent = text; }
+    }
+    Object.keys(rows).forEach(function (k) {
+      var r = rows[k];
+      for (var j = 0; j < r.type.options.length; j++) { r.type.options[j].textContent = tr('type.' + r.type.options[j].value); }
+      r.value.setAttribute('placeholder', r.type.value === 'distance' ? tr('ph.distance') : tr('ph.time'));
+    });
+    document.getElementById('wb-en').setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false');
+    document.getElementById('wb-es').setAttribute('aria-pressed', lang === 'es' ? 'true' : 'false');
+    refresh();
+  }
+
+  /* Text with <code>...</code> pieces, built with text nodes (the strings are ours, but nothing goes through innerHTML). */
+  function renderRich(node, text) {
+    node.textContent = '';
+    text.split(/(<code>.*?<\/code>)/).forEach(function (part) {
+      var m = /^<code>(.*)<\/code>$/.exec(part);
+      if (m) { node.appendChild(el('code', null, m[1])); }
+      else if (part) { node.appendChild(document.createTextNode(part)); }
+    });
+  }
+
+  function readRow(r) {
+    return { type: r.type.value, value: r.value.value, unit: r.unit.value };
+  }
+
+  function showRows() {
+    Object.keys(rows).forEach(function (k) {
+      var r = rows[k];
+      var t = r.type.value;
+      r.wrapV.style.display = t === 'time' || t === 'distance' ? '' : 'none';
+      r.wrapU.style.display = t === 'distance' ? '' : 'none';
+      r.value.setAttribute('placeholder', t === 'distance' ? tr('ph.distance') : tr('ph.time'));
+    });
+  }
+
+  function addError(list, text) { list.appendChild(el('li', null, text)); }
+
+  function refresh() {
+    showRows();
+    errorsBox.textContent = '';
+    planBox.textContent = '';
+    totalBox.textContent = '';
+    current = null;
+    var date = Fit.parseDate(dateBox.value);
+    var plan = Fit.planFrom({ warm: readRow(rows.warm), work: readRow(rows.work), rest: readRow(rows.rest),
+                             cool: readRow(rows.cool), reps: reps.value });
+    if (!date) { addError(errorsBox, tr('err.date')); }
+    plan.errors.forEach(function (e) {
+      addError(errorsBox, (e.field === 'reps' ? '' : tr('err.field.' + e.field) + ': ') + tr(e.key));
+    });
+    if (plan.steps) {
+      var sum = Fit.summarize(plan.steps);
+      if (!plan.errors.length) { describe(plan.steps, sum); }
+      if (date && !plan.errors.length && plan.steps.length > 0) {
+        current = { date: date, steps: plan.steps };
+      }
+    }
+    button.disabled = !current;
+    button.textContent = current ? tr('dl.file', { file: Fit.fileName(current.date) }) : tr('dl');
+  }
+
+  function describe(steps, sum) {
+    for (var i = 0; i < steps.length; i++) {
+      var s = steps[i];
+      var next = steps[i + 1];
+      var li = null;
+      if (s.type === 'repeat') { continue; }
+      if (s.intensity === 'warmup') { li = tr('step.warm') + ': ' + stepText(s); }
+      else if (s.intensity === 'cooldown') { li = tr('step.cool') + ': ' + stepText(s); }
+      else if (s.intensity === 'active') {
+        var rest = steps[i + 1] && steps[i + 1].intensity === 'rest' ? steps[i + 1] : null;
+        var rep = null;
+        for (var j = i + 1; j < steps.length; j++) { if (steps[j].type === 'repeat' && steps[j].from === i) { rep = steps[j]; } }
+        li = rep ? tr('step.repeat', { n: rep.count, work: stepText(s), rest: rest ? tr('step.rest', { rest: stepText(rest) }) : '' })
+                 : tr('step.work') + ': ' + stepText(s) + (rest ? tr('step.rest', { rest: stepText(rest) }) : '');
+      }
+      if (li) { planBox.appendChild(el('li', null, li)); }
+      if (next && next.intensity === 'rest' && s.intensity === 'active') { i++; }
+    }
+    var planned = [];
+    if (sum.timeMs) { planned.push(formatTime(sum.timeMs)); }
+    if (sum.distanceCm) { planned.push(formatDistance(sum.distanceCm)); }
+    totalBox.textContent = tr('total', { steps: sum.steps, planned: planned.length ? planned.join(' + ') : tr('total.none') });
+  }
+
+  function download() {
+    if (!current) { return; }
+    var name = nameBox.value.trim() || 'Workout';
+    var bytes;
+    try {
+      bytes = Fit.buildFit({ name: name, date: current.date, steps: current.steps });
+    } catch (e) {
+      errorsBox.textContent = '';
+      addError(errorsBox, tr('err.steps'));
+      return;
+    }
+    var blob = new Blob([bytes], { type: 'application/octet-stream' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = Fit.fileName(current.date);
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+  }
+
+  [nameBox, dateBox, reps].forEach(function (c) { c.addEventListener('input', refresh); });
+  Object.keys(rows).forEach(function (k) {
+    ['type', 'value', 'unit'].forEach(function (f) { rows[k][f].addEventListener('input', refresh); });
+  });
+  button.addEventListener('click', download);
+  document.getElementById('wb-en').addEventListener('click', function () { lang = 'en'; applyLanguage(); });
+  document.getElementById('wb-es').addEventListener('click', function () { lang = 'es'; applyLanguage(); });
+  applyLanguage();
+})();
+</script>
